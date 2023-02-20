@@ -1,6 +1,6 @@
 package it.pagopa.pagopa.apiconfigstarter.entity;
 
-import it.pagopa.pagopa.apiconfig.util.YesNoConverter;
+import it.pagopa.pagopa.apiconfigstarter.util.YesNoConverter;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -15,7 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import it.pagopa.pagopa.apiconfigstarter.entity.PspCanaleTipoVersamento;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -62,7 +61,7 @@ public class Psp implements Serializable {
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FK_INT_QUADRATURE")
-    private it.pagopa.pagopa.apiconfig.entity.IntermediariPsp fkIntQuadrature;
+    private IntermediariPsp fkIntQuadrature;
 
     @Column(name = "STORNO_PAGAMENTO", nullable = false)
     private Boolean stornoPagamento;

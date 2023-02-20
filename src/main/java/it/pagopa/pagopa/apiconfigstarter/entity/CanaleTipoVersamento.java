@@ -1,13 +1,7 @@
-package it.pagopa.pagopa.apiconfig.entity;
+package it.pagopa.pagopa.apiconfigstarter.entity;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,8 +15,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import java.io.Serializable;
-import java.util.List;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -48,15 +47,15 @@ public class CanaleTipoVersamento implements Serializable {
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "FK_CANALE", nullable = false)
-    private it.pagopa.pagopa.apiconfig.entity.Canali canale;
+    private Canali canale;
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "FK_TIPO_VERSAMENTO", nullable = false)
-    private it.pagopa.pagopa.apiconfig.entity.TipiVersamento tipoVersamento;
+    private TipiVersamento tipoVersamento;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCanaleTipoVersamento", cascade = CascadeType.REMOVE)
     @ToString.Exclude
-    private List<it.pagopa.pagopa.apiconfig.entity.PspCanaleTipoVersamento> pspCanaleTipoVersamentoList;
+    private List<PspCanaleTipoVersamento> pspCanaleTipoVersamentoList;
 
 }

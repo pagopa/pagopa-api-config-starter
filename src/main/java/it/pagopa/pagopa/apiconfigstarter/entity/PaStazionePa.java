@@ -1,15 +1,6 @@
 package it.pagopa.pagopa.apiconfigstarter.entity;
 
-import it.pagopa.pagopa.apiconfig.util.YesNoConverter;
-import it.pagopa.pagopa.apiconfigstarter.entity.Stazioni;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import it.pagopa.pagopa.apiconfigstarter.util.YesNoConverter;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -22,6 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Table(name = "PA_STAZIONE_PA", schema = "NODO4_CFG", uniqueConstraints = { @UniqueConstraint(columnNames = { "FK_PA", "FK_STAZIONE" }) })
 @Entity
@@ -45,7 +43,7 @@ public class PaStazionePa {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "FK_PA", nullable = false)
     @ToString.Exclude
-    private it.pagopa.pagopa.apiconfig.entity.Pa pa;
+    private Pa pa;
 
     @Column(name = "FK_PA", nullable = false, insertable = false, updatable = false)
     private Long fkPa;

@@ -1,16 +1,8 @@
 package it.pagopa.pagopa.apiconfigstarter.entity;
 
-import it.pagopa.pagopa.apiconfig.util.NumericBooleanConverter;
-import it.pagopa.pagopa.apiconfigstarter.entity.BinaryFile;
-import it.pagopa.pagopa.apiconfigstarter.entity.Pa;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import it.pagopa.pagopa.apiconfigstarter.util.NumericBooleanConverter;
+import java.sql.Timestamp;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -24,8 +16,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.sql.Timestamp;
-import java.util.List;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Table(name = "INFORMATIVE_PA_MASTER", schema = "NODO4_CFG")
 @Entity
@@ -73,5 +70,5 @@ public class InformativePaMaster {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaMaster", cascade = CascadeType.REMOVE)
     @ToString.Exclude
-    private List<it.pagopa.pagopa.apiconfig.entity.InformativePaDetail> details;
+    private List<it.pagopa.pagopa.apiconfigstarter.entity.InformativePaDetail> details;
 }

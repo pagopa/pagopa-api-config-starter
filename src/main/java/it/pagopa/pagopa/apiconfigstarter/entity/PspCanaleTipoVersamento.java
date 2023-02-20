@@ -1,13 +1,6 @@
 package it.pagopa.pagopa.apiconfigstarter.entity;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.io.Serializable;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 
 @Entity
@@ -46,12 +45,12 @@ public class PspCanaleTipoVersamento implements Serializable {
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "FK_CANALE_TIPO_VERSAMENTO", nullable = false)
-    private it.pagopa.pagopa.apiconfig.entity.CanaleTipoVersamento canaleTipoVersamento;
+    private CanaleTipoVersamento canaleTipoVersamento;
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "FK_PSP", nullable = false)
-    private it.pagopa.pagopa.apiconfig.entity.Psp psp;
+    private Psp psp;
 
 
 }

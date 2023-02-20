@@ -1,15 +1,7 @@
 package it.pagopa.pagopa.apiconfigstarter.entity;
 
-import it.pagopa.pagopa.apiconfig.util.YesNoConverter;
-import it.pagopa.pagopa.apiconfigstarter.entity.WfespPluginConf;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import it.pagopa.pagopa.apiconfigstarter.util.YesNoConverter;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -21,7 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.io.Serializable;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter

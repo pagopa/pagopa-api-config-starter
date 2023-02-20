@@ -1,16 +1,9 @@
-package it.pagopa.pagopa.apiconfig.entity;
+package it.pagopa.pagopa.apiconfigstarter.entity;
 
-import it.pagopa.pagopa.apiconfigstarter.util.YesNoConverter;
 import it.pagopa.pagopa.apiconfigstarter.entity.CanaliNodo;
 import it.pagopa.pagopa.apiconfigstarter.entity.IntermediariPsp;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import it.pagopa.pagopa.apiconfigstarter.util.YesNoConverter;
+import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -24,7 +17,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter

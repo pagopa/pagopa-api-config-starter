@@ -1,14 +1,6 @@
 package it.pagopa.pagopa.apiconfigstarter.entity;
 
-import it.pagopa.pagopa.apiconfig.util.YesNoConverter;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import it.pagopa.pagopa.apiconfigstarter.util.YesNoConverter;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -20,8 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "STAZIONI", schema = "NODO4_CFG")
@@ -87,7 +84,7 @@ public class Stazioni {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "FK_INTERMEDIARIO_PA", nullable = false)
     @ToString.Exclude
-    private it.pagopa.pagopa.apiconfig.entity.IntermediariPa intermediarioPa;
+    private IntermediariPa intermediarioPa;
 
     @Column(name = "FK_INTERMEDIARIO_PA", nullable = false, insertable = false, updatable = false)
     private Long fkIntermediarioPa;

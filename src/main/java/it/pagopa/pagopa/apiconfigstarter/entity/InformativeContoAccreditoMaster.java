@@ -1,15 +1,7 @@
 package it.pagopa.pagopa.apiconfigstarter.entity;
 
-import it.pagopa.pagopa.apiconfigstarter.entity.BinaryFile;
-import it.pagopa.pagopa.apiconfigstarter.entity.Pa;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import java.sql.Timestamp;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,8 +14,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.sql.Timestamp;
-import java.util.List;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Table(name = "INFORMATIVE_CONTO_ACCREDITO_MASTER", schema = "NODO4_CFG")
 @Entity
@@ -67,6 +64,6 @@ public class InformativeContoAccreditoMaster {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaContoAccreditoMaster", cascade = CascadeType.REMOVE)
     @ToString.Exclude
-    private List<it.pagopa.pagopa.apiconfig.entity.InformativeContoAccreditoDetail> icaDetail;
+    private List<InformativeContoAccreditoDetail> icaDetail;
 
 }

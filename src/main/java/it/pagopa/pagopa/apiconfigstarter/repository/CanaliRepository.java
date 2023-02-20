@@ -1,6 +1,6 @@
 package it.pagopa.pagopa.apiconfigstarter.repository;
 
-import it.pagopa.pagopa.apiconfig.entity.Canali;
+import it.pagopa.pagopa.apiconfigstarter.entity.Canali;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;

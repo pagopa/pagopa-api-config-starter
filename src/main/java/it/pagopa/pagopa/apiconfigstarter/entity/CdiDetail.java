@@ -1,18 +1,6 @@
 package it.pagopa.pagopa.apiconfigstarter.entity;
 
-import it.pagopa.pagopa.apiconfigstarter.entity.CdiFasciaCostoServizio;
-import it.pagopa.pagopa.apiconfigstarter.entity.CdiInformazioniServizio;
-import it.pagopa.pagopa.apiconfigstarter.entity.CdiMaster;
-import it.pagopa.pagopa.apiconfigstarter.entity.CdiPreference;
-import it.pagopa.pagopa.apiconfigstarter.entity.PspCanaleTipoVersamento;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.List;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 
 @Table(name = "CDI_DETAIL", schema = "NODO4_CFG")
