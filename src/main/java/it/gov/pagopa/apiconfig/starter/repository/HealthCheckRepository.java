@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class HealthCheckRepository {
 
-    @Autowired
-    EntityManager entityManager;
+  @Autowired
+  EntityManager entityManager;
 
-    public Optional<Object> health() {
-        return Optional.of(entityManager.createNativeQuery("select 1 from DUAL").getSingleResult());
-    }
+  public Optional<Object> health() {
+    return Optional.of(entityManager.createNativeQuery("select 1 from DUAL").getSingleResult());
+  }
 }

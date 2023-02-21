@@ -1,12 +1,12 @@
 package it.gov.pagopa.apiconfig.starter.repository;
 
 import it.gov.pagopa.apiconfig.starter.entity.Pa;
-import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import java.util.Optional;
 
 @Repository
 public interface PaRepository extends JpaRepository<Pa, Long> {
 
-    Optional<Pa> findByIdDominio(String creditorInstitutionCode);
+  Optional<Pa> findByIdDominio(String creditorInstitutionCode);
 }

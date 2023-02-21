@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ElencoServiziRepository extends JpaRepository<ElencoServizi, Long> {
+
 }

@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FtpServersRepository extends JpaRepository<FtpServers, Long> {
-    Optional<FtpServers> findByHostAndPortAndService(String host, Integer port, String service);
+
+  Optional<FtpServers> findByHostAndPortAndService(String host, Integer port, String service);
 }

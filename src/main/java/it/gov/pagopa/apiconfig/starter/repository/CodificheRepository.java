@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CodificheRepository extends JpaRepository<Codifiche, Long> {
 
-    Optional<Codifiche> findByIdCodifica(String codeType);
+  Optional<Codifiche> findByIdCodifica(String codeType);
 }

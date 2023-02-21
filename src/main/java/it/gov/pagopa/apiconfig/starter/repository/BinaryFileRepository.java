@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BinaryFileRepository extends JpaRepository<BinaryFile, Long> {
+
 }

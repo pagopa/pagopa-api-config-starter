@@ -29,28 +29,29 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PspCanaleTipoVersamento implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "FK_CANALE_TIPO_VERSAMENTO", nullable = false, insertable = false, updatable = false)
-    private Long fkCanaleTipoVersamento;
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long id;
 
-    @Column(name = "FK_PSP", nullable = false, insertable = false, updatable = false)
-    private Long fkPsp;
+  @Column(name = "FK_CANALE_TIPO_VERSAMENTO", nullable = false, insertable = false, updatable = false)
+  private Long fkCanaleTipoVersamento;
 
-    @ToString.Exclude
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FK_CANALE_TIPO_VERSAMENTO", nullable = false)
-    private CanaleTipoVersamento canaleTipoVersamento;
+  @Column(name = "FK_PSP", nullable = false, insertable = false, updatable = false)
+  private Long fkPsp;
 
-    @ToString.Exclude
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FK_PSP", nullable = false)
-    private Psp psp;
+  @ToString.Exclude
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_CANALE_TIPO_VERSAMENTO", nullable = false)
+  private CanaleTipoVersamento canaleTipoVersamento;
+
+  @ToString.Exclude
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_PSP", nullable = false)
+  private Psp psp;
 
 
 }

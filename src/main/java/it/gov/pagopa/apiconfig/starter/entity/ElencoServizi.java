@@ -27,108 +27,109 @@ import lombok.ToString;
 @Entity
 @Table(name = "ELENCO_SERVIZI", schema = "NODO4_CFG")
 public class ElencoServizi {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long id;
 
-    @Column(name = "PSP_ID", length = 35)
-    private String pspId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long id;
 
-    @Column(name = "FLUSSO_ID", length = 35)
-    private String flussoId;
+  @Column(name = "PSP_ID", length = 35)
+  private String pspId;
 
-    @Column(name = "PSP_RAG_SOC")
-    private String pspRagSoc;
+  @Column(name = "FLUSSO_ID", length = 35)
+  private String flussoId;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "PSP_FLAG_STORNO")
-    private Boolean pspFlagStorno;
+  @Column(name = "PSP_RAG_SOC")
+  private String pspRagSoc;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "PSP_FLAG_BOLLO")
-    private Boolean pspFlagBollo;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "PSP_FLAG_STORNO")
+  private Boolean pspFlagStorno;
 
-    @Column(name = "INTM_ID", length = 35)
-    private String intmId;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "PSP_FLAG_BOLLO")
+  private Boolean pspFlagBollo;
 
-    @Column(name = "CANALE_ID", length = 35)
-    private String canaleId;
+  @Column(name = "INTM_ID", length = 35)
+  private String intmId;
 
-    @Column(name = "NOME_SERVIZIO", length = 35)
-    private String nomeServizio;
+  @Column(name = "CANALE_ID", length = 35)
+  private String canaleId;
 
-    @Column(name = "CANALE_MOD_PAG")
-    private Long canaleModPag;
+  @Column(name = "NOME_SERVIZIO", length = 35)
+  private String nomeServizio;
 
-    @Column(name = "TIPO_VERS_COD")
-    private String tipoVersCod;
+  @Column(name = "CANALE_MOD_PAG")
+  private Long canaleModPag;
 
-    @Column(name = "CODICE_LINGUA", length = 2)
-    private String codiceLingua;
+  @Column(name = "TIPO_VERS_COD")
+  private String tipoVersCod;
 
-    @Column(name = "INF_COND_EC_MAX", length = 35)
-    private String infCondEcMax;
+  @Column(name = "CODICE_LINGUA", length = 2)
+  private String codiceLingua;
 
-    @Column(name = "INF_DESC_SERV", length = 511)
-    private String infDescServ;
+  @Column(name = "INF_COND_EC_MAX", length = 35)
+  private String infCondEcMax;
 
-    @Column(name = "INF_DISP_SERV", length = 511)
-    private String infDispServ;
+  @Column(name = "INF_DESC_SERV", length = 511)
+  private String infDescServ;
 
-    @Column(name = "INF_URL_CANALE")
-    private String infUrlCanale;
+  @Column(name = "INF_DISP_SERV", length = 511)
+  private String infDispServ;
 
-    @Column(name = "IMPORTO_MINIMO")
-    private Double importoMinimo;
+  @Column(name = "INF_URL_CANALE")
+  private String infUrlCanale;
 
-    @Column(name = "IMPORTO_MASSIMO")
-    private Double importoMassimo;
+  @Column(name = "IMPORTO_MINIMO")
+  private Double importoMinimo;
 
-    @Column(name = "COSTO_FISSO")
-    private Double costoFisso;
+  @Column(name = "IMPORTO_MASSIMO")
+  private Double importoMassimo;
 
-    @Column(name = "TIMESTAMP_INS")
-    private Timestamp timestampIns;
+  @Column(name = "COSTO_FISSO")
+  private Double costoFisso;
 
-    @Column(name = "DATA_VALIDITA")
-    private Timestamp dataValidita;
+  @Column(name = "TIMESTAMP_INS")
+  private Timestamp timestampIns;
 
-    @Column(name = "LOGO_PSP")
-    @ToString.Exclude
-    private byte[] logoPsp;
+  @Column(name = "DATA_VALIDITA")
+  private Timestamp dataValidita;
 
-    @Column(name = "TAGS", length = 135)
-    private String tags;
+  @Column(name = "LOGO_PSP")
+  @ToString.Exclude
+  private byte[] logoPsp;
 
-    @Column(name = "LOGO_SERVIZIO")
-    @ToString.Exclude
-    private byte[] logoServizio;
+  @Column(name = "TAGS", length = 135)
+  private String tags;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "CANALE_APP")
-    private Boolean canaleApp;
+  @Column(name = "LOGO_SERVIZIO")
+  @ToString.Exclude
+  private byte[] logoServizio;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "ON_US")
-    private Boolean onUs;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "CANALE_APP")
+  private Boolean canaleApp;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "CARRELLO_CARTE")
-    private Boolean carrelloCarte;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "ON_US")
+  private Boolean onUs;
 
-    @Column(name = "CODICE_ABI", length = 5)
-    private String codiceAbi;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "CARRELLO_CARTE")
+  private Boolean carrelloCarte;
 
-    @Column(name = "CODICE_MYBANK", length = 35)
-    private String codiceMybank;
+  @Column(name = "CODICE_ABI", length = 5)
+  private String codiceAbi;
 
-    @Column(name = "CODICE_CONVENZIONE", length = 35)
-    private String codiceConvenzione;
+  @Column(name = "CODICE_MYBANK", length = 35)
+  private String codiceMybank;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "FLAG_IO")
-    private Boolean flagIo;
+  @Column(name = "CODICE_CONVENZIONE", length = 35)
+  private String codiceConvenzione;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "FLAG_IO")
+  private Boolean flagIo;
 
 }

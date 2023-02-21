@@ -34,41 +34,41 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class InformativePaMaster {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long id;
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long id;
 
-    @Column(name = "ID_INFORMATIVA_PA", nullable = false, length = 35)
-    private String idInformativaPa;
+  @Column(name = "ID_INFORMATIVA_PA", nullable = false, length = 35)
+  private String idInformativaPa;
 
-    @Column(name = "DATA_INIZIO_VALIDITA")
-    private Timestamp dataInizioValidita;
+  @Column(name = "DATA_INIZIO_VALIDITA")
+  private Timestamp dataInizioValidita;
 
-    @Column(name = "DATA_PUBBLICAZIONE")
-    private Timestamp dataPubblicazione;
+  @Column(name = "DATA_PUBBLICAZIONE")
+  private Timestamp dataPubblicazione;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "FK_PA", nullable = false)
-    @ToString.Exclude
-    private Pa fkPa;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "FK_PA", nullable = false)
+  @ToString.Exclude
+  private Pa fkPa;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "FK_BINARY_FILE")
-    @ToString.Exclude
-    private BinaryFile fkBinaryFile;
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "FK_BINARY_FILE")
+  @ToString.Exclude
+  private BinaryFile fkBinaryFile;
 
-    @Column(name = "VERSIONE", length = 35)
-    private String versione;
+  @Column(name = "VERSIONE", length = 35)
+  private String versione;
 
-    @Column(name = "PAGAMENTI_PRESSO_PSP")
-    @Convert(converter = NumericBooleanConverter.class)
-    private Boolean pagamentiPressoPsp;
+  @Column(name = "PAGAMENTI_PRESSO_PSP")
+  @Convert(converter = NumericBooleanConverter.class)
+  private Boolean pagamentiPressoPsp;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaMaster", cascade = CascadeType.REMOVE)
-    @ToString.Exclude
-    private List<it.gov.pagopa.apiconfig.starter.entity.InformativePaDetail> details;
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaMaster", cascade = CascadeType.REMOVE)
+  @ToString.Exclude
+  private List<it.gov.pagopa.apiconfig.starter.entity.InformativePaDetail> details;
 }

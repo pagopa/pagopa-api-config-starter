@@ -27,22 +27,23 @@ import lombok.ToString;
 @Entity
 @Table(name = "INFORMATIVE_PA_FASCE", schema = "NODO4_CFG")
 public class InformativePaFasce {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "ORA_A", length = 35)
-    private String oraA;
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long id;
 
-    @Column(name = "ORA_DA", length = 35)
-    private String oraDa;
+  @Column(name = "ORA_A", length = 35)
+  private String oraA;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FK_INFORMATIVA_PA_DETAIL", nullable = false)
-    @ToString.Exclude
-    private InformativePaDetail fkInformativaPaDetail;
+  @Column(name = "ORA_DA", length = 35)
+  private String oraDa;
+
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_INFORMATIVA_PA_DETAIL", nullable = false)
+  @ToString.Exclude
+  private InformativePaDetail fkInformativaPaDetail;
 
 }

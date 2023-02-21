@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WfespPluginConfRepository extends JpaRepository<WfespPluginConf, Long> {
 
-    Optional<WfespPluginConf> findByIdServPlugin(String id);
+  Optional<WfespPluginConf> findByIdServPlugin(String id);
 }

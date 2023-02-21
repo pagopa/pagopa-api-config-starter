@@ -26,24 +26,25 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class IntermediariPa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long objId;
 
-    @Column(name = "ID_INTERMEDIARIO_PA", nullable = false, length = 35)
-    private String idIntermediarioPa;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long objId;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "ENABLED", nullable = false)
-    private Boolean enabled = false;
+  @Column(name = "ID_INTERMEDIARIO_PA", nullable = false, length = 35)
+  private String idIntermediarioPa;
 
-    @Column(name = "CODICE_INTERMEDIARIO")
-    private String codiceIntermediario;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "ENABLED", nullable = false)
+  private Boolean enabled = false;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "FAULT_BEAN_ESTESO", nullable = false)
-    private Boolean faultBeanEsteso = false;
+  @Column(name = "CODICE_INTERMEDIARIO")
+  private String codiceIntermediario;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "FAULT_BEAN_ESTESO", nullable = false)
+  private Boolean faultBeanEsteso = false;
 
 }

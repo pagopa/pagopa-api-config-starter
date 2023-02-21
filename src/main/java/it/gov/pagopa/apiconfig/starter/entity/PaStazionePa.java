@@ -21,7 +21,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "PA_STAZIONE_PA", schema = "NODO4_CFG", uniqueConstraints = { @UniqueConstraint(columnNames = { "FK_PA", "FK_STAZIONE" }) })
+@Table(name = "PA_STAZIONE_PA", schema = "NODO4_CFG", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"FK_PA", "FK_STAZIONE"})})
 @Entity
 @Getter
 @Setter
@@ -30,49 +31,50 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PaStazionePa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long objId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "PROGRESSIVO")
-    private Long progressivo;
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long objId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FK_PA", nullable = false)
-    @ToString.Exclude
-    private Pa pa;
+  @Column(name = "PROGRESSIVO")
+  private Long progressivo;
 
-    @Column(name = "FK_PA", nullable = false, insertable = false, updatable = false)
-    private Long fkPa;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_PA", nullable = false)
+  @ToString.Exclude
+  private Pa pa;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FK_STAZIONE", nullable = false)
-    @ToString.Exclude
-    private Stazioni fkStazione;
+  @Column(name = "FK_PA", nullable = false, insertable = false, updatable = false)
+  private Long fkPa;
 
-    @Column(name = "AUX_DIGIT")
-    private Long auxDigit;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_STAZIONE", nullable = false)
+  @ToString.Exclude
+  private Stazioni fkStazione;
 
-    @Column(name = "SEGREGAZIONE")
-    private Long segregazione;
+  @Column(name = "AUX_DIGIT")
+  private Long auxDigit;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "QUARTO_MODELLO", nullable = false)
-    private Boolean quartoModello = false;
+  @Column(name = "SEGREGAZIONE")
+  private Long segregazione;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "STAZIONE_AVV", nullable = false)
-    private Boolean stazioneAvv = false;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "QUARTO_MODELLO", nullable = false)
+  private Boolean quartoModello = false;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "STAZIONE_NODO", nullable = false)
-    private Boolean stazioneNodo = true;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "STAZIONE_AVV", nullable = false)
+  private Boolean stazioneAvv = false;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "BROADCAST", nullable = false)
-    private Boolean broadcast = false;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "STAZIONE_NODO", nullable = false)
+  private Boolean stazioneNodo = true;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "BROADCAST", nullable = false)
+  private Boolean broadcast = false;
 
 }

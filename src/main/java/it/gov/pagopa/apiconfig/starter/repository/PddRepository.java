@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PddRepository extends JpaRepository<Pdd, Long> {
-    Optional<Pdd> findByIdPdd(String idPdd);
+
+  Optional<Pdd> findByIdPdd(String idPdd);
 }

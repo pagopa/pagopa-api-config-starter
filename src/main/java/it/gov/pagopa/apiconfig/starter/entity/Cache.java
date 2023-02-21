@@ -24,19 +24,19 @@ import lombok.ToString;
 @java.lang.SuppressWarnings("java:S1700")
 public class Cache {
 
-    @Id
-    @Column(name = "ID", nullable = false)
-    private String id;
+  @Id
+  @Column(name = "ID", nullable = false)
+  private String id;
 
-    @Column(name = "CACHE", nullable = false)
-    @ToString.Exclude
-    private byte[] cache;
+  @Column(name = "CACHE", nullable = false)
+  @ToString.Exclude
+  private byte[] cache;
 
-    @Column(name = "TIME", nullable = false)
-    @ToString.Exclude
-    private Timestamp time;
+  @Column(name = "TIME", nullable = false)
+  @ToString.Exclude
+  private Timestamp time;
 
-    @Column(name = "VERSION", nullable = false)
-    private String version;
+  @Column(name = "VERSION", nullable = false)
+  private String version;
 
 }

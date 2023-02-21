@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IbanValidiPerPaRepository extends JpaRepository<IbanValidiPerPa, String> {
 
-    List<IbanValidiPerPa> findAllByFkPa(Long fkPa);
-    List<IbanValidiPerPa> findAllByIbanAccreditoContainsIgnoreCase(String iban);
+  List<IbanValidiPerPa> findAllByFkPa(Long fkPa);
+
+  List<IbanValidiPerPa> findAllByIbanAccreditoContainsIgnoreCase(String iban);
 }

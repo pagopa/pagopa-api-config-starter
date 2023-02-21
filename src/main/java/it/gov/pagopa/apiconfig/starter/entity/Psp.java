@@ -32,70 +32,71 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class Psp implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long objId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "ID_PSP", nullable = false, length = 35)
-    private String idPsp;
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long objId;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "ENABLED", nullable = false)
-    private Boolean enabled;
+  @Column(name = "ID_PSP", nullable = false, length = 35)
+  private String idPsp;
 
-    @Column(name = "ABI", length = 5)
-    private String abi;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "ENABLED", nullable = false)
+  private Boolean enabled;
 
-    @Column(name = "BIC", length = 11)
-    private String bic;
+  @Column(name = "ABI", length = 5)
+  private String abi;
 
-    @Column(name = "DESCRIZIONE", length = 70)
-    private String descrizione;
+  @Column(name = "BIC", length = 11)
+  private String bic;
 
-    @Column(name = "RAGIONE_SOCIALE", length = 70)
-    private String ragioneSociale;
+  @Column(name = "DESCRIZIONE", length = 70)
+  private String descrizione;
 
-    @ToString.Exclude
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FK_INT_QUADRATURE")
-    private IntermediariPsp fkIntQuadrature;
+  @Column(name = "RAGIONE_SOCIALE", length = 70)
+  private String ragioneSociale;
 
-    @Column(name = "STORNO_PAGAMENTO", nullable = false)
-    private Boolean stornoPagamento;
+  @ToString.Exclude
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "FK_INT_QUADRATURE")
+  private IntermediariPsp fkIntQuadrature;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "FLAG_REPO_COMMISSIONE_CARICO_PA")
-    private Boolean flagRepoCommissioneCaricoPa;
+  @Column(name = "STORNO_PAGAMENTO", nullable = false)
+  private Boolean stornoPagamento;
 
-    @Column(name = "EMAIL_REPO_COMMISSIONE_CARICO_PA")
-    private String emailRepoCommissioneCaricoPa;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "FLAG_REPO_COMMISSIONE_CARICO_PA")
+  private Boolean flagRepoCommissioneCaricoPa;
 
-    @Column(name = "CODICE_MYBANK", length = 35)
-    private String codiceMybank;
+  @Column(name = "EMAIL_REPO_COMMISSIONE_CARICO_PA")
+  private String emailRepoCommissioneCaricoPa;
 
-    @Column(name = "MARCA_BOLLO_DIGITALE", nullable = false)
-    private Boolean marcaBolloDigitale;
+  @Column(name = "CODICE_MYBANK", length = 35)
+  private String codiceMybank;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "AGID_PSP", nullable = false)
-    private Boolean agidPsp;
+  @Column(name = "MARCA_BOLLO_DIGITALE", nullable = false)
+  private Boolean marcaBolloDigitale;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "PSP_NODO", nullable = false)
-    private Boolean pspNodo;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "AGID_PSP", nullable = false)
+  private Boolean agidPsp;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "PSP_AVV", nullable = false)
-    private Boolean pspAvv;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "PSP_NODO", nullable = false)
+  private Boolean pspNodo;
 
-    @Column(name = "CODICE_FISCALE", length = 16)
-    private String codiceFiscale;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "PSP_AVV", nullable = false)
+  private Boolean pspAvv;
 
-    @Column(name = "VAT_NUMBER", length = 20)
-    private String vatNumber;
+  @Column(name = "CODICE_FISCALE", length = 16)
+  private String codiceFiscale;
+
+  @Column(name = "VAT_NUMBER", length = 20)
+  private String vatNumber;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "psp")
   @ToString.Exclude

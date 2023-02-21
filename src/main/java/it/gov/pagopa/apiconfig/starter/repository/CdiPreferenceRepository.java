@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CdiPreferenceRepository extends JpaRepository<CdiPreference, Long> {
+
 }

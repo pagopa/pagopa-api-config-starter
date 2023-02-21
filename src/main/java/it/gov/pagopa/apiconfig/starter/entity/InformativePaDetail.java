@@ -1,7 +1,13 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import it.gov.pagopa.apiconfig.starter.util.NumericBooleanConverter;
-import java.util.List;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -15,13 +21,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,30 +32,31 @@ import lombok.ToString;
 @Entity
 @Table(name = "INFORMATIVE_PA_DETAIL", schema = "NODO4_CFG")
 public class InformativePaDetail {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "FLAG_DISPONIBILITA", nullable = false)
-    @Convert(converter = NumericBooleanConverter.class)
-    private Boolean flagDisponibilita = false;
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long id;
 
-    @Column(name = "GIORNO", length = 35)
-    private String giorno;
+  @Column(name = "FLAG_DISPONIBILITA", nullable = false)
+  @Convert(converter = NumericBooleanConverter.class)
+  private Boolean flagDisponibilita = false;
 
-    @Column(name = "TIPO", length = 35)
-    private String tipo;
+  @Column(name = "GIORNO", length = 35)
+  private String giorno;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FK_INFORMATIVA_PA_MASTER", nullable = false)
-    @ToString.Exclude
-    private InformativePaMaster fkInformativaPaMaster;
+  @Column(name = "TIPO", length = 35)
+  private String tipo;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaDetail", cascade = CascadeType.REMOVE)
-    @ToString.Exclude
-    private List<InformativePaFasce> fasce;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_INFORMATIVA_PA_MASTER", nullable = false)
+  @ToString.Exclude
+  private InformativePaMaster fkInformativaPaMaster;
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaDetail", cascade = CascadeType.REMOVE)
+  @ToString.Exclude
+  private List<InformativePaFasce> fasce;
 
 }
