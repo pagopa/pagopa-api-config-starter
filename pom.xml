@@ -13,7 +13,7 @@
 
   <groupId>it.pagopa.pagopa.api-config-starter</groupId>
   <artifactId>pagopa-api-config-starter</artifactId>
-  <version>0.0.1-gh-fix</version>
+  <version>0.0.2-3-gh-fix</version>
   <description>Starter module for projects related to Nodo dei Pagamenti configuration.</description>
 
   <properties>
@@ -91,11 +91,11 @@
 
   </build>
 
-  <!-- location build directory -->
+<!--   location build directory -->
 <!--  <distributionManagement>-->
 <!--    <repository>-->
 <!--      <id>github</id>-->
-<!--      <name>GitHub Apache Maven Packages</name>-->
+<!--      <name>GitHub PagoPa Apache Maven Packages</name>-->
 <!--      <url>https://maven.pkg.github.com/pagopa/pagopa-api-config-starter</url>-->
 <!--    </repository>-->
 <!--  </distributionManagement>-->
