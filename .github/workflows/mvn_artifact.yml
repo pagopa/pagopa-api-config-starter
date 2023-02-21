@@ -68,7 +68,7 @@ jobs:
 
       - name: Make Package
         id: package
-        uses: pagopa/github-actions-template/maven-release@semver-def
+        uses: pagopa/github-actions-template/maven-package@semver-def
         with:
           github_token: ${{ secrets.BOT_GITHUB_TOKEN }}
           branch: ${{ github.ref_name }}
