@@ -70,7 +70,6 @@ jobs:
         id: package
         uses: pagopa/github-actions-template/maven-release@semver-def
         with:
-          semver: ${{ needs.setup.outputs.semver }}
           github_token: ${{ secrets.BOT_GITHUB_TOKEN }}
           branch: ${{ github.ref_name }}
 
