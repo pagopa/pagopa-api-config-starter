@@ -13,7 +13,9 @@ permissions:
 jobs:
   update:
     name: Format code
+
     runs-on: ubuntu-latest
+
     if: ${{ contains(github.event.comment.body, 'update_code') }}
     steps:
       - name: Checkout
