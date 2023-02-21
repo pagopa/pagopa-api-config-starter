@@ -30,7 +30,7 @@ permissions:
 jobs:
 
   setup:
-    name: Semver setup
+    name: Semver Setup
     runs-on: ubuntu-latest
     outputs:
       semver: ${{ steps.semver.outputs.semver }}
@@ -45,11 +45,10 @@ jobs:
         # TODO set main after merge (commit hash)
         uses: pagopa/github-actions-template/semver-setup@semver-def
 
-  build:
+  package:
+    name: Publish Maven Package
     needs: setup
-
     runs-on: ubuntu-latest
-
     steps:
       - name: Dump GitHub context
         run: |
@@ -70,7 +69,7 @@ jobs:
         id: package
         uses: pagopa/github-actions-template/maven-package@semver-def
         with:
-          github_token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref_name }}
 
 
