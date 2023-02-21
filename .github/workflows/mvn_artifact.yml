@@ -35,11 +35,15 @@ jobs:
     outputs:
       semver: ${{ steps.semver.outputs.semver }}
     steps:
+      - name: Dump GitHub context
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
+
       - name: Set semver
         id: semver
         # TODO set main after merge (commit hash)
         uses: pagopa/github-actions-template/semver-setup@semver-def
-
 
   build:
     needs: setup
