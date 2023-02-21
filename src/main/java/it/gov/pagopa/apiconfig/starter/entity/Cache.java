@@ -38,5 +38,4 @@ public class Cache {
 
   @Column(name = "VERSION", nullable = false)
   private String version;
-
 }

@@ -19,7 +19,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Entity
 @Table(name = "PSP_CANALE_TIPO_VERSAMENTO", schema = "NODO4_CFG")
 @Setter
@@ -32,12 +31,18 @@ public class PspCanaleTipoVersamento implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
-  @Column(name = "FK_CANALE_TIPO_VERSAMENTO", nullable = false, insertable = false, updatable = false)
+  @Column(
+      name = "FK_CANALE_TIPO_VERSAMENTO",
+      nullable = false,
+      insertable = false,
+      updatable = false)
   private Long fkCanaleTipoVersamento;
 
   @Column(name = "FK_PSP", nullable = false, insertable = false, updatable = false)
@@ -52,6 +57,4 @@ public class PspCanaleTipoVersamento implements Serializable {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PSP", nullable = false)
   private Psp psp;
-
-
 }

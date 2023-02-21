@@ -30,8 +30,10 @@ public class Pa {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long objId;
 
@@ -79,5 +81,4 @@ public class Pa {
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FLAG_REPO_COMMISSIONE_CARICO_PA")
   private Boolean flagRepoCommissioneCaricoPa;
-
 }

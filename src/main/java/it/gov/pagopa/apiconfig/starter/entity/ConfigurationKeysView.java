@@ -13,5 +13,4 @@ public class ConfigurationKeysView implements Serializable {
   @Id
   @Column(name = "CONFIG_KEY", nullable = false)
   private String configKey;
-
 }

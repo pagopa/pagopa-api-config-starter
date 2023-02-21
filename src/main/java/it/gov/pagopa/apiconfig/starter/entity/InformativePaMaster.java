@@ -36,8 +36,10 @@ public class InformativePaMaster {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -67,8 +69,10 @@ public class InformativePaMaster {
   @Convert(converter = NumericBooleanConverter.class)
   private Boolean pagamentiPressoPsp;
 
-
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaMaster", cascade = CascadeType.REMOVE)
+  @OneToMany(
+      fetch = FetchType.LAZY,
+      mappedBy = "fkInformativaPaMaster",
+      cascade = CascadeType.REMOVE)
   @ToString.Exclude
   private List<it.gov.pagopa.apiconfig.starter.entity.InformativePaDetail> details;
 }

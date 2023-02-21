@@ -16,5 +16,4 @@ public interface CdiMasterValidRepository extends JpaRepository<CdiMasterValid, 
 
   List<CdiMasterValid> findByFkPsp_IdPspAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
       String idDominio, Timestamp now);
-
 }

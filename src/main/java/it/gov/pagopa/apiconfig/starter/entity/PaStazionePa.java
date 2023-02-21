@@ -21,8 +21,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "PA_STAZIONE_PA", schema = "NODO4_CFG", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"FK_PA", "FK_STAZIONE"})})
+@Table(
+    name = "PA_STAZIONE_PA",
+    schema = "NODO4_CFG",
+    uniqueConstraints = {@UniqueConstraint(columnNames = {"FK_PA", "FK_STAZIONE"})})
 @Entity
 @Getter
 @Setter
@@ -34,8 +36,10 @@ public class PaStazionePa {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long objId;
 
@@ -76,5 +80,4 @@ public class PaStazionePa {
   @Convert(converter = YesNoConverter.class)
   @Column(name = "BROADCAST", nullable = false)
   private Boolean broadcast = false;
-
 }
