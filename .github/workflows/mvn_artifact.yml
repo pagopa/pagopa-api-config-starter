@@ -69,9 +69,9 @@ jobs:
         id: package
         uses: pagopa/github-actions-template/maven-package@semver-def
         with:
+          username: ${{github.actor}}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref_name }}
-
 
 
 

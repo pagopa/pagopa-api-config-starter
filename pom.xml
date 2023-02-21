@@ -92,12 +92,12 @@
   </build>
 
 <!--   location build directory -->
-  <distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>GitHub PagoPa Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/pagopa/pagopa-api-config-starter</url>
-    </repository>
-  </distributionManagement>
+<!--  <distributionManagement>-->
+<!--    <repository>-->
+<!--      <id>github</id>-->
+<!--      <name>GitHub PagoPa Apache Maven Packages</name>-->
+<!--      <url>https://maven.pkg.github.com/pagopa/pagopa-api-config-starter</url>-->
+<!--    </repository>-->
+<!--  </distributionManagement>-->
 
 </project>
