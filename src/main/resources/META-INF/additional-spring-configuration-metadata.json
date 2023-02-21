@@ -40,4 +40,5 @@
       "type": "java.lang.String",
       "description": "Path of XSD for CDI service."
     }
-  ] }
+  ]
+}
