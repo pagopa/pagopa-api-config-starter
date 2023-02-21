@@ -13,7 +13,7 @@
 
   <groupId>it.pagopa.pagopa.api-config-starter</groupId>
   <artifactId>pagopa-api-config-starter</artifactId>
-  <version>0.0.2-1-gh-fix</version>
+  <version>0.0.2-2-gh-fix</version>
   <description>Starter module for projects related to Nodo dei Pagamenti configuration.</description>
 
   <properties>
