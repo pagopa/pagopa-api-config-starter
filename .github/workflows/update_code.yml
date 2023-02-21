@@ -19,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.BOT_TOKEN_GITHUB }}
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
 
       - name: Checkout Pull Request
         run: hub pr checkout ${{ github.event.issue.number }}
