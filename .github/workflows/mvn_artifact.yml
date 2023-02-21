@@ -51,6 +51,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Dump GitHub context
+        run: |
+          echo $JSON
+          echo "SETUP --> $SETUP"
+        env:
+          JSON: ${{ toJSON(github) }}
+          SETUP: ${{ toJSON(needs.setup) }}
+
       - name: Make Release
         id: release
         uses: pagopa/github-actions-template/maven-release@v1
