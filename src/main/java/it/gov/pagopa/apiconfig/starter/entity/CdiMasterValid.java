@@ -23,7 +23,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Immutable;
 
-
 @Table(name = "CDI_VALIDI_PER_PSP", schema = "NODO4_CFG")
 @Entity
 @Immutable
@@ -37,7 +36,10 @@ public class CdiMasterValid {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -79,5 +81,4 @@ public class CdiMasterValid {
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiMaster", cascade = CascadeType.REMOVE)
   @ToString.Exclude
   private List<CdiDetail> cdiDetail;
-
 }

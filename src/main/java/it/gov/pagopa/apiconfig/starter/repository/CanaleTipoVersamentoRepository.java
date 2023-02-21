@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CanaleTipoVersamentoRepository extends JpaRepository<CanaleTipoVersamento, Long> {
 
-  Optional<CanaleTipoVersamento> findByFkCanaleAndFkTipoVersamento(Long fkCanale,
-      Long fkTipoVersamento);
+  Optional<CanaleTipoVersamento> findByFkCanaleAndFkTipoVersamento(
+      Long fkCanale, Long fkTipoVersamento);
 
   List<CanaleTipoVersamento> findByFkCanale(Long fkCanale);
 

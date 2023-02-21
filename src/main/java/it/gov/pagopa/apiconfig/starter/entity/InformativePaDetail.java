@@ -35,8 +35,10 @@ public class InformativePaDetail {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -55,8 +57,10 @@ public class InformativePaDetail {
   @ToString.Exclude
   private InformativePaMaster fkInformativaPaMaster;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaDetail", cascade = CascadeType.REMOVE)
+  @OneToMany(
+      fetch = FetchType.LAZY,
+      mappedBy = "fkInformativaPaDetail",
+      cascade = CascadeType.REMOVE)
   @ToString.Exclude
   private List<InformativePaFasce> fasce;
-
 }

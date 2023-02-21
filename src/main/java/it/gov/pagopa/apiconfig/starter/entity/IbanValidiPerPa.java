@@ -58,6 +58,4 @@ public class IbanValidiPerPa {
 
   @Column(name = "MASTER_OBJ")
   private Long masterObj;
-
-
 }

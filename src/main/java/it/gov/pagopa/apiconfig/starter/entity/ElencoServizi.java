@@ -30,7 +30,10 @@ public class ElencoServizi {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -131,5 +134,4 @@ public class ElencoServizi {
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FLAG_IO")
   private Boolean flagIo;
-
 }

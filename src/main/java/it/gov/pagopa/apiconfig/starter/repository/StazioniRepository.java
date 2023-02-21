@@ -14,20 +14,25 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long> {
 
   Optional<Stazioni> findByIdStazione(String stationCode);
 
-  @Query(value = "select distinct s from Stazioni s, PaStazionePa r " +
-      "where (:fkIntermediario is null or s.fkIntermediarioPa = :fkIntermediario) " +
-      "and (r.fkPa = :fkPa and r.fkStazione = s) " +
-      "and (:idStazione is null or upper(s.idStazione) like concat('%', upper(:idStazione), '%')) ")
-  Page<Stazioni> findAllByFilters(@Param("fkIntermediario") Long fkIntermediario,
+  @Query(
+      value =
+          "select distinct s from Stazioni s, PaStazionePa r where (:fkIntermediario is null or"
+              + " s.fkIntermediarioPa = :fkIntermediario) and (r.fkPa = :fkPa and r.fkStazione = s)"
+              + " and (:idStazione is null or upper(s.idStazione) like concat('%',"
+              + " upper(:idStazione), '%')) ")
+  Page<Stazioni> findAllByFilters(
+      @Param("fkIntermediario") Long fkIntermediario,
       @Param("fkPa") Long fkPa,
       @Param("idStazione") String idStazione,
       Pageable pageable);
 
-  @Query(value = "select distinct s from Stazioni s " +
-      "where (:fkIntermediario is null or s.fkIntermediarioPa = :fkIntermediario) " +
-      "and (:idStazione is null or upper(s.idStazione) like concat('%', upper(:idStazione), '%')) ")
-  Page<Stazioni> findAllByFilters(@Param("fkIntermediario") Long fkIntermediario,
+  @Query(
+      value =
+          "select distinct s from Stazioni s where (:fkIntermediario is null or s.fkIntermediarioPa"
+              + " = :fkIntermediario) and (:idStazione is null or upper(s.idStazione) like"
+              + " concat('%', upper(:idStazione), '%')) ")
+  Page<Stazioni> findAllByFilters(
+      @Param("fkIntermediario") Long fkIntermediario,
       @Param("idStazione") String idStazione,
       Pageable pageable);
-
 }

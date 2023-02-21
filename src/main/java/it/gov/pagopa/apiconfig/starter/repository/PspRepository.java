@@ -14,7 +14,7 @@ public interface PspRepository extends JpaRepository<Psp, Long> {
 
   Optional<Psp> findByIdPsp(String id);
 
-  Page<Psp> findAllByPspCanaleTipoVersamentoList_canaleTipoVersamento_canale_fkIntermediarioPsp_idIntermediarioPsp(
-      String brokerCode, Pageable pageable);
-
+  Page<Psp>
+      findAllByPspCanaleTipoVersamentoList_canaleTipoVersamento_canale_fkIntermediarioPsp_idIntermediarioPsp(
+          String brokerCode, Pageable pageable);
 }

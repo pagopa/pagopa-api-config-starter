@@ -16,8 +16,8 @@ public interface CacheRepository extends PagingAndSortingRepository<Cache, Long>
   @Query("select c.id, c.version from Cache c")
   List<Cache> findAll();
 
-//    @Query("select new it.pagopa.pagopa.apiconfig.model.configuration.Cache(c.id, c.version) from Cache c")
-//    Page<it.pagopa.pagopa.apiconfig.model.configuration.Cache> findAllPaged(Pageable pageable);
-
+  //    @Query("select new it.pagopa.pagopa.apiconfig.model.configuration.Cache(c.id, c.version)
+  // from Cache c")
+  //    Page<it.pagopa.pagopa.apiconfig.model.configuration.Cache> findAllPaged(Pageable pageable);
 
 }

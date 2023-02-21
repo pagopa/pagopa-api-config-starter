@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IntermediariPspRepository extends JpaRepository<IntermediariPsp, Long> {
 
-
   Optional<IntermediariPsp> findByIdIntermediarioPsp(String brokerPspCode);
 }

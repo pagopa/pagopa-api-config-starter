@@ -30,7 +30,10 @@ public class CodifichePa {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -46,5 +49,4 @@ public class CodifichePa {
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude
   private Pa fkPa;
-
 }

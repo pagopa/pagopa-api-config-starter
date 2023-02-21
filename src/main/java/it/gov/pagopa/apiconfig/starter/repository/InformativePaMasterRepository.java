@@ -12,10 +12,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InformativePaMasterRepository extends JpaRepository<InformativePaMaster, Long> {
 
-  Optional<InformativePaMaster> findByIdInformativaPaAndFkPa_IdDominio(String idCounterpartTable,
-      String creditorInstitutionCode);
+  Optional<InformativePaMaster> findByIdInformativaPaAndFkPa_IdDominio(
+      String idCounterpartTable, String creditorInstitutionCode);
 
-  List<InformativePaMaster> findByFkPa_IdDominioAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
-      String idDominio, Timestamp now);
-
+  List<InformativePaMaster>
+      findByFkPa_IdDominioAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
+          String idDominio, Timestamp now);
 }
