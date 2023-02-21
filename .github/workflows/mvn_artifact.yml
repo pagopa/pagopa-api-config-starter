@@ -1,0 +1,111 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+
+name: Maven Package
+
+# Controls when the workflow will run
+on:
+  pull_request:
+    branches:
+      - main
+    types: [ closed ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      semver:
+        required: true
+        type: choice
+        description: Select the new Semantic Version
+        options:
+          - major
+          - minor
+          - patch
+          - buildNumber
+
+# permissions given to the current action
+permissions:
+  packages: write
+  contents: write
+
+jobs:
+
+  setup:
+    name: Semver setup
+    runs-on: ubuntu-latest
+    outputs:
+      semver: ${{ steps.semver.outputs.semver }}
+    steps:
+      - name: Set semver
+        id: semver
+        # TODO set main after merge (commit hash)
+        uses: pagopa/github-actions-template/semver-setup@semver-def
+
+
+  build:
+    needs: setup
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make Release
+        id: release
+        uses: pagopa/github-actions-template/maven-release@v1
+        with:
+          semver: ${{ needs.setup.outputs.semver }}
+          github_token: ${{ secrets.BOT_GITHUB_TOKEN }}
+
+      - name: Make Package
+        id: package
+        uses: pagopa/github-actions-template/maven-release@semver-def
+        with:
+          semver: ${{ needs.setup.outputs.semver }}
+          github_token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          branch: ${{ github.ref_name }}
+
+
+
+
+
+
+
+
+
+
+##    TODO enable the following
+##    needs: check_labels
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Set up JDK 11
+#        uses: actions/setup-java@v3
+#        with:
+#          distribution: 'temurin'
+#          java-version: '11'
+#          cache: maven
+#
+#      - name: Set up Maven
+#        uses: stCarolas/setup-maven@v4.5
+#        with:
+#          maven-version: 3.8.2
+#
+#      - name: Cache Maven packages
+#        uses: actions/cache@v1
+#        with:
+#          path: ~/.m2
+#          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+#          restore-keys: ${{ runner.os }}-m2
+#
+#      - name: Build with Maven
+#        run: mvn -B package --file pom.xml
+#
+#      - name: Deploy to GitHub Package Registry
+#        run: |
+#          echo "<settings><servers><server><id>github</id><password>\${secrets.GITHUB_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
+#          REPO="gh::default::https://maven.pkg.github.com/${{github.repository}}"
+#          echo '$REPO'
+#          mvn deploy -DaltReleaseDeploymentRepository="${REPO}" -DaltSnapshotDeploymentRepository="${REPO}"
+
+
+# TODO notify new version on slack channel
