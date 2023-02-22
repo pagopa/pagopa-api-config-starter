@@ -46,7 +46,7 @@ jobs:
 
   package:
     name: Publish Maven Package
-    needs: setup
+#    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Make Release
