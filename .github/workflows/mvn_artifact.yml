@@ -48,6 +48,8 @@ jobs:
     name: Publish Maven Package
 #    needs: setup
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.release.version }}
     steps:
       - name: Make Release
         id: release
