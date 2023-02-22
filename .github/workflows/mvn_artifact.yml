@@ -49,7 +49,7 @@ jobs:
 #    needs: setup
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.release.version }}
+      version: ${{ steps.release.outputs.version }}
     steps:
       - name: Make Release
         id: release
