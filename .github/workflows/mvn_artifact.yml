@@ -29,24 +29,19 @@ permissions:
 
 jobs:
 
-#  setup:
-#    name: Semver Setup
-#    runs-on: ubuntu-latest
-#    outputs:
-#      semver: ${{ steps.semver.outputs.semver }}
-#    steps:
-#      - name: Dump GitHub context
-#        run: echo $JSON
-#        env:
-#          JSON: ${{ toJSON(github) }}
-#
-#      - name: Set semver
-#        id: semver
-#        uses: pagopa/github-actions-template/semver-setup@483a0ceb9ef07dee34f7ce0de5b689cc3043eac4
+  setup:
+    name: Semver Setup
+    runs-on: ubuntu-latest
+    outputs:
+      semver: ${{ steps.semver.outputs.semver }}
+    steps:
+      - name: Set semver
+        id: semver
+        uses: pagopa/github-actions-template/semver-setup@483a0ceb9ef07dee34f7ce0de5b689cc3043eac4
 
   package:
     name: Publish Maven Package
-#    needs: setup
+    needs: setup
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.release.outputs.version }}
@@ -55,34 +50,29 @@ jobs:
         id: release
         uses: pagopa/github-actions-template/maven-release@483a0ceb9ef07dee34f7ce0de5b689cc3043eac4
         with:
-#          semver: ${{ needs.setup.outputs.semver }}
-          semver: 'skip'
+          semver: ${{ needs.setup.outputs.semver }}
           github_token: ${{ secrets.BOT_GITHUB_TOKEN }}
 
-#      - name: Make Package
-#        id: package
-#        uses: pagopa/github-actions-template/maven-package@483a0ceb9ef07dee34f7ce0de5b689cc3043eac4
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          branch: ${{ github.ref_name }}
+      - name: Make Package
+        id: package
+        uses: pagopa/github-actions-template/maven-package@483a0ceb9ef07dee34f7ce0de5b689cc3043eac4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref_name }}
 
   notification:
     name: Send slack notification
     needs: package
     runs-on: ubuntu-latest
     steps:
-      - name: Dump outputs
-        run: echo $JSON
-        env:
-          JSON: ${{ toJSON(needs.package.outputs) }}
 
-#      - name: Slack Notification
-#        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7
-#        env:
-#          MSG_MINIMAL: true
-#          SLACK_COLOR: '#00e600'
-#          SLACK_ICON: https://www.pagopa.gov.it/assets/images/pagopa-logo.png?size=48
-#          SLACK_MESSAGE: 'New package available: ${{ needs.package.outputs.version }}'
-#          SLACK_TITLE: 'API Config Lib'
-#          SLACK_USERNAME: 'API Config Notifier'
-#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7
+        env:
+          MSG_MINIMAL: true
+          SLACK_COLOR: '#00e600'
+          SLACK_ICON: https://www.pagopa.gov.it/assets/images/pagopa-logo.png?size=48
+          SLACK_MESSAGE: 'New package available: ${{ needs.package.outputs.version }}'
+          SLACK_TITLE: 'API Config Lib'
+          SLACK_USERNAME: 'API Config Notifier'
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
