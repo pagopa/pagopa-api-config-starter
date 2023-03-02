@@ -14,7 +14,6 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class CdsSoggettoServizio {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
@@ -22,9 +21,9 @@ public class CdsSoggettoServizio {
   private Long id;
 
   @Column(name = "FK_CDS_SOGGETTO", nullable = false, insertable = false, updatable = false)
-  private String fkCdsSoggetto;
+   private String fkCdsSoggetto;
   @Column(name = "FK_CDS_SERVIZIO", nullable = false, insertable = false, updatable = false)
-  private String fkCdsServizio;
+   private String fkCdsServizio;
   @Column(name = "ID_SOGGETTO_SERVIZIO")
   private String idSoggettoServizio;
   @Column(name = "DATA_INIZIO_VALIDITA")

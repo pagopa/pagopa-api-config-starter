@@ -46,13 +46,13 @@ public interface PaStazionePaRepository extends PagingAndSortingRepository<PaSta
   List<PaStazionePa> findAll();
 
   default Optional<PaStazionePa>
-  findByFkPaAndFkStazioneAndAuxDigitAndBroadcastAndSegregazioneAndProgressivo(
-      Long creditorInstitutionCode,
-      Long stationCode,
-      Long auxDigit,
-      Boolean broadcast,
-      Long segregationCode,
-      Long applicationCode) {
+      findByFkPaAndFkStazioneAndAuxDigitAndBroadcastAndSegregazioneAndProgressivo(
+          Long creditorInstitutionCode,
+          Long stationCode,
+          Long auxDigit,
+          Boolean broadcast,
+          Long segregationCode,
+          Long applicationCode) {
     return findOne(
         search(
             creditorInstitutionCode,

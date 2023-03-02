@@ -17,7 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class GdeConfigPk implements Serializable {
 
-  private String primitiva;
-  private String type;
+    private String primitiva;
+    private String type;
 
 }

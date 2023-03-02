@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface CdsServizioRepository extends JpaRepository<CdsServizio, Long> {
-
   @Query(value = "SELECT e FROM CdsServizio e LEFT JOIN FETCH e.categoria")
   List<CdsServizio> findAllFetching();
 }
