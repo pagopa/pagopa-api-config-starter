@@ -30,135 +30,136 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Stazioni {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long objId;
 
-    @Column(name = "ID_STAZIONE")
-    private String idStazione;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long objId;
 
-    @Column(name = "ENABLED")
-    @Convert(converter = YesNoConverter.class)
-    private Boolean enabled;
+  @Column(name = "ID_STAZIONE")
+  private String idStazione;
 
-    @Column(name = "IP")
-    private String ip;
+  @Column(name = "ENABLED")
+  @Convert(converter = YesNoConverter.class)
+  private Boolean enabled;
 
-    @ToString.Exclude
-    @Column(name = "NEW_PASSWORD")
-    private String newPassword;
+  @Column(name = "IP")
+  private String ip;
 
-    @ToString.Exclude
-    @Column(name = "PASSWORD")
-    private String password;
+  @ToString.Exclude
+  @Column(name = "NEW_PASSWORD")
+  private String newPassword;
 
-    @Column(name = "PORTA")
-    private Long porta;
+  @ToString.Exclude
+  @Column(name = "PASSWORD")
+  private String password;
 
-    @Column(name = "PROTOCOLLO", nullable = false)
-    private String protocollo;
+  @Column(name = "PORTA")
+  private Long porta;
 
-    @Column(name = "REDIRECT_IP")
-    private String redirectIp;
+  @Column(name = "PROTOCOLLO", nullable = false)
+  private String protocollo;
 
-    @Column(name = "REDIRECT_PATH")
-    private String redirectPath;
+  @Column(name = "REDIRECT_IP")
+  private String redirectIp;
 
-    @Column(name = "REDIRECT_PORTA")
-    private Long redirectPorta;
+  @Column(name = "REDIRECT_PATH")
+  private String redirectPath;
 
-    @Column(name = "REDIRECT_QUERY_STRING")
-    private String redirectQueryString;
+  @Column(name = "REDIRECT_PORTA")
+  private Long redirectPorta;
 
-    @Column(name = "SERVIZIO")
-    private String servizio;
+  @Column(name = "REDIRECT_QUERY_STRING")
+  private String redirectQueryString;
 
-    @Column(name = "RT_ENABLED")
-    @Convert(converter = YesNoConverter.class)
-    private Boolean rtEnabled = true;
+  @Column(name = "SERVIZIO")
+  private String servizio;
 
-    @Column(name = "SERVIZIO_POF")
-    private String servizioPof;
+  @Column(name = "RT_ENABLED")
+  @Convert(converter = YesNoConverter.class)
+  private Boolean rtEnabled = true;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FK_INTERMEDIARIO_PA", nullable = false)
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private IntermediariPa intermediarioPa;
+  @Column(name = "SERVIZIO_POF")
+  private String servizioPof;
 
-    @Column(name = "FK_INTERMEDIARIO_PA", nullable = false, insertable = false, updatable = false)
-    private Long fkIntermediarioPa;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_INTERMEDIARIO_PA", nullable = false)
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private IntermediariPa intermediarioPa;
 
-    @Column(name = "REDIRECT_PROTOCOLLO")
-    private String redirectProtocollo;
+  @Column(name = "FK_INTERMEDIARIO_PA", nullable = false, insertable = false, updatable = false)
+  private Long fkIntermediarioPa;
 
-    @Column(name = "PROTOCOLLO_4MOD")
-    private String protocollo4Mod;
+  @Column(name = "REDIRECT_PROTOCOLLO")
+  private String redirectProtocollo;
 
-    @Column(name = "IP_4MOD")
-    private String ip4Mod;
+  @Column(name = "PROTOCOLLO_4MOD")
+  private String protocollo4Mod;
 
-    @Column(name = "PORTA_4MOD")
-    private Long porta4Mod;
+  @Column(name = "IP_4MOD")
+  private String ip4Mod;
 
-    @Column(name = "SERVIZIO_4MOD")
-    private String servizio4Mod;
+  @Column(name = "PORTA_4MOD")
+  private Long porta4Mod;
 
-    @Column(name = "PROXY_ENABLED")
-    @Convert(converter = YesNoConverter.class)
-    private Boolean proxyEnabled;
+  @Column(name = "SERVIZIO_4MOD")
+  private String servizio4Mod;
 
-    @Column(name = "PROXY_HOST")
-    private String proxyHost;
+  @Column(name = "PROXY_ENABLED")
+  @Convert(converter = YesNoConverter.class)
+  private Boolean proxyEnabled;
 
-    @Column(name = "PROXY_PORT")
-    private Long proxyPort;
+  @Column(name = "PROXY_HOST")
+  private String proxyHost;
 
-    @Column(name = "PROXY_USERNAME")
-    private String proxyUsername;
+  @Column(name = "PROXY_PORT")
+  private Long proxyPort;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @Column(name = "PROXY_PASSWORD")
-    private String proxyPassword;
+  @Column(name = "PROXY_USERNAME")
+  private String proxyUsername;
 
-    @Column(name = "NUM_THREAD")
-    private Long numThread;
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  @Column(name = "PROXY_PASSWORD")
+  private String proxyPassword;
 
-    @Column(name = "TIMEOUT_A")
-    private Long timeoutA;
+  @Column(name = "NUM_THREAD")
+  private Long numThread;
 
-    @Column(name = "TIMEOUT_B")
-    private Long timeoutB;
+  @Column(name = "TIMEOUT_A")
+  private Long timeoutA;
 
-    @Column(name = "TIMEOUT_C")
-    private Long timeoutC;
+  @Column(name = "TIMEOUT_B")
+  private Long timeoutB;
 
-    @Column(name = "FLAG_ONLINE")
-    @Convert(converter = YesNoConverter.class)
-    private Boolean flagOnline;
+  @Column(name = "TIMEOUT_C")
+  private Long timeoutC;
 
-    @Column(name = "VERSIONE")
-    private Long versione;
+  @Column(name = "FLAG_ONLINE")
+  @Convert(converter = YesNoConverter.class)
+  private Boolean flagOnline;
 
-    @Column(name = "SERVIZIO_NMP")
-    private String servizioNmp;
+  @Column(name = "VERSIONE")
+  private Long versione;
 
-    @Column(name = "INVIO_RT_ISTANTANEO")
-    @Convert(converter = YesNoConverter.class)
-    private Boolean invioRtIstantaneo;
+  @Column(name = "SERVIZIO_NMP")
+  private String servizioNmp;
 
-    @Column(name = "TARGET_HOST")
-    private String targetHost;
+  @Column(name = "INVIO_RT_ISTANTANEO")
+  @Convert(converter = YesNoConverter.class)
+  private Boolean invioRtIstantaneo;
 
-    @Column(name = "TARGET_PORT")
-    private Long targetPort;
+  @Column(name = "TARGET_HOST")
+  private String targetHost;
 
-    @Column(name = "TARGET_PATH")
-    private String targetPath;
+  @Column(name = "TARGET_PORT")
+  private Long targetPort;
 
-    @Column(name = "VERSIONE_PRIMITIVE")
-    private Integer versionePrimitive;
+  @Column(name = "TARGET_PATH")
+  private String targetPath;
+
+  @Column(name = "VERSIONE_PRIMITIVE")
+  private Integer versionePrimitive;
 }

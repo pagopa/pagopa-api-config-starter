@@ -27,25 +27,26 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class IntermediariPsp implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long objId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "ID_INTERMEDIARIO_PSP", nullable = false, length = 35)
-    private String idIntermediarioPsp;
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long objId;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "ENABLED", nullable = false)
-    private Boolean enabled;
+  @Column(name = "ID_INTERMEDIARIO_PSP", nullable = false, length = 35)
+  private String idIntermediarioPsp;
 
-    @Column(name = "CODICE_INTERMEDIARIO")
-    private String codiceIntermediario;
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "ENABLED", nullable = false)
+  private Boolean enabled;
 
-    @Convert(converter = YesNoConverter.class)
-    @Column(name = "FAULT_BEAN_ESTESO", nullable = false)
-    private Boolean faultBeanEsteso;
+  @Column(name = "CODICE_INTERMEDIARIO")
+  private String codiceIntermediario;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "FAULT_BEAN_ESTESO", nullable = false)
+  private Boolean faultBeanEsteso;
 
 }

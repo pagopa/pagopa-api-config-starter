@@ -10,5 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface ConfigurationKeysRepository
     extends JpaRepository<ConfigurationKeys, ConfigurationKeysView> {
 
-  Optional<ConfigurationKeys> findByConfigCategoryAndConfigKey(String configCategory, String configKey);
+  Optional<ConfigurationKeys> findByConfigCategoryAndConfigKey(String configCategory,
+      String configKey);
 }

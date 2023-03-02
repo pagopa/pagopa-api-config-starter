@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CdsSoggettoRepository extends JpaRepository<CdsSoggetto, Long> {
+
 }
