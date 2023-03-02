@@ -1,5 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,40 +20,45 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
+
+@Entity
+@Table(name = "PSP_CANALE_TIPO_VERSAMENTO_CANALE")
 @Setter
-@Builder
+@Getter
+@ToString
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@ToString
-@Entity
-@Table(name = "CDI_INFORMAZIONI_SERVIZIO")
-public class CdiInformazioniServizio {
+public class PspCanaleTipoVersamentoCanale implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
     @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
     @Column(name = "OBJ_ID", nullable = false)
     private Long id;
 
-    @Column(name = "CODICE_LINGUA", nullable = false, length = 2)
-    private String codiceLingua;
+    @Column(name = "FK_CANALE", nullable = false, insertable = false, updatable = false)
+    private Long fkCanale;
 
-    @Column(name = "DESCRIZIONE_SERVIZIO", nullable = false, length = 140)
-    private String descrizioneServizio;
+    @Column(name = "FK_PSP", nullable = false, insertable = false, updatable = false)
+    private Long fkPsp;
 
-    @Column(name = "DISPONIBILITA_SERVIZIO", nullable = false, length = 140)
-    private String disponibilitaServizio;
-
-    @Column(name = "URL_INFORMAZIONI_CANALE")
-    private String urlInformazioniCanale;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FK_CDI_DETAIL", nullable = false)
     @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "FK_TIPO_VERSAMENTO", nullable = false)
     @EqualsAndHashCode.Exclude
-    private CdiDetail fkCdiDetail;
+    private TipiVersamento tipoVersamento;
 
-    @Column(name = "LIMITAZIONI_SERVIZIO", length = 140)
-    private String limitazioniServizio;
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "FK_PSP", nullable = false)
+    @EqualsAndHashCode.Exclude
+    private Psp psp;
+
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "FK_CANALE", nullable = false)
+    @EqualsAndHashCode.Exclude
+    private Canali canale;
+
 
 }

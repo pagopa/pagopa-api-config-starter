@@ -13,29 +13,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "CACHE")
-@Entity
 @Getter
 @Setter
+@ToString
+@Entity
+@Table(name = "DIZIONARIO_METADATI")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@ToString
-@java.lang.SuppressWarnings("java:S1700")
-public class Cache {
+public class DizionarioMetadati {
 
   @Id
-  @Column(name = "ID", nullable = false)
-  private String id;
+  @Column(name = "CHIAVE", nullable = false)
+  private String key;
 
-  @Column(name = "CACHE", nullable = false)
-  @ToString.Exclude
-  private byte[] cache;
+  @Column(name = "DESCRIZIONE", nullable = false)
+  private String description;
 
-  @Column(name = "TIME", nullable = false)
-  @ToString.Exclude
-  private ZonedDateTime time;
+  @Column(name = "DATA_INIZIO_VALIDITA")
+  private ZonedDateTime startDate;
 
-  @Column(name = "VERSION", nullable = false)
-  private String version;
+  @Column(name = "DATA_FINE_VALIDITA")
+  private ZonedDateTime endDate;
+
 }

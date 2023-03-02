@@ -24,32 +24,31 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @Entity
-@Table(name = "PDD", schema = "NODO4_CFG")
+@Table(name = "PDD")
 @Builder(toBuilder = true)
 public class Pdd implements Serializable {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
-  @Column(name = "OBJ_ID", nullable = false)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-  @Column(name = "ID_PDD", nullable = false, length = 35)
-  private String idPdd;
+    @Column(name = "OBJ_ID", nullable = false)
+    private Long id;
 
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "ENABLED", nullable = false)
-  private Boolean enabled;
+    @Column(name = "ID_PDD", nullable = false, length = 35)
+    private String idPdd;
 
-  @Column(name = "descrizione", nullable = false, length = 35)
-  private String descrizione;
+    @Convert(converter = YesNoConverter.class)
+    @Column(name = "ENABLED", nullable = false)
+    private Boolean enabled;
 
-  @Column(name = "IP", nullable = false, length = 15)
-  private String ip;
+    @Column(name = "descrizione", nullable = false, length = 35)
+    private String descrizione;
 
-  @Column(name = "porta")
-  private Integer porta;
+    @Column(name = "IP", nullable = false, length = 15)
+    private String ip;
+
+    @Column(name = "porta")
+    private Integer porta;
+
 }

@@ -4,6 +4,7 @@ import it.gov.pagopa.apiconfig.starter.entity.CodifichePa;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @SuppressWarnings("java:S100")
@@ -18,4 +19,7 @@ public interface CodifichePaRepository extends JpaRepository<CodifichePa, Long> 
   Optional<CodifichePa> findByCodicePa(String codicePa);
 
   Optional<CodifichePa> findByCodicePaAndFkPa_ObjId(String codicePa, Long fkPa);
+
+  @Query("select cpa from CodifichePa cpa left join fetch cpa.fkCodifica")
+  List<CodifichePa> findAllFetchingCodifiche();
 }

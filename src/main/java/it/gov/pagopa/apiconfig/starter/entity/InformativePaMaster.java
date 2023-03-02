@@ -1,11 +1,9 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import it.gov.pagopa.apiconfig.starter.util.NumericBooleanConverter;
-import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,12 +17,13 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "INFORMATIVE_PA_MASTER", schema = "NODO4_CFG")
+@Table(name = "INFORMATIVE_PA_MASTER")
 @Entity
 @Getter
 @Setter
@@ -34,45 +33,43 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class InformativePaMaster {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
-  @Column(name = "OBJ_ID", nullable = false)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-  @Column(name = "ID_INFORMATIVA_PA", nullable = false, length = 35)
-  private String idInformativaPa;
+    @Column(name = "OBJ_ID", nullable = false)
+    private Long id;
 
-  @Column(name = "DATA_INIZIO_VALIDITA")
-  private Timestamp dataInizioValidita;
+    @Column(name = "ID_INFORMATIVA_PA", nullable = false, length = 35)
+    private String idInformativaPa;
 
-  @Column(name = "DATA_PUBBLICAZIONE")
-  private Timestamp dataPubblicazione;
+    @Column(name = "DATA_INIZIO_VALIDITA")
+    private ZonedDateTime dataInizioValidita;
 
-  @ManyToOne(optional = false)
-  @JoinColumn(name = "FK_PA", nullable = false)
-  @ToString.Exclude
-  private Pa fkPa;
+    @Column(name = "DATA_PUBBLICAZIONE")
+    private ZonedDateTime dataPubblicazione;
 
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  @JoinColumn(name = "FK_BINARY_FILE")
-  @ToString.Exclude
-  private BinaryFile fkBinaryFile;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "FK_PA", nullable = false)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Pa fkPa;
 
-  @Column(name = "VERSIONE", length = 35)
-  private String versione;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "FK_BINARY_FILE")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private BinaryFile fkBinaryFile;
 
-  @Column(name = "PAGAMENTI_PRESSO_PSP")
-  @Convert(converter = NumericBooleanConverter.class)
-  private Boolean pagamentiPressoPsp;
+    @Column(name = "VERSIONE", length = 35)
+    private String versione;
 
-  @OneToMany(
-      fetch = FetchType.LAZY,
-      mappedBy = "fkInformativaPaMaster",
-      cascade = CascadeType.REMOVE)
-  @ToString.Exclude
-  private List<it.gov.pagopa.apiconfig.starter.entity.InformativePaDetail> details;
+    @Column(name = "PAGAMENTI_PRESSO_PSP")
+    private Boolean pagamentiPressoPsp;
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaMaster", cascade = CascadeType.REMOVE)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<InformativePaDetail> details;
 }

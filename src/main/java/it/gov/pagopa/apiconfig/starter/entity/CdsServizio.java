@@ -1,6 +1,5 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,47 +13,48 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@Table(name = "PSP_CANALE_TIPO_VERSAMENTO")
-@Setter
 @Getter
+@Setter
 @ToString
-@Builder(toBuilder = true)
+@Entity
+@Table(name = "CDS_SERVIZIO")
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class PspCanaleTipoVersamento implements Serializable {
-
+public class CdsServizio {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
-  @Column(
-      name = "FK_CANALE_TIPO_VERSAMENTO",
-      nullable = false,
-      insertable = false,
-      updatable = false)
-  private Long fkCanaleTipoVersamento;
+  @Column(name = "ID_SERVIZIO", nullable = false)
+  private String idServizio;
 
-  @Column(name = "FK_PSP", nullable = false, insertable = false, updatable = false)
-  private Long fkPsp;
+  @Column(name = "DESCRIZIONE_SERVIZIO")
+  private String descrizioneServizio;
 
-  @ToString.Exclude
+  @Column(name = "XSD_RIFERIMENTO", nullable = false)
+  private String xsdRiferimento;
+
+  @Column(name = "VERSIONE", nullable = false)
+  private Long version;
+
+  @Column(name = "CATEGORIA_ID", nullable = false, insertable = false, updatable = false)
+  private Long categoriaId;
+
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "FK_CANALE_TIPO_VERSAMENTO", nullable = false)
-  private CanaleTipoVersamento canaleTipoVersamento;
-
+  @JoinColumn(name = "CATEGORIA_ID", nullable = false)
   @ToString.Exclude
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "FK_PSP", nullable = false)
-  private Psp psp;
+  @EqualsAndHashCode.Exclude
+  private CdsCategoria categoria;
+
+
+
 }

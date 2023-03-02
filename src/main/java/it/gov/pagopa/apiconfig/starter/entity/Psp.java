@@ -18,12 +18,13 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "PSP", schema = "NODO4_CFG")
+@Table(name = "PSP")
 @Entity
 @Getter
 @Setter
@@ -35,10 +36,8 @@ public class Psp implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+
   @Column(name = "OBJ_ID", nullable = false)
   private Long objId;
 
@@ -61,21 +60,6 @@ public class Psp implements Serializable {
   @Column(name = "RAGIONE_SOCIALE", length = 70)
   private String ragioneSociale;
 
-  @ToString.Exclude
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "FK_INT_QUADRATURE")
-  private IntermediariPsp fkIntQuadrature;
-
-  @Column(name = "STORNO_PAGAMENTO", nullable = false)
-  private Boolean stornoPagamento;
-
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "FLAG_REPO_COMMISSIONE_CARICO_PA")
-  private Boolean flagRepoCommissioneCaricoPa;
-
-  @Column(name = "EMAIL_REPO_COMMISSIONE_CARICO_PA")
-  private String emailRepoCommissioneCaricoPa;
-
   @Column(name = "CODICE_MYBANK", length = 35)
   private String codiceMybank;
 
@@ -86,14 +70,6 @@ public class Psp implements Serializable {
   @Column(name = "AGID_PSP", nullable = false)
   private Boolean agidPsp;
 
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "PSP_NODO", nullable = false)
-  private Boolean pspNodo;
-
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "PSP_AVV", nullable = false)
-  private Boolean pspAvv;
-
   @Column(name = "CODICE_FISCALE", length = 16)
   private String codiceFiscale;
 
@@ -102,5 +78,7 @@ public class Psp implements Serializable {
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "psp")
   @ToString.Exclude
-  private List<PspCanaleTipoVersamento> pspCanaleTipoVersamentoList;
+  @EqualsAndHashCode.Exclude
+  private List<PspCanaleTipoVersamentoCanale> pspCanaleTipoVersamentoList;
+
 }

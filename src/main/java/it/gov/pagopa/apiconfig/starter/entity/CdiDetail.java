@@ -16,12 +16,14 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "CDI_DETAIL", schema = "NODO4_CFG")
+
+@Table(name = "CDI_DETAIL")
 @Entity
 @Getter
 @Setter
@@ -30,54 +32,57 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class CdiDetail {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+    @Column(name = "OBJ_ID", nullable = false)
+    private Long id;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
-  @Column(name = "OBJ_ID", nullable = false)
-  private Long id;
+    @Column(name = "NOME_SERVIZIO")
+    private String nomeServizio;
 
-  @Column(name = "NOME_SERVIZIO")
-  private String nomeServizio;
+    @Column(name = "PRIORITA", nullable = false)
+    private Long priorita;
 
-  @Column(name = "PRIORITA", nullable = false)
-  private Long priorita;
+    @Column(name = "MODELLO_PAGAMENTO", nullable = false)
+    private Long modelloPagamento;
 
-  @Column(name = "MODELLO_PAGAMENTO", nullable = false)
-  private Long modelloPagamento;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "FK_CDI_MASTER", nullable = false)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private CdiMaster fkCdiMaster;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "FK_CDI_MASTER", nullable = false)
-  @ToString.Exclude
-  private CdiMaster fkCdiMaster;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "FK_PSP_CANALE_TIPO_VERSAMENTO", nullable = false)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private PspCanaleTipoVersamentoCanale fkPspCanaleTipoVersamento;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "FK_PSP_CANALE_TIPO_VERSAMENTO", nullable = false)
-  @ToString.Exclude
-  private PspCanaleTipoVersamento fkPspCanaleTipoVersamento;
+    @Column(name = "CANALE_APP")
+    private Long canaleApp;
 
-  @Column(name = "CANALE_APP")
-  private Long canaleApp;
+    @Column(name = "TAGS", length = 135)
+    private String tags;
 
-  @Column(name = "TAGS", length = 135)
-  private String tags;
+    @Column(name = "LOGO_SERVIZIO")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private byte[] logoServizio;
 
-  @Column(name = "LOGO_SERVIZIO")
-  @ToString.Exclude
-  private byte[] logoServizio;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiDetail", cascade = CascadeType.REMOVE)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<CdiInformazioniServizio> cdiInformazioniServizio;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiDetail", cascade = CascadeType.REMOVE)
-  @ToString.Exclude
-  private List<CdiInformazioniServizio> cdiInformazioniServizio;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiDetail", cascade = CascadeType.REMOVE)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<CdiFasciaCostoServizio> cdiFasciaCostoServizio;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiDetail", cascade = CascadeType.REMOVE)
-  @ToString.Exclude
-  private List<CdiFasciaCostoServizio> cdiFasciaCostoServizio;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cdiDetail", cascade = CascadeType.REMOVE)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<CdiPreference> cdiPreference;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "cdiDetail", cascade = CascadeType.REMOVE)
-  @ToString.Exclude
-  private List<CdiPreference> cdiPreference;
 }

@@ -1,7 +1,7 @@
 package it.gov.pagopa.apiconfig.starter.repository;
 
 import it.gov.pagopa.apiconfig.starter.entity.InformativeContoAccreditoMaster;
-import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,5 +18,5 @@ public interface InformativeContoAccreditoMasterRepository
 
   List<InformativeContoAccreditoMaster>
       findByFkPa_IdDominioAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
-          String idDominio, Timestamp now);
+          String idDominio, ZonedDateTime now);
 }
