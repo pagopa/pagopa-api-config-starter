@@ -33,32 +33,33 @@ import lombok.ToString;
 @Entity
 @Table(name = "INFORMATIVE_PA_DETAIL")
 public class InformativePaDetail {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
 
-    @Column(name = "FLAG_DISPONIBILITA", nullable = false)
-    @Convert(converter = YesNoConverter.class)
-    private Boolean flagDisponibilita = false;
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long id;
 
-    @Column(name = "GIORNO", length = 35)
-    private String giorno;
+  @Column(name = "FLAG_DISPONIBILITA", nullable = false)
+  @Convert(converter = YesNoConverter.class)
+  private Boolean flagDisponibilita = false;
 
-    @Column(name = "TIPO", length = 35)
-    private String tipo;
+  @Column(name = "GIORNO", length = 35)
+  private String giorno;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FK_INFORMATIVA_PA_MASTER", nullable = false)
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private InformativePaMaster fkInformativaPaMaster;
+  @Column(name = "TIPO", length = 35)
+  private String tipo;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaDetail", cascade = CascadeType.REMOVE)
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private List<InformativePaFasce> fasce;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_INFORMATIVA_PA_MASTER", nullable = false)
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private InformativePaMaster fkInformativaPaMaster;
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaDetail", cascade = CascadeType.REMOVE)
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private List<InformativePaFasce> fasce;
 
 }

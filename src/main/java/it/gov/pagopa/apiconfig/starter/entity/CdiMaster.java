@@ -33,53 +33,54 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class CdiMaster {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long id;
 
-    @Column(name = "ID_INFORMATIVA_PSP", nullable = false, length = 35)
-    private String idInformativaPsp;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @Column(name = "OBJ_ID", nullable = false)
+  private Long id;
 
-    @Column(name = "DATA_INIZIO_VALIDITA")
-    private ZonedDateTime dataInizioValidita;
+  @Column(name = "ID_INFORMATIVA_PSP", nullable = false, length = 35)
+  private String idInformativaPsp;
 
-    @Column(name = "DATA_PUBBLICAZIONE")
-    private ZonedDateTime dataPubblicazione;
+  @Column(name = "DATA_INIZIO_VALIDITA")
+  private ZonedDateTime dataInizioValidita;
 
-    @Column(name = "LOGO_PSP")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private byte[] logoPsp;
+  @Column(name = "DATA_PUBBLICAZIONE")
+  private ZonedDateTime dataPubblicazione;
 
-    @Column(name = "URL_INFORMAZIONI_PSP")
-    private String urlInformazioniPsp;
+  @Column(name = "LOGO_PSP")
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private byte[] logoPsp;
 
-    @Column(name = "MARCA_BOLLO_DIGITALE", nullable = false)
-    private Boolean marcaBolloDigitale;
+  @Column(name = "URL_INFORMAZIONI_PSP")
+  private String urlInformazioniPsp;
 
-    @Column(name = "STORNO_PAGAMENTO", nullable = false)
-    private Boolean stornoPagamento;
+  @Column(name = "MARCA_BOLLO_DIGITALE", nullable = false)
+  private Boolean marcaBolloDigitale;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FK_PSP", nullable = false)
-    private Psp fkPsp;
+  @Column(name = "STORNO_PAGAMENTO", nullable = false)
+  private Boolean stornoPagamento;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "FK_BINARY_FILE", nullable = false)
-    private BinaryFile fkBinaryFile;
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "FK_PSP", nullable = false)
+  private Psp fkPsp;
 
-    @Column(name = "VERSIONE", length = 35)
-    private String versione;
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "FK_BINARY_FILE", nullable = false)
+  private BinaryFile fkBinaryFile;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiMaster", cascade = CascadeType.REMOVE)
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private List<CdiDetail> cdiDetail;
+  @Column(name = "VERSIONE", length = 35)
+  private String versione;
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiMaster", cascade = CascadeType.REMOVE)
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private List<CdiDetail> cdiDetail;
 
 }

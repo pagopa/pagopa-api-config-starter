@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CdiFasciaCostoServizioRepository
-    extends JpaRepository<CdiFasciaCostoServizio, Long> {}
+    extends JpaRepository<CdiFasciaCostoServizio, Long> {
+
+}

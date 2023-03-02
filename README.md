@@ -5,6 +5,7 @@
 Starter module for projects related to _Nodo dei Pagamenti_ configuration.
 
 ## Technology Stack
+
 - Java 11
 - Spring
 - Hibernate
@@ -13,14 +14,16 @@ Starter module for projects related to _Nodo dei Pagamenti_ configuration.
 ## Develop Locally 💻
 
 ### Prerequisites
+
 - git
 - maven
 - jdk-11
 - docker
 
-
 ## Contributors 👥
+
 Made with ❤️ by PagoPa S.p.A.
 
 ### Mainteiners
+
 See `CODEOWNERS` file

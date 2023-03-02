@@ -28,6 +28,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class CdsServizio {
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
@@ -54,7 +55,6 @@ public class CdsServizio {
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private CdsCategoria categoria;
-
 
 
 }

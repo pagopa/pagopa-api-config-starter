@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DizionarioMetadatiRepository extends JpaRepository<DizionarioMetadati, Long> {
+
 }
