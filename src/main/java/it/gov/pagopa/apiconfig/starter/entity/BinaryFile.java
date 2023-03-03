@@ -11,12 +11,13 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "BINARY_FILE", schema = "NODO4_CFG")
+@Table(name = "BINARY_FILE")
 @Entity
 @Getter
 @Setter
@@ -28,19 +29,18 @@ public class BinaryFile {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
   @Column(name = "FILE_CONTENT", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private byte[] fileContent;
 
   @Column(name = "FILE_HASH", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private byte[] fileHash;
 
   @Column(name = "FILE_SIZE", nullable = false)
@@ -52,4 +52,5 @@ public class BinaryFile {
   @Lob
   @Column(name = "XML_FILE_CONTENT")
   private String xmlFileContent;
+
 }

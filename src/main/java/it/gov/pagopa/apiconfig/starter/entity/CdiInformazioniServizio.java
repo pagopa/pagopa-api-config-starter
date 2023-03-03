@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,15 +26,12 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @Entity
-@Table(name = "CDI_INFORMAZIONI_SERVIZIO", schema = "NODO4_CFG")
+@Table(name = "CDI_INFORMAZIONI_SERVIZIO")
 public class CdiInformazioniServizio {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -52,8 +50,10 @@ public class CdiInformazioniServizio {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_CDI_DETAIL", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private CdiDetail fkCdiDetail;
 
   @Column(name = "LIMITAZIONI_SERVIZIO", length = 140)
   private String limitazioniServizio;
+
 }

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +23,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "CDI_PREFERENCES", schema = "NODO4_CFG")
+@Table(name = "CDI_PREFERENCES")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -30,16 +31,14 @@ public class CdiPreference {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_INFORMATIVA_DETAIL", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private CdiDetail cdiDetail;
 
   @Column(name = "SELLER", nullable = false)
@@ -50,4 +49,5 @@ public class CdiPreference {
 
   @Column(name = "COSTO_CONVENZIONE", nullable = false)
   private Double costoConvenzione;
+
 }

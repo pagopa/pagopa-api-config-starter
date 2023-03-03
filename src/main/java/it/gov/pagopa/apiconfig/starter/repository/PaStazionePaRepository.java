@@ -7,6 +7,7 @@ import javax.persistence.criteria.Predicate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,26 +16,29 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PaStazionePaRepository extends PagingAndSortingRepository<PaStazionePa, Long> {
 
+  @Query("select distinct(paspa) from PaStazionePa paspa left join fetch paspa.pa left join fetch paspa.stazione")
+  List<PaStazionePa> findAllFetching();
+
   List<PaStazionePa> findAllByFkPa(Long creditorInstitutionCode);
 
   List<PaStazionePa> findAllByFkPaAndSegregazione(Long creditorInstitutionCode, Long segregazione);
 
-  List<PaStazionePa> findAllByFkPaAndSegregazioneAndFkStazione_IdStazioneIsNot(
+  List<PaStazionePa> findAllByFkPaAndSegregazioneAndStazione_IdStazioneIsNot(
       Long creditorInstitutionCode, Long segregazione, String stationCode);
 
   List<PaStazionePa> findAllByFkPaAndProgressivo(Long creditorInstitutionCode, Long progressivo);
 
-  List<PaStazionePa> findAllByFkPaAndProgressivoAndFkStazione_IdStazioneIsNot(
+  List<PaStazionePa> findAllByFkPaAndProgressivoAndStazione_IdStazioneIsNot(
       Long creditorInstitutionCode, Long progressivo, String stationCode);
 
-  Optional<PaStazionePa> findAllByFkPaAndFkStazione_ObjId(
+  Optional<PaStazionePa> findAllByFkPaAndFkStazione(
       Long creditorInstitutionCode, Long stationCode);
 
-  void deleteByFkPaAndFkStazione_ObjId(Long creditorInstitutionCode, Long stationCode);
+  void deleteByFkPaAndFkStazione(Long creditorInstitutionCode, Long stationCode);
 
-  Page<PaStazionePa> findAllByFkStazione_ObjId(Long stationCode, Pageable pageable);
+  Page<PaStazionePa> findAllByFkStazione(Long stationCode, Pageable pageable);
 
-  List<PaStazionePa> findAllByFkStazione_ObjId(Long stationCode);
+  List<PaStazionePa> findAllByFkStazione(Long stationCode);
 
   Optional<PaStazionePa> findOne(Specification<PaStazionePa> paStazionePa);
 
@@ -42,13 +46,13 @@ public interface PaStazionePaRepository extends PagingAndSortingRepository<PaSta
   List<PaStazionePa> findAll();
 
   default Optional<PaStazionePa>
-      findByFkPaAndFkStazione_ObjIdAndAuxDigitAndBroadcastAndSegregazioneAndProgressivo(
-          Long creditorInstitutionCode,
-          Long stationCode,
-          Long auxDigit,
-          Boolean broadcast,
-          Long segregationCode,
-          Long applicationCode) {
+  findByFkPaAndFkStazioneAndAuxDigitAndBroadcastAndSegregazioneAndProgressivo(
+      Long creditorInstitutionCode,
+      Long stationCode,
+      Long auxDigit,
+      Boolean broadcast,
+      Long segregationCode,
+      Long applicationCode) {
     return findOne(
         search(
             creditorInstitutionCode,

@@ -1,6 +1,5 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -12,16 +11,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "STAZIONI", schema = "NODO4_CFG")
+@Table(name = "STAZIONI", schema = "cfg")
 @Setter
 @Getter
 @ToString
@@ -32,10 +33,7 @@ public class Stazioni {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long objId;
 
@@ -88,6 +86,7 @@ public class Stazioni {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_INTERMEDIARIO_PA", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private IntermediariPa intermediarioPa;
 
   @Column(name = "FK_INTERMEDIARIO_PA", nullable = false, insertable = false, updatable = false)
@@ -122,6 +121,7 @@ public class Stazioni {
   private String proxyUsername;
 
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   @Column(name = "PROXY_PASSWORD")
   private String proxyPassword;
 

@@ -1,7 +1,7 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
-import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @Entity
-@Table(name = "ELENCO_SERVIZI", schema = "NODO4_CFG")
+@Table(name = "ELENCO_SERVIZI")
 public class ElencoServizi {
 
   @Id
@@ -45,10 +45,6 @@ public class ElencoServizi {
 
   @Column(name = "PSP_RAG_SOC")
   private String pspRagSoc;
-
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "PSP_FLAG_STORNO")
-  private Boolean pspFlagStorno;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "PSP_FLAG_BOLLO")
@@ -94,10 +90,10 @@ public class ElencoServizi {
   private Double costoFisso;
 
   @Column(name = "TIMESTAMP_INS")
-  private Timestamp timestampIns;
+  private ZonedDateTime timestampIns;
 
   @Column(name = "DATA_VALIDITA")
-  private Timestamp dataValidita;
+  private ZonedDateTime dataValidita;
 
   @Column(name = "LOGO_PSP")
   @ToString.Exclude

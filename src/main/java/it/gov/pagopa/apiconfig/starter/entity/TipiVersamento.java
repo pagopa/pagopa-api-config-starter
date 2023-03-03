@@ -17,7 +17,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "TIPI_VERSAMENTO", schema = "NODO4_CFG")
+@Table(name = "TIPI_VERSAMENTO")
 @Setter
 @Getter
 @ToString
@@ -28,10 +28,8 @@ public class TipiVersamento implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -40,4 +38,5 @@ public class TipiVersamento implements Serializable {
 
   @Column(name = "TIPO_VERSAMENTO", nullable = false, length = 15)
   private String tipoVersamento;
+
 }

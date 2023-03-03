@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "CODIFICHE", schema = "NODO4_CFG")
+@Table(name = "CODIFICHE")
 @Entity
 @Getter
 @Setter
@@ -27,10 +27,7 @@ public class Codifiche {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long objId;
 
@@ -39,4 +36,5 @@ public class Codifiche {
 
   @Column(name = "DESCRIZIONE", length = 35)
   private String descrizione;
+
 }

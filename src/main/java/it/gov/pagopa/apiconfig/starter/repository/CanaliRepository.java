@@ -4,6 +4,7 @@ import it.gov.pagopa.apiconfig.starter.entity.Canali;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @SuppressWarnings("java:S100")
@@ -14,4 +15,7 @@ public interface CanaliRepository extends JpaRepository<Canali, Long> {
   Optional<Canali> findByIdCanale(String idCanale);
 
   List<Canali> findByFkIntermediarioPsp_idIntermediarioPsp(String brokerCode);
+
+  @Query(value = "SELECT c FROM Canali c LEFT JOIN FETCH c.fkIntermediarioPsp")
+  List<Canali> findAllFetchingIntermediario();
 }

@@ -1,22 +1,24 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.Immutable;
 
-@Table(name = "IBAN_VALIDI_PER_PA", schema = "NODO4_CFG")
+@Table(name = "IBAN_VALIDI_PER_PA")
 @Entity
-@Immutable
 @Getter
 @Setter
 @Builder
@@ -29,17 +31,17 @@ public class IbanValidiPerPa {
   @Column(name = "OBJ_ID")
   private Long objId;
 
-  @Column(name = "FK_PA")
+  @Column(name = "FK_PA", nullable = false, insertable = false, updatable = false)
   private Long fkPa;
 
   @Column(name = "IBAN_ACCREDITO")
   private String ibanAccredito;
 
   @Column(name = "DATA_INIZIO_VALIDITA")
-  private Timestamp dataInizioValidita;
+  private ZonedDateTime dataInizioValidita;
 
   @Column(name = "DATA_PUBBLICAZIONE")
-  private Timestamp dataPubblicazione;
+  private ZonedDateTime dataPubblicazione;
 
   @Column(name = "RAGIONE_SOCIALE")
   private String ragioneSociale;
@@ -58,4 +60,12 @@ public class IbanValidiPerPa {
 
   @Column(name = "MASTER_OBJ")
   private Long masterObj;
+
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_PA", nullable = false)
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private Pa pa;
+
+
 }

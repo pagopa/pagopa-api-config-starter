@@ -1,9 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
-import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,35 +15,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "INTERMEDIARI_PSP")
-@Entity
 @Getter
 @Setter
 @ToString
-@Builder(toBuilder = true)
+@Entity
+@Table(name = "CDS_SOGGETTO")
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class IntermediariPsp implements Serializable {
+public class CdsSoggetto {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-
   @Column(name = "OBJ_ID", nullable = false)
-  private Long objId;
+  private Long id;
 
-  @Column(name = "ID_INTERMEDIARIO_PSP", nullable = false, length = 35)
-  private String idIntermediarioPsp;
+  @Column(name = "ID_DOMINIO", nullable = false)
+  private String creditorInstitutionCode;
 
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "ENABLED", nullable = false)
-  private Boolean enabled;
-
-  @Column(name = "CODICE_INTERMEDIARIO")
-  private String codiceIntermediario;
-
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "FAULT_BEAN_ESTESO", nullable = false)
-  private Boolean faultBeanEsteso;
+  @Column(name = "DESCRIZIONE_ENTE")
+  private String creditorInstitutionDescription;
 
 }

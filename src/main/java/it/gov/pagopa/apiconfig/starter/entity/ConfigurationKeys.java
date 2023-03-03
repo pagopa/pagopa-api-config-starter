@@ -21,7 +21,7 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @Entity
-@Table(name = "CONFIGURATION_KEYS", schema = "NODO4_CFG")
+@Table(name = "CONFIGURATION_KEYS")
 @Builder(toBuilder = true)
 public class ConfigurationKeys implements Serializable {
 
@@ -29,7 +29,6 @@ public class ConfigurationKeys implements Serializable {
   @Column(name = "CONFIG_CATEGORY", nullable = false, length = 255)
   private String configCategory;
 
-  @Id
   @Column(name = "CONFIG_KEY", nullable = false, length = 255)
   private String configKey;
 
@@ -38,4 +37,5 @@ public class ConfigurationKeys implements Serializable {
 
   @Column(name = "CONFIG_DESCRIPTION", length = 255)
   private String configDescription;
+
 }

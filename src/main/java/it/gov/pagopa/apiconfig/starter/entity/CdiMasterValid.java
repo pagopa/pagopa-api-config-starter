@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,15 +17,15 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.Immutable;
 
-@Table(name = "CDI_VALIDI_PER_PSP", schema = "NODO4_CFG")
+
+@Table(name = "CDI_VALIDI_PER_PSP")
 @Entity
-@Immutable
 @Getter
 @Setter
 @Builder
@@ -36,10 +36,7 @@ public class CdiMasterValid {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -47,13 +44,14 @@ public class CdiMasterValid {
   private String idInformativaPsp;
 
   @Column(name = "DATA_INIZIO_VALIDITA")
-  private Timestamp dataInizioValidita;
+  private ZonedDateTime dataInizioValidita;
 
   @Column(name = "DATA_PUBBLICAZIONE")
-  private Timestamp dataPubblicazione;
+  private ZonedDateTime dataPubblicazione;
 
   @Column(name = "LOGO_PSP")
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private byte[] logoPsp;
 
   @Column(name = "URL_INFORMAZIONI_PSP")
@@ -71,6 +69,7 @@ public class CdiMasterValid {
   private Psp fkPsp;
 
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "FK_BINARY_FILE", nullable = false)
   private BinaryFile fkBinaryFile;
@@ -80,5 +79,7 @@ public class CdiMasterValid {
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiMaster", cascade = CascadeType.REMOVE)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private List<CdiDetail> cdiDetail;
+
 }

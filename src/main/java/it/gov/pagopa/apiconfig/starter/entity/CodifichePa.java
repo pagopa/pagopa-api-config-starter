@@ -13,12 +13,13 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "CODIFICHE_PA", schema = "NODO4_CFG")
+@Table(name = "CODIFICHE_PA")
 @Entity
 @Getter
 @Setter
@@ -30,10 +31,7 @@ public class CodifichePa {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -43,10 +41,13 @@ public class CodifichePa {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_CODIFICA", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private Codifiche fkCodifica;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private Pa fkPa;
+
 }

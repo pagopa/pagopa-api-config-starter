@@ -22,16 +22,14 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @Entity
-@Table(name = "WFESP_PLUGIN_CONF", schema = "NODO4_CFG")
+@Table(name = "WFESP_PLUGIN_CONF")
 @Builder(toBuilder = true)
 public class WfespPluginConf implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(
-      name = "hibernate_sequence",
-      sequenceName = "hibernate_sequence",
-      allocationSize = 1)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -49,4 +47,5 @@ public class WfespPluginConf implements Serializable {
 
   @Column(name = "ID_BEAN")
   private String idBean;
+
 }

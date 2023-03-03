@@ -1,9 +1,9 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import java.time.ZonedDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -13,29 +13,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "CACHE")
-@Entity
+
 @Getter
 @Setter
+@ToString
+@Entity
+@Table(name = "GDE_CONFIG")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@ToString
-@java.lang.SuppressWarnings("java:S1700")
-public class Cache {
+@IdClass(GdeConfigPk.class)
+public class GdeConfig {
 
   @Id
-  @Column(name = "ID", nullable = false)
-  private String id;
+  @Column(name = "PRIMITIVA", nullable = false)
+  private String primitiva;
 
-  @Column(name = "CACHE", nullable = false)
-  @ToString.Exclude
-  private byte[] cache;
+  @Column(name = "TYPE", nullable = false)
+  private String type;
 
-  @Column(name = "TIME", nullable = false)
-  @ToString.Exclude
-  private ZonedDateTime time;
+  @Column(name = "EVENT_HUB")
+  private Boolean eventHubEnabled;
 
-  @Column(name = "VERSION", nullable = false)
-  private String version;
+  @Column(name = "EVENT_HUB_PAYLOAD")
+  private Boolean eventHubPayloadEnabled;
+
 }
