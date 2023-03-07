@@ -1,9 +1,9 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
-import lombok.*;
-import javax.persistence.*;
 import java.time.ZonedDateTime;
+import javax.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
