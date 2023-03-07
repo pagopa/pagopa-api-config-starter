@@ -20,7 +20,7 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long> {
 
   @Query(
       value =
-          "select distinct s from Stazioni s, PaStazionePa r where (:fkIntermediario is null or"
+          "select distinct s from Stazioni s, PaStazionePa r where (:intermediario is null or"
               + " s.fkIntermediarioPa = :fkIntermediario) and (r.fkPa = :fkPa and r.stazione = s)"
               + " and (:idStazione is null or upper(s.idStazione) like concat('%',"
               + " upper(:idStazione), '%')) ")

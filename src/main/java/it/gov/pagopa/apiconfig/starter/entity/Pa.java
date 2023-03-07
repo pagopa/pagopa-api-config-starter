@@ -79,12 +79,12 @@ public class Pa {
   private Boolean rendicontazioneZip;
 
   @ToString.Exclude
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkPa")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "pa")
   @EqualsAndHashCode.Exclude
   private List<IbanValidiPerPa> ibans;
 
   @ToString.Exclude
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkPa")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "pa")
   @EqualsAndHashCode.Exclude
   private List<InformativePaMaster> informativePaMasters;
 

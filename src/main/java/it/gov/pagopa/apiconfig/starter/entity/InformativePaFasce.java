@@ -46,6 +46,6 @@ public class InformativePaFasce {
   @JoinColumn(name = "FK_INFORMATIVA_PA_DETAIL", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private InformativePaDetail fkInformativaPaDetail;
+  private InformativePaDetail informativaPaDetail;
 
 }

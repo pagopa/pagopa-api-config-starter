@@ -53,13 +53,13 @@ public class InformativePaMaster {
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private Pa fkPa;
+  private Pa pa;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "FK_BINARY_FILE")
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private BinaryFile fkBinaryFile;
+  private BinaryFile binaryFile;
 
   @Column(name = "VERSIONE", length = 35)
   private String versione;
@@ -68,7 +68,7 @@ public class InformativePaMaster {
   private Boolean pagamentiPressoPsp;
 
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaMaster", cascade = CascadeType.REMOVE)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "informativaPaMaster", cascade = CascadeType.REMOVE)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private List<InformativePaDetail> details;

@@ -52,13 +52,13 @@ public class CdiDetail {
   @JoinColumn(name = "FK_CDI_MASTER", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private CdiMaster fkCdiMaster;
+  private CdiMaster cdiMaster;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PSP_CANALE_TIPO_VERSAMENTO", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private PspCanaleTipoVersamentoCanale fkPspCanaleTipoVersamento;
+  private PspCanaleTipoVersamentoCanale pspCanaleTipoVersamento;
 
   @Column(name = "CANALE_APP")
   private Long canaleApp;
@@ -71,12 +71,12 @@ public class CdiDetail {
   @EqualsAndHashCode.Exclude
   private byte[] logoServizio;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiDetail", cascade = CascadeType.REMOVE)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "cdiDetail", cascade = CascadeType.REMOVE)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private List<CdiInformazioniServizio> cdiInformazioniServizio;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiDetail", cascade = CascadeType.REMOVE)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "cdiDetail", cascade = CascadeType.REMOVE)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private List<CdiFasciaCostoServizio> cdiFasciaCostoServizio;

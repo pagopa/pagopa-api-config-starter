@@ -48,7 +48,7 @@ public class CdiFasciaCostoServizio {
   @JoinColumn(name = "FK_CDI_DETAIL", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private CdiDetail fkCdiDetail;
+  private CdiDetail cdiDetail;
 
   @Column(name = "VALORE_COMMISSIONE")
   private Double valoreCommissione;

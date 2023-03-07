@@ -14,8 +14,8 @@ public interface CanaliRepository extends JpaRepository<Canali, Long> {
 
   Optional<Canali> findByIdCanale(String idCanale);
 
-  List<Canali> findByFkIntermediarioPsp_idIntermediarioPsp(String brokerCode);
+  List<Canali> findByIntermediarioPsp_idIntermediarioPsp(String brokerCode);
 
-  @Query(value = "SELECT c FROM Canali c LEFT JOIN FETCH c.fkIntermediarioPsp")
+  @Query(value = "SELECT c FROM Canali c LEFT JOIN FETCH c.intermediarioPsp")
   List<Canali> findAllFetchingIntermediario();
 }

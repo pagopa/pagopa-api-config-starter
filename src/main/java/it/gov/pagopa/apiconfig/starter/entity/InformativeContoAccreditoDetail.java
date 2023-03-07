@@ -42,7 +42,7 @@ public class InformativeContoAccreditoDetail {
   @JoinColumn(name = "FK_INFORMATIVA_CONTO_ACCREDITO_MASTER")
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private InformativeContoAccreditoMaster fkInformativaContoAccreditoMaster;
+  private InformativeContoAccreditoMaster informativaContoAccreditoMaster;
 
   @Column(name = "ID_MERCHANT", length = 15)
   private String idMerchant;

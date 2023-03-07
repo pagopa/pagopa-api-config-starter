@@ -67,18 +67,18 @@ public class CdiMaster {
   @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "FK_PSP", nullable = false)
-  private Psp fkPsp;
+  private Psp psp;
 
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "FK_BINARY_FILE", nullable = false)
-  private BinaryFile fkBinaryFile;
+  private BinaryFile binaryFile;
 
   @Column(name = "VERSIONE", length = 35)
   private String versione;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiMaster", cascade = CascadeType.REMOVE)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "cdiMaster", cascade = CascadeType.REMOVE)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private List<CdiDetail> cdiDetail;

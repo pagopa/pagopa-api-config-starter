@@ -12,14 +12,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CodifichePaRepository extends JpaRepository<CodifichePa, Long> {
 
-  List<CodifichePa> findAllByFkPa_ObjId(Long fkPa);
+  List<CodifichePa> findAllByPa_ObjId(Long fkPa);
 
-  List<CodifichePa> findAllByCodicePaAndFkCodifica_IdCodifica(String codicePa, String idCodifica);
+  List<CodifichePa> findAllByCodicePaAndCodifica_IdCodifica(String codicePa, String idCodifica);
 
   Optional<CodifichePa> findByCodicePa(String codicePa);
 
-  Optional<CodifichePa> findByCodicePaAndFkPa_ObjId(String codicePa, Long fkPa);
+  Optional<CodifichePa> findByCodicePaAndPa_ObjId(String codicePa, Long fkPa);
 
-  @Query("select cpa from CodifichePa cpa left join fetch cpa.fkCodifica")
+  @Query("select cpa from CodifichePa cpa left join fetch cpa.codifica")
   List<CodifichePa> findAllFetchingCodifiche();
 }

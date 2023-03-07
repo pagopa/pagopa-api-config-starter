@@ -14,11 +14,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CdiMasterRepository extends JpaRepository<CdiMaster, Long> {
 
-  @Query(value = "SELECT distinct(e) FROM CdiMasterValid e LEFT JOIN FETCH e.cdiDetail d LEFT JOIN FETCH e.fkPsp")
+  @Query(value = "SELECT distinct(e) FROM CdiMasterValid e LEFT JOIN FETCH e.cdiDetail d LEFT JOIN FETCH e.psp")
   List<CdiMasterValid> findAllFetchingDetails();
 
-  Optional<CdiMaster> findByIdInformativaPspAndFkPsp_IdPsp(String idCdi, String pspCode);
+  Optional<CdiMaster> findByIdInformativaPspAndPsp_IdPsp(String idCdi, String pspCode);
 
-  List<CdiMaster> findByFkPsp_IdPspAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
+  List<CdiMaster> findByPsp_IdPspAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
       String idDominio, ZonedDateTime now);
 }

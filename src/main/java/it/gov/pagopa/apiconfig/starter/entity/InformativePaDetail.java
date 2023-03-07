@@ -55,9 +55,9 @@ public class InformativePaDetail {
   @JoinColumn(name = "FK_INFORMATIVA_PA_MASTER", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private InformativePaMaster fkInformativaPaMaster;
+  private InformativePaMaster informativaPaMaster;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkInformativaPaDetail", cascade = CascadeType.REMOVE)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "informativaPaDetail", cascade = CascadeType.REMOVE)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private List<InformativePaFasce> fasce;

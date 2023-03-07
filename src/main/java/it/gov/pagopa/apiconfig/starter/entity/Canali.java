@@ -69,7 +69,7 @@ public class Canali implements Serializable {
   @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_INTERMEDIARIO_PSP", nullable = false)
-  private IntermediariPsp fkIntermediarioPsp;
+  private IntermediariPsp intermediarioPsp;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "PROXY_ENABLED", nullable = false)

@@ -42,12 +42,12 @@ public class CodifichePa {
   @JoinColumn(name = "FK_CODIFICA", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private Codifiche fkCodifica;
+  private Codifiche codifica;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private Pa fkPa;
+  private Pa pa;
 
 }

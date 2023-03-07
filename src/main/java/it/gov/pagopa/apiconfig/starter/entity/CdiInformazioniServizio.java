@@ -51,7 +51,7 @@ public class CdiInformazioniServizio {
   @JoinColumn(name = "FK_CDI_DETAIL", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private CdiDetail fkCdiDetail;
+  private CdiDetail cdiDetail;
 
   @Column(name = "LIMITAZIONI_SERVIZIO", length = 140)
   private String limitazioniServizio;
