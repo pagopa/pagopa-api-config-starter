@@ -16,6 +16,6 @@ public interface InformativePaMasterRepository extends JpaRepository<Informative
       String idCounterpartTable, String creditorInstitutionCode);
 
   List<InformativePaMaster>
-  findByPa_IdDominioAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
-      String idDominio, ZonedDateTime now);
+      findByPa_IdDominioAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
+          String idDominio, ZonedDateTime now);
 }

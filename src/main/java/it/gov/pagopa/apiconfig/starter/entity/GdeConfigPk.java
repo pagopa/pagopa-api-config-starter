@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Getter
 @Setter
 @ToString
@@ -21,5 +20,4 @@ public class GdeConfigPk implements Serializable {
 
   private String primitiva;
   private String type;
-
 }

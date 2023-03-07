@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface PspCanaleTipoVersamentoCanaleRepository
     extends JpaRepository<PspCanaleTipoVersamentoCanale, Long> {
 
-  @Query("select distinct(c) from PspCanaleTipoVersamentoCanale c left join fetch c.psp left join fetch c.canale left join fetch c.tipoVersamento")
+  @Query(
+      "select distinct(c) from PspCanaleTipoVersamentoCanale c left join fetch c.psp left join fetch c.canale left join fetch c.tipoVersamento")
   List<PspCanaleTipoVersamentoCanale> findAllFetching();
-
 }

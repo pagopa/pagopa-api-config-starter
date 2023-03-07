@@ -16,7 +16,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PaStazionePaRepository extends PagingAndSortingRepository<PaStazionePa, Long> {
 
-  @Query("select distinct(paspa) from PaStazionePa paspa left join fetch paspa.pa left join fetch paspa.stazione")
+  @Query(
+      "select distinct(paspa) from PaStazionePa paspa left join fetch paspa.pa left join fetch paspa.stazione")
   List<PaStazionePa> findAllFetching();
 
   List<PaStazionePa> findAllByFkPa(Long creditorInstitutionCode);
@@ -31,8 +32,7 @@ public interface PaStazionePaRepository extends PagingAndSortingRepository<PaSta
   List<PaStazionePa> findAllByFkPaAndProgressivoAndStazione_IdStazioneIsNot(
       Long creditorInstitutionCode, Long progressivo, String stationCode);
 
-  Optional<PaStazionePa> findAllByFkPaAndFkStazione(
-      Long creditorInstitutionCode, Long stationCode);
+  Optional<PaStazionePa> findAllByFkPaAndFkStazione(Long creditorInstitutionCode, Long stationCode);
 
   void deleteByFkPaAndFkStazione(Long creditorInstitutionCode, Long stationCode);
 
@@ -46,13 +46,13 @@ public interface PaStazionePaRepository extends PagingAndSortingRepository<PaSta
   List<PaStazionePa> findAll();
 
   default Optional<PaStazionePa>
-  findByFkPaAndFkStazioneAndAuxDigitAndBroadcastAndSegregazioneAndProgressivo(
-      Long creditorInstitutionCode,
-      Long stationCode,
-      Long auxDigit,
-      Boolean broadcast,
-      Long segregationCode,
-      Long applicationCode) {
+      findByFkPaAndFkStazioneAndAuxDigitAndBroadcastAndSegregazioneAndProgressivo(
+          Long creditorInstitutionCode,
+          Long stationCode,
+          Long auxDigit,
+          Boolean broadcast,
+          Long segregationCode,
+          Long applicationCode) {
     return findOne(
         search(
             creditorInstitutionCode,

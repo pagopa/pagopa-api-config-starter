@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Entity
 @Table(name = "PSP_CANALE_TIPO_VERSAMENTO_CANALE")
 @Setter
@@ -33,7 +32,10 @@ public class PspCanaleTipoVersamentoCanale implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -60,6 +62,4 @@ public class PspCanaleTipoVersamentoCanale implements Serializable {
   @JoinColumn(name = "FK_CANALE", nullable = false)
   @EqualsAndHashCode.Exclude
   private Canali canale;
-
-
 }

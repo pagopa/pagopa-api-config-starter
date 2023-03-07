@@ -29,7 +29,10 @@ public class BinaryFile {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -52,5 +55,4 @@ public class BinaryFile {
   @Lob
   @Column(name = "XML_FILE_CONTENT")
   private String xmlFileContent;
-
 }

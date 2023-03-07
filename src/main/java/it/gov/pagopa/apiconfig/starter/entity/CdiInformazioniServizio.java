@@ -31,7 +31,10 @@ public class CdiInformazioniServizio {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -55,5 +58,4 @@ public class CdiInformazioniServizio {
 
   @Column(name = "LIMITAZIONI_SERVIZIO", length = 140)
   private String limitazioniServizio;
-
 }

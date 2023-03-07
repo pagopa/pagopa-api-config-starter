@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 @Repository
 public interface CdsServizioRepository extends JpaRepository<CdsServizio, Long> {
 

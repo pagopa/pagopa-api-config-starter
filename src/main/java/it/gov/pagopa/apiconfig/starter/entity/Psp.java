@@ -36,8 +36,10 @@ public class Psp implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long objId;
 
@@ -80,5 +82,4 @@ public class Psp implements Serializable {
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private List<PspCanaleTipoVersamentoCanale> pspCanaleTipoVersamentoList;
-
 }

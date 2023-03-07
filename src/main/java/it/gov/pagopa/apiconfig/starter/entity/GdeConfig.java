@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Getter
 @Setter
 @ToString
@@ -37,5 +36,4 @@ public class GdeConfig {
 
   @Column(name = "EVENT_HUB_PAYLOAD")
   private Boolean eventHubPayloadEnabled;
-
 }

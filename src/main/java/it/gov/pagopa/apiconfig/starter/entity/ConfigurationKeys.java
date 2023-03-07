@@ -37,5 +37,4 @@ public class ConfigurationKeys implements Serializable {
 
   @Column(name = "CONFIG_DESCRIPTION", length = 255)
   private String configDescription;
-
 }

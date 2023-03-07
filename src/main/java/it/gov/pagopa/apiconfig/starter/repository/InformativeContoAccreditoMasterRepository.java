@@ -17,6 +17,6 @@ public interface InformativeContoAccreditoMasterRepository
       String idIca, String creditorInstitutionCode);
 
   List<InformativeContoAccreditoMaster>
-  findByPa_IdDominioAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
-      String idDominio, ZonedDateTime now);
+      findByPa_IdDominioAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
+          String idDominio, ZonedDateTime now);
 }

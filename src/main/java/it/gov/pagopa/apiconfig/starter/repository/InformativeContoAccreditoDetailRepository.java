@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InformativeContoAccreditoDetailRepository
-    extends JpaRepository<InformativeContoAccreditoDetail, Long> {
-
-}
+    extends JpaRepository<InformativeContoAccreditoDetail, Long> {}

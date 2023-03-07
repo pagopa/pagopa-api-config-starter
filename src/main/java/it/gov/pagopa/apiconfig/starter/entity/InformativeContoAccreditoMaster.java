@@ -35,7 +35,10 @@ public class InformativeContoAccreditoMaster {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -66,9 +69,11 @@ public class InformativeContoAccreditoMaster {
   @Column(name = "VERSIONE", length = 35)
   private String versione;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "informativaContoAccreditoMaster", cascade = CascadeType.REMOVE)
+  @OneToMany(
+      fetch = FetchType.LAZY,
+      mappedBy = "informativaContoAccreditoMaster",
+      cascade = CascadeType.REMOVE)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private List<InformativeContoAccreditoDetail> icaDetail;
-
 }

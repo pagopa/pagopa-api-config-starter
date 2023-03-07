@@ -18,6 +18,8 @@ public interface CdiMasterValidRepository extends JpaRepository<CdiMasterValid, 
   List<CdiMasterValid> findByPsp_IdPspAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
       String idDominio, ZonedDateTime now);
 
-  @Query(value = "SELECT distinct(e) FROM CdiMasterValid e LEFT JOIN FETCH e.cdiDetail d LEFT JOIN FETCH e.psp")
+  @Query(
+      value =
+          "SELECT distinct(e) FROM CdiMasterValid e LEFT JOIN FETCH e.cdiDetail d LEFT JOIN FETCH e.psp")
   List<CdiMasterValid> findAllFetching();
 }
