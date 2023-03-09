@@ -33,8 +33,10 @@ public class Pa {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
-
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long objId;
 
@@ -79,13 +81,12 @@ public class Pa {
   private Boolean rendicontazioneZip;
 
   @ToString.Exclude
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkPa")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "pa")
   @EqualsAndHashCode.Exclude
   private List<IbanValidiPerPa> ibans;
 
   @ToString.Exclude
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkPa")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "pa")
   @EqualsAndHashCode.Exclude
   private List<InformativePaMaster> informativePaMasters;
-
 }

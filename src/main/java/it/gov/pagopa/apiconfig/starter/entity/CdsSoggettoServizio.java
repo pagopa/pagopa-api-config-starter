@@ -1,9 +1,9 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
-import lombok.*;
-import javax.persistence.*;
 import java.time.ZonedDateTime;
+import javax.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
@@ -17,16 +17,22 @@ public class CdsSoggettoServizio {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
   @Column(name = "FK_CDS_SOGGETTO", nullable = false, insertable = false, updatable = false)
   private String fkCdsSoggetto;
+
   @Column(name = "FK_CDS_SERVIZIO", nullable = false, insertable = false, updatable = false)
   private String fkCdsServizio;
+
   @Column(name = "ID_SOGGETTO_SERVIZIO")
   private String idSoggettoServizio;
+
   @Column(name = "DATA_INIZIO_VALIDITA")
   private ZonedDateTime dataInizioValidita;
 
@@ -48,5 +54,4 @@ public class CdsSoggettoServizio {
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private CdsServizio servizio;
-
 }

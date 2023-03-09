@@ -66,6 +66,4 @@ public class IbanValidiPerPa {
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private Pa pa;
-
-
 }

@@ -35,5 +35,4 @@ public class DizionarioMetadati {
 
   @Column(name = "DATA_FINE_VALIDITA")
   private ZonedDateTime endDate;
-
 }

@@ -13,10 +13,10 @@ import org.springframework.stereotype.Repository;
 public interface InformativeContoAccreditoMasterRepository
     extends JpaRepository<InformativeContoAccreditoMaster, Long> {
 
-  Optional<InformativeContoAccreditoMaster> findByIdInformativaContoAccreditoPaAndFkPa_IdDominio(
+  Optional<InformativeContoAccreditoMaster> findByIdInformativaContoAccreditoPaAndPa_IdDominio(
       String idIca, String creditorInstitutionCode);
 
   List<InformativeContoAccreditoMaster>
-  findByFkPa_IdDominioAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
-      String idDominio, ZonedDateTime now);
+      findByPa_IdDominioAndDataInizioValiditaLessThanOrderByDataInizioValiditaDesc(
+          String idDominio, ZonedDateTime now);
 }

@@ -34,7 +34,10 @@ public class Canali implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -69,7 +72,7 @@ public class Canali implements Serializable {
   @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_INTERMEDIARIO_PSP", nullable = false)
-  private IntermediariPsp fkIntermediarioPsp;
+  private IntermediariPsp intermediarioPsp;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "PROXY_ENABLED", nullable = false)
@@ -164,5 +167,4 @@ public class Canali implements Serializable {
 
   @Column(name = "VERSIONE_PRIMITIVE")
   private Integer versionePrimitive;
-
 }

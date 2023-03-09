@@ -4,8 +4,5 @@ import it.gov.pagopa.apiconfig.starter.entity.DizionarioMetadati;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface DizionarioMetadatiRepository extends JpaRepository<DizionarioMetadati, Long> {
-
-}
+public interface DizionarioMetadatiRepository extends JpaRepository<DizionarioMetadati, Long> {}

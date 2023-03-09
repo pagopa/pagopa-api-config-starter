@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CdiInformazioniServizioRepository
-    extends JpaRepository<CdiInformazioniServizio, Long> {
-
-}
+    extends JpaRepository<CdiInformazioniServizio, Long> {}

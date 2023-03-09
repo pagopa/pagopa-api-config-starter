@@ -35,7 +35,10 @@ public class CanaleTipoVersamento implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
-  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
+  @SequenceGenerator(
+      name = "hibernate_sequence",
+      sequenceName = "hibernate_sequence",
+      allocationSize = 1)
   @Column(name = "OBJ_ID", nullable = false)
   private Long id;
 
@@ -57,9 +60,9 @@ public class CanaleTipoVersamento implements Serializable {
   @JoinColumn(name = "FK_TIPO_VERSAMENTO", nullable = false)
   private TipiVersamento tipoVersamento;
 
-    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCanaleTipoVersamento", cascade = CascadeType.REMOVE)
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private List<PspCanaleTipoVersamento> pspCanaleTipoVersamentoList;*/
+  /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCanaleTipoVersamento", cascade = CascadeType.REMOVE)
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private List<PspCanaleTipoVersamento> pspCanaleTipoVersamentoList;*/
 
 }
