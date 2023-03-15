@@ -61,5 +61,5 @@ public class PspCanaleTipoVersamentoCanale implements Serializable {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_CANALE", nullable = false)
   @EqualsAndHashCode.Exclude
-  private Canali canale;
+  private CanaliView canale;
 }

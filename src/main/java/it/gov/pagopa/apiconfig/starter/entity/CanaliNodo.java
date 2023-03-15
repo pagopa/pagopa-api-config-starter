@@ -47,7 +47,7 @@ public class CanaliNodo implements Serializable {
   private String redirectPath;
 
   @Column(name = "REDIRECT_PORTA")
-  private Long redirectPorta;
+  private Long redirectPort;
 
   @Column(name = "REDIRECT_QUERY_STRING")
   private String redirectQueryString;

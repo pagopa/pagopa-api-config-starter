@@ -28,9 +28,9 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @Entity
-@Table(name = "CANALI")
+@Table(name = "CANALI_VIEW")
 @Builder(toBuilder = true)
-public class Canali implements Serializable {
+public class CanaliView implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
@@ -120,6 +120,54 @@ public class Canali implements Serializable {
   @Column(name = "SERVIZIO_NMP")
   private String servizioNmp;
 
+  @Column(name = "REDIRECT_IP", length = 100)
+  private String redirectIp;
+
+  @Column(name = "REDIRECT_PATH", length = 100)
+  private String redirectPath;
+
+  @Column(name = "REDIRECT_PORTA")
+  private Long redirectPort;
+
+  @Column(name = "REDIRECT_QUERY_STRING")
+  private String redirectQueryString;
+
+  @Column(name = "MODELLO_PAGAMENTO", nullable = false)
+  private String modelloPagamento;
+
+  @Column(name = "REDIRECT_PROTOCOLLO", length = 35)
+  private String redirectProtocollo;
+
+  @Column(name = "ID_SERV_PLUGIN", length = 35)
+  private String idServPlugin;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "RT_PUSH", nullable = false)
+  private Boolean rtPush = false;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "AGID_CHANNEL", nullable = false)
+  private Boolean agidChannel = false;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "ON_US", nullable = false)
+  private Boolean onUs = false;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "RECOVERY", nullable = false)
+  private Boolean recovery = false;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "MARCA_BOLLO_DIGITALE", nullable = false)
+  private Boolean marcaBolloDigitale = false;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "FLAG_IO")
+  private Boolean flagIo;
+
+  @Column(name = "VERSIONE_PRIMITIVE")
+  private Integer versionePrimitive;
+
   @Column(name = "TARGET_HOST_NMP")
   private String targetHostNmp;
 
@@ -128,6 +176,4 @@ public class Canali implements Serializable {
 
   @Column(name = "TARGET_PATH_NMP")
   private String targetPathNmp;
-
-
 }
