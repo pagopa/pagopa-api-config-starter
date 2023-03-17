@@ -14,5 +14,4 @@ public interface CanaliRepository extends JpaRepository<Canali, Long> {
   Optional<Canali> findByIdCanale(String idCanale);
 
   List<Canali> findByIntermediarioPsp_idIntermediarioPsp(String brokerCode);
-
 }

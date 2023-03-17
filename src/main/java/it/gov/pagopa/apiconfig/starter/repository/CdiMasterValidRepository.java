@@ -20,6 +20,7 @@ public interface CdiMasterValidRepository extends JpaRepository<CdiMasterValid, 
 
   @Query(
       value =
-          "SELECT distinct(e) FROM CdiMasterValid e LEFT JOIN FETCH e.cdiDetail d LEFT JOIN FETCH e.psp")
+          "SELECT distinct(e) FROM CdiMasterValid e LEFT JOIN FETCH e.cdiDetail d LEFT JOIN FETCH"
+              + " e.psp")
   List<CdiMasterValid> findAllFetching();
 }

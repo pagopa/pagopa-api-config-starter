@@ -17,7 +17,8 @@ import org.springframework.stereotype.Repository;
 public interface PaStazionePaRepository extends PagingAndSortingRepository<PaStazionePa, Long> {
 
   @Query(
-      "select distinct(paspa) from PaStazionePa paspa left join fetch paspa.pa left join fetch paspa.stazione")
+      "select distinct(paspa) from PaStazionePa paspa left join fetch paspa.pa left join fetch"
+          + " paspa.stazione")
   List<PaStazionePa> findAllFetching();
 
   List<PaStazionePa> findAllByFkPa(Long creditorInstitutionCode);

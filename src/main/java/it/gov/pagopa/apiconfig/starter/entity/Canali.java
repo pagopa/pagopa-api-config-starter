@@ -128,6 +128,4 @@ public class Canali implements Serializable {
 
   @Column(name = "TARGET_PATH_NMP")
   private String targetPathNmp;
-
-
 }
