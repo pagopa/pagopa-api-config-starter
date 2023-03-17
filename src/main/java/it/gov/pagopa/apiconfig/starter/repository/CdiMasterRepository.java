@@ -16,7 +16,8 @@ public interface CdiMasterRepository extends JpaRepository<CdiMaster, Long> {
 
   @Query(
       value =
-          "SELECT distinct(e) FROM CdiMasterValid e LEFT JOIN FETCH e.cdiDetail d LEFT JOIN FETCH e.psp")
+          "SELECT distinct(e) FROM CdiMasterValid e LEFT JOIN FETCH e.cdiDetail d LEFT JOIN FETCH"
+              + " e.psp")
   List<CdiMasterValid> findAllFetchingDetails();
 
   Optional<CdiMaster> findByIdInformativaPspAndPsp_IdPsp(String idCdi, String pspCode);

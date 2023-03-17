@@ -71,7 +71,7 @@ public class Stazioni {
   private String redirectPath;
 
   @Column(name = "REDIRECT_PORTA")
-  private Long redirectPorta;
+  private Long redirectPort;
 
   @Column(name = "REDIRECT_QUERY_STRING")
   private String redirectQueryString;
@@ -147,9 +147,6 @@ public class Stazioni {
   @Column(name = "VERSIONE")
   private Long versione;
 
-  @Column(name = "SERVIZIO_NMP")
-  private String servizioNmp;
-
   @Column(name = "INVIO_RT_ISTANTANEO")
   @Convert(converter = YesNoConverter.class)
   private Boolean invioRtIstantaneo;
@@ -162,6 +159,15 @@ public class Stazioni {
 
   @Column(name = "TARGET_PATH")
   private String targetPath;
+
+  @Column(name = "TARGET_HOST_POF")
+  private String targetHostPof;
+
+  @Column(name = "TARGET_PORT_POF")
+  private Long targetPortPof;
+
+  @Column(name = "TARGET_PATH_POF")
+  private String targetPathPof;
 
   @Column(name = "VERSIONE_PRIMITIVE")
   private Integer versionePrimitive;
