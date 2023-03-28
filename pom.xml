@@ -13,7 +13,7 @@
 
   <groupId>it.gov.pagopa.api-config</groupId>
   <artifactId>starter</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
   <description>Starter module for projects related to Nodo dei Pagamenti configuration.
   </description>
 

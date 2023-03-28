@@ -22,7 +22,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "STAZIONI", schema = "cfg")
+@Table(name = "STAZIONI")
 @Setter
 @Getter
 @ToString
