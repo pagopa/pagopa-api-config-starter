@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "CDI_MASTER", schema = "cfg")
+@Table(name = "CDI_MASTER")
 @Entity
 @Getter
 @Setter
