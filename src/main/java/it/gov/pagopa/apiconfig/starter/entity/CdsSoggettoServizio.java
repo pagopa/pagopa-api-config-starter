@@ -30,8 +30,14 @@ public class CdsSoggettoServizio {
   @Column(name = "FK_CDS_SERVIZIO", nullable = false, insertable = false, updatable = false)
   private String fkCdsServizio;
 
+  @Column(name = "STAZIONE", nullable = true, insertable = false, updatable = false)
+  private String fkStazione;
+
   @Column(name = "ID_SOGGETTO_SERVIZIO")
   private String idSoggettoServizio;
+
+  @Column(name = "DESCRIZIONE_SERVIZIO")
+  private String descrizioneServizio;
 
   @Column(name = "DATA_INIZIO_VALIDITA")
   private ZonedDateTime dataInizioValidita;
@@ -42,6 +48,12 @@ public class CdsSoggettoServizio {
   @Column(name = "COMMISSIONE")
   @Convert(converter = YesNoConverter.class)
   private Boolean commissione;
+
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "STAZIONE", nullable = true)
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private Stazioni stazione;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_CDS_SOGGETTO", nullable = false)
