@@ -29,6 +29,8 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PspCanaleTipoVersamento implements Serializable {
 
+  private static final long serialVersionUID = -5372621010851688463L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(

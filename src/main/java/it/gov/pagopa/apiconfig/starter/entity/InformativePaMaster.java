@@ -1,9 +1,10 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import java.time.ZonedDateTime;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,10 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import it.gov.pagopa.apiconfig.starter.util.NumericBooleanConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -46,31 +48,32 @@ public class InformativePaMaster {
   private String idInformativaPa;
 
   @Column(name = "DATA_INIZIO_VALIDITA")
-  private ZonedDateTime dataInizioValidita;
+  private Timestamp dataInizioValidita;
 
   @Column(name = "DATA_PUBBLICAZIONE")
-  private ZonedDateTime dataPubblicazione;
+  private Timestamp dataPubblicazione;
 
   @ManyToOne(optional = false)
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private Pa pa;
+  private Pa fkPa;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "FK_BINARY_FILE")
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private BinaryFile binaryFile;
+  private BinaryFile fkBinaryFile;
 
   @Column(name = "VERSIONE", length = 35)
   private String versione;
 
   @Column(name = "PAGAMENTI_PRESSO_PSP")
+  @Convert(converter = NumericBooleanConverter.class)
   private Boolean pagamentiPressoPsp;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "informativaPaMaster", cascade = CascadeType.REMOVE)
+  @OneToMany(
+      fetch = FetchType.LAZY,
+      mappedBy = "fkInformativaPaMaster",
+      cascade = CascadeType.REMOVE)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private List<InformativePaDetail> details;
 }

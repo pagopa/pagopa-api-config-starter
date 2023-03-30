@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +29,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class IntermediariPsp implements Serializable {
+  
+  private static final long serialVersionUID = 7011053855758000652L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
@@ -46,6 +50,14 @@ public class IntermediariPsp implements Serializable {
 
   @Column(name = "CODICE_INTERMEDIARIO")
   private String codiceIntermediario;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "INTERMEDIARIO_AVV", nullable = false)
+  private Boolean intermediarioAvv;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "INTERMEDIARIO_NODO", nullable = false)
+  private Boolean intermediarioNodo;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FAULT_BEAN_ESTESO", nullable = false)

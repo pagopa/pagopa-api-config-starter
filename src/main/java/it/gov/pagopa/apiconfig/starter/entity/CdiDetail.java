@@ -16,7 +16,6 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,7 +30,6 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class CdiDetail {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -53,14 +51,12 @@ public class CdiDetail {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_CDI_MASTER", nullable = false)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private CdiMaster cdiMaster;
+  private CdiMaster fkCdiMaster;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PSP_CANALE_TIPO_VERSAMENTO", nullable = false)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private PspCanaleTipoVersamentoCanale pspCanaleTipoVersamento;
+  private PspCanaleTipoVersamento fkPspCanaleTipoVersamento;
 
   @Column(name = "CANALE_APP")
   private Long canaleApp;
@@ -70,21 +66,17 @@ public class CdiDetail {
 
   @Column(name = "LOGO_SERVIZIO")
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private byte[] logoServizio;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "cdiDetail", cascade = CascadeType.REMOVE)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiDetail", cascade = CascadeType.REMOVE)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private List<CdiInformazioniServizio> cdiInformazioniServizio;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "cdiDetail", cascade = CascadeType.REMOVE)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiDetail", cascade = CascadeType.REMOVE)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private List<CdiFasciaCostoServizio> cdiFasciaCostoServizio;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "cdiDetail", cascade = CascadeType.REMOVE)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private List<CdiPreference> cdiPreference;
 }

@@ -1,7 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
-import java.time.ZonedDateTime;
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -10,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +28,6 @@ import lombok.ToString;
 @Entity
 @Table(name = "ELENCO_SERVIZI")
 public class ElencoServizi {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -45,6 +45,10 @@ public class ElencoServizi {
 
   @Column(name = "PSP_RAG_SOC")
   private String pspRagSoc;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "PSP_FLAG_STORNO")
+  private Boolean pspFlagStorno;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "PSP_FLAG_BOLLO")
@@ -90,10 +94,10 @@ public class ElencoServizi {
   private Double costoFisso;
 
   @Column(name = "TIMESTAMP_INS")
-  private ZonedDateTime timestampIns;
+  private Timestamp timestampIns;
 
   @Column(name = "DATA_VALIDITA")
-  private ZonedDateTime dataValidita;
+  private Timestamp dataValidita;
 
   @Column(name = "LOGO_PSP")
   @ToString.Exclude

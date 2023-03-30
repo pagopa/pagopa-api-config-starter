@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import java.time.ZonedDateTime;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +17,6 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,7 +31,6 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class InformativeContoAccreditoMaster {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -43,10 +41,10 @@ public class InformativeContoAccreditoMaster {
   private Long id;
 
   @Column(name = "DATA_INIZIO_VALIDITA")
-  private ZonedDateTime dataInizioValidita;
+  private Timestamp dataInizioValidita;
 
   @Column(name = "DATA_PUBBLICAZIONE")
-  private ZonedDateTime dataPubblicazione;
+  private Timestamp dataPubblicazione;
 
   @Column(name = "ID_INFORMATIVA_CONTO_ACCREDITO_PA", nullable = false, length = 35)
   private String idInformativaContoAccreditoPa;
@@ -57,23 +55,20 @@ public class InformativeContoAccreditoMaster {
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "FK_PA")
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private Pa pa;
+  private Pa fkPa;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "FK_BINARY_FILE")
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private BinaryFile binaryFile;
+  private BinaryFile fkBinaryFile;
 
   @Column(name = "VERSIONE", length = 35)
   private String versione;
 
   @OneToMany(
       fetch = FetchType.LAZY,
-      mappedBy = "informativaContoAccreditoMaster",
+      mappedBy = "fkInformativaContoAccreditoMaster",
       cascade = CascadeType.REMOVE)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private List<InformativeContoAccreditoDetail> icaDetail;
 }

@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import java.time.ZonedDateTime;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +17,6 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,7 +31,6 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class CdiMaster {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -46,14 +44,13 @@ public class CdiMaster {
   private String idInformativaPsp;
 
   @Column(name = "DATA_INIZIO_VALIDITA")
-  private ZonedDateTime dataInizioValidita;
+  private Timestamp dataInizioValidita;
 
   @Column(name = "DATA_PUBBLICAZIONE")
-  private ZonedDateTime dataPubblicazione;
+  private Timestamp dataPubblicazione;
 
   @Column(name = "LOGO_PSP")
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private byte[] logoPsp;
 
   @Column(name = "URL_INFORMAZIONI_PSP")
@@ -66,22 +63,19 @@ public class CdiMaster {
   private Boolean stornoPagamento;
 
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "FK_PSP", nullable = false)
-  private Psp psp;
+  private Psp fkPsp;
 
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "FK_BINARY_FILE", nullable = false)
-  private BinaryFile binaryFile;
+  private BinaryFile fkBinaryFile;
 
   @Column(name = "VERSIONE", length = 35)
   private String versione;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "cdiMaster", cascade = CascadeType.REMOVE)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiMaster", cascade = CascadeType.REMOVE)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private List<CdiDetail> cdiDetail;
 }

@@ -33,6 +33,8 @@ import lombok.ToString;
 @Builder
 public class CanaleTipoVersamento implements Serializable {
 
+  private static final long serialVersionUID = -6296432351697050369L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -59,10 +61,5 @@ public class CanaleTipoVersamento implements Serializable {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_TIPO_VERSAMENTO", nullable = false)
   private TipiVersamento tipoVersamento;
-
-  /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCanaleTipoVersamento", cascade = CascadeType.REMOVE)
-  @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private List<PspCanaleTipoVersamento> pspCanaleTipoVersamentoList;*/
 
 }

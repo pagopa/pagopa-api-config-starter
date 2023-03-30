@@ -25,6 +25,8 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 public class ConfigurationKeys implements Serializable {
 
+  private static final long serialVersionUID = -7800388408390622190L;
+
   @Id
   @Column(name = "CONFIG_CATEGORY", nullable = false, length = 255)
   private String configCategory;

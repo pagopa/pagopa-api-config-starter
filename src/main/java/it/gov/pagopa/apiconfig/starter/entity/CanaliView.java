@@ -32,6 +32,8 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 public class CanaliView implements Serializable {
 
+  private static final long serialVersionUID = 8484120992369995864L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -46,6 +48,7 @@ public class CanaliView implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "ENABLED", nullable = false)
+  @Builder.Default
   private Boolean enabled = false;
 
   @Column(name = "IP", length = 100)
@@ -76,6 +79,7 @@ public class CanaliView implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "PROXY_ENABLED", nullable = false)
+  @Builder.Default
   private Boolean proxyEnabled = false;
 
   @Column(name = "PROXY_HOST", length = 100)
@@ -106,6 +110,7 @@ public class CanaliView implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "USE_NEW_FAULT_CODE", nullable = false)
+  @Builder.Default
   private Boolean useNewFaultCode = false;
 
   @Column(name = "TIMEOUT_A", nullable = false)
@@ -143,22 +148,27 @@ public class CanaliView implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "RT_PUSH", nullable = false)
+  @Builder.Default
   private Boolean rtPush = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "AGID_CHANNEL", nullable = false)
+  @Builder.Default
   private Boolean agidChannel = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "ON_US", nullable = false)
+  @Builder.Default
   private Boolean onUs = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "RECOVERY", nullable = false)
+  @Builder.Default
   private Boolean recovery = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "MARCA_BOLLO_DIGITALE", nullable = false)
+  @Builder.Default
   private Boolean marcaBolloDigitale = false;
 
   @Convert(converter = YesNoConverter.class)

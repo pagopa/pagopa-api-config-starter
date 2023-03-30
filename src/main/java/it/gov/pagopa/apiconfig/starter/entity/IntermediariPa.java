@@ -41,6 +41,7 @@ public class IntermediariPa {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "ENABLED", nullable = false)
+  @Builder.Default
   private Boolean enabled = false;
 
   @Column(name = "CODICE_INTERMEDIARIO")
@@ -48,5 +49,6 @@ public class IntermediariPa {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FAULT_BEAN_ESTESO", nullable = false)
+  @Builder.Default
   private Boolean faultBeanEsteso = false;
 }

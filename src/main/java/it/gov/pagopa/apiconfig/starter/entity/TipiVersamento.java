@@ -25,6 +25,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class TipiVersamento implements Serializable {
+  
+  private static final long serialVersionUID = -8363554668043384944L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")

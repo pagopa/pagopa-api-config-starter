@@ -28,6 +28,8 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 public class Pdd implements Serializable {
 
+  private static final long serialVersionUID = 4814819547556565354L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(

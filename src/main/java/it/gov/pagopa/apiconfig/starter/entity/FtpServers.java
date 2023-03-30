@@ -28,6 +28,8 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 public class FtpServers implements Serializable {
 
+  private static final long serialVersionUID = -4676619409558867643L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(

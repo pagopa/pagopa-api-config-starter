@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -10,13 +10,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,6 +34,8 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class Psp implements Serializable {
+
+  private static final long serialVersionUID = 8269368075372242324L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
@@ -60,6 +65,21 @@ public class Psp implements Serializable {
   @Column(name = "RAGIONE_SOCIALE", length = 70)
   private String ragioneSociale;
 
+  @ToString.Exclude
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "FK_INT_QUADRATURE")
+  private IntermediariPsp fkIntQuadrature;
+
+  @Column(name = "STORNO_PAGAMENTO", nullable = false)
+  private Boolean stornoPagamento;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "FLAG_REPO_COMMISSIONE_CARICO_PA")
+  private Boolean flagRepoCommissioneCaricoPa;
+
+  @Column(name = "EMAIL_REPO_COMMISSIONE_CARICO_PA")
+  private String emailRepoCommissioneCaricoPa;
+
   @Column(name = "CODICE_MYBANK", length = 35)
   private String codiceMybank;
 
@@ -70,6 +90,14 @@ public class Psp implements Serializable {
   @Column(name = "AGID_PSP", nullable = false)
   private Boolean agidPsp;
 
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "PSP_NODO", nullable = false)
+  private Boolean pspNodo;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "PSP_AVV", nullable = false)
+  private Boolean pspAvv;
+
   @Column(name = "CODICE_FISCALE", length = 16)
   private String codiceFiscale;
 
@@ -78,6 +106,5 @@ public class Psp implements Serializable {
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "psp")
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private List<PspCanaleTipoVersamentoCanale> pspCanaleTipoVersamentoList;
+  private List<PspCanaleTipoVersamento> pspCanaleTipoVersamentoList;
 }
