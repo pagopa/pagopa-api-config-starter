@@ -18,6 +18,7 @@ import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -49,7 +50,6 @@ public class Canali implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "ENABLED", nullable = false)
-  @Builder.Default
   private Boolean enabled = false;
 
   @Column(name = "IP", length = 100)
@@ -57,6 +57,7 @@ public class Canali implements Serializable {
 
   @ToString.Exclude
   @Column(name = "NEW_PASSWORD", length = 15)
+  @EqualsAndHashCode.Exclude
   private String newPassword;
 
   @ToString.Exclude
@@ -79,11 +80,11 @@ public class Canali implements Serializable {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_INTERMEDIARIO_PSP", nullable = false)
   @NotNull
+  @EqualsAndHashCode.Exclude
   private IntermediariPsp fkIntermediarioPsp;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "PROXY_ENABLED", nullable = false)
-  @Builder.Default
   private Boolean proxyEnabled = false;
 
   @Column(name = "PROXY_HOST", length = 100)
@@ -91,6 +92,7 @@ public class Canali implements Serializable {
 
   @ToString.Exclude
   @Column(name = "PROXY_PASSWORD", length = 15)
+  @EqualsAndHashCode.Exclude
   private String proxyPassword;
 
   @Column(name = "PROXY_PORT")
@@ -110,12 +112,10 @@ public class Canali implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "CANALE_NODO", nullable = false)
-  @Builder.Default
   private Boolean canaleNodo = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "CANALE_AVV", nullable = false)
-  @Builder.Default
   private Boolean canaleAvv = false;
 
   @ToString.Exclude
@@ -131,7 +131,6 @@ public class Canali implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "USE_NEW_FAULT_CODE", nullable = false)
-  @Builder.Default
   private Boolean useNewFaultCode = false;
 
   @Column(name = "TIMEOUT_A", nullable = false)

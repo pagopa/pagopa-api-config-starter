@@ -11,7 +11,7 @@ public class HealthCheckRepository {
 
   @Autowired EntityManager entityManager;
 
-  @Value("${healthcheck.query}")
+  @Value("${healthcheck.query:select 1 from DUAL}")
   private String query;
 
   public Optional<Object> health() {

@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -51,11 +52,13 @@ public class CdiDetail {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_CDI_MASTER", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private CdiMaster fkCdiMaster;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "FK_PSP_CANALE_TIPO_VERSAMENTO", nullable = false)
+  @JoinColumn(name = "FK_PSP_CANALE_TIPO_VERSAMENTO", nullable = false, insertable = false, updatable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private PspCanaleTipoVersamento fkPspCanaleTipoVersamento;
 
   @Column(name = "CANALE_APP")
@@ -70,13 +73,22 @@ public class CdiDetail {
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiDetail", cascade = CascadeType.REMOVE)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private List<CdiInformazioniServizio> cdiInformazioniServizio;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiDetail", cascade = CascadeType.REMOVE)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private List<CdiFasciaCostoServizio> cdiFasciaCostoServizio;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "cdiDetail", cascade = CascadeType.REMOVE)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private List<CdiPreference> cdiPreference;
+  
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_PSP_CANALE_TIPO_VERSAMENTO", nullable = false)
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private PspCanaleTipoVersamentoCanale pspCanaleTipoVersamento;
 }

@@ -59,7 +59,6 @@ public class CanaliNodo implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "MULTI_PAYMENT", nullable = false)
-  @Builder.Default
   private Boolean multiPayment = false;
 
   @Column(name = "RAGIONE_SOCIALE", length = 35)
@@ -67,7 +66,6 @@ public class CanaliNodo implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "RPT_RT_COMPLIANT", nullable = false)
-  @Builder.Default
   private Boolean rptRtCompliant = false;
 
   @Column(name = "WSAPI", length = 15)
@@ -89,37 +87,30 @@ public class CanaliNodo implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "LENTO", nullable = false)
-  @Builder.Default
   private Boolean lento = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "RT_PUSH", nullable = false)
-  @Builder.Default
   private Boolean rtPush = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "AGID_CHANNEL", nullable = false)
-  @Builder.Default
   private Boolean agidChannel = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "ON_US", nullable = false)
-  @Builder.Default
   private Boolean onUs = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "CARRELLO_CARTE", nullable = false)
-  @Builder.Default
   private Boolean carrelloCarte = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "RECOVERY", nullable = false)
-  @Builder.Default
   private Boolean recovery = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "MARCA_BOLLO_DIGITALE", nullable = false)
-  @Builder.Default
   private Boolean marcaBolloDigitale = false;
 
   @Convert(converter = YesNoConverter.class)

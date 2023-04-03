@@ -16,6 +16,7 @@ import javax.persistence.UniqueConstraint;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -47,6 +48,7 @@ public class PaStazionePa {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private Pa pa;
 
   @Column(name = "FK_PA", nullable = false, insertable = false, updatable = false)
@@ -55,6 +57,7 @@ public class PaStazionePa {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_STAZIONE", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private Stazioni fkStazione;
 
   @Column(name = "AUX_DIGIT")
@@ -65,21 +68,21 @@ public class PaStazionePa {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "QUARTO_MODELLO", nullable = false)
-  @Builder.Default
   private Boolean quartoModello = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "STAZIONE_AVV", nullable = false)
-  @Builder.Default
   private Boolean stazioneAvv = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "STAZIONE_NODO", nullable = false)
-  @Builder.Default
   private Boolean stazioneNodo = true;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "BROADCAST", nullable = false)
-  @Builder.Default
   private Boolean broadcast = false;
+  
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "PAGAMENTO_SPONTANEO", nullable = false)
+  private Boolean pagamentoSpontaneo = false;
 }
