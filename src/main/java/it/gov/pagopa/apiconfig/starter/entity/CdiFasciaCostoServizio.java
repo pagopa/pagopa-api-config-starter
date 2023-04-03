@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,7 +27,6 @@ import lombok.ToString;
 @Entity
 @Table(name = "CDI_FASCIA_COSTO_SERVIZIO")
 public class CdiFasciaCostoServizio {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -50,8 +48,7 @@ public class CdiFasciaCostoServizio {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_CDI_DETAIL", nullable = false)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private CdiDetail cdiDetail;
+  private CdiDetail fkCdiDetail;
 
   @Column(name = "VALORE_COMMISSIONE")
   private Double valoreCommissione;

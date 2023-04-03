@@ -15,7 +15,6 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,7 +29,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Stazioni {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -71,7 +69,7 @@ public class Stazioni {
   private String redirectPath;
 
   @Column(name = "REDIRECT_PORTA")
-  private Long redirectPort;
+  private Long redirectPorta;
 
   @Column(name = "REDIRECT_QUERY_STRING")
   private String redirectQueryString;
@@ -81,6 +79,7 @@ public class Stazioni {
 
   @Column(name = "RT_ENABLED")
   @Convert(converter = YesNoConverter.class)
+  @Builder.Default
   private Boolean rtEnabled = true;
 
   @Column(name = "SERVIZIO_POF")
@@ -89,7 +88,6 @@ public class Stazioni {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_INTERMEDIARIO_PA", nullable = false)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private IntermediariPa intermediarioPa;
 
   @Column(name = "FK_INTERMEDIARIO_PA", nullable = false, insertable = false, updatable = false)
@@ -124,7 +122,6 @@ public class Stazioni {
   private String proxyUsername;
 
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   @Column(name = "PROXY_PASSWORD")
   private String proxyPassword;
 
@@ -146,6 +143,9 @@ public class Stazioni {
 
   @Column(name = "VERSIONE")
   private Long versione;
+
+  @Column(name = "SERVIZIO_NMP")
+  private String servizioNmp;
 
   @Column(name = "INVIO_RT_ISTANTANEO")
   @Convert(converter = YesNoConverter.class)

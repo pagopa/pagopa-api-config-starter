@@ -26,6 +26,8 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 public class WfespPluginConf implements Serializable {
 
+  private static final long serialVersionUID = 5816769493432162073L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(

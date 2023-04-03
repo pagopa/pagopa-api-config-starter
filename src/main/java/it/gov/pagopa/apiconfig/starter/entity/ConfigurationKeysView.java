@@ -20,6 +20,8 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class ConfigurationKeysView implements Serializable {
 
+  private static final long serialVersionUID = -6474996311359538937L;
+
   @Id
   @Column(name = "CONFIG_CATEGORY", nullable = false)
   private String configCategory;

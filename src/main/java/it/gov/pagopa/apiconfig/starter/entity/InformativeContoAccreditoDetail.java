@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,7 +27,6 @@ import lombok.ToString;
 @ToString
 @Builder
 public class InformativeContoAccreditoDetail {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -44,8 +42,7 @@ public class InformativeContoAccreditoDetail {
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "FK_INFORMATIVA_CONTO_ACCREDITO_MASTER")
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private InformativeContoAccreditoMaster informativaContoAccreditoMaster;
+  private InformativeContoAccreditoMaster fkInformativaContoAccreditoMaster;
 
   @Column(name = "ID_MERCHANT", length = 15)
   private String idMerchant;

@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
+import it.gov.pagopa.apiconfig.starter.util.NumericBooleanConverter;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,7 +18,6 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,7 +32,6 @@ import lombok.ToString;
 @Entity
 @Table(name = "INFORMATIVE_PA_DETAIL")
 public class InformativePaDetail {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -44,7 +42,8 @@ public class InformativePaDetail {
   private Long id;
 
   @Column(name = "FLAG_DISPONIBILITA", nullable = false)
-  @Convert(converter = YesNoConverter.class)
+  @Convert(converter = NumericBooleanConverter.class)
+  @Builder.Default
   private Boolean flagDisponibilita = false;
 
   @Column(name = "GIORNO", length = 35)
@@ -56,11 +55,12 @@ public class InformativePaDetail {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_INFORMATIVA_PA_MASTER", nullable = false)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private InformativePaMaster informativaPaMaster;
+  private InformativePaMaster fkInformativaPaMaster;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "informativaPaDetail", cascade = CascadeType.REMOVE)
+  @OneToMany(
+      fetch = FetchType.LAZY,
+      mappedBy = "fkInformativaPaDetail",
+      cascade = CascadeType.REMOVE)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private List<InformativePaFasce> fasce;
 }

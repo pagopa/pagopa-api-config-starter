@@ -18,6 +18,8 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class GdeConfigPk implements Serializable {
 
+  private static final long serialVersionUID = -1229997088232760041L;
+
   private String primitiva;
   private String type;
 }

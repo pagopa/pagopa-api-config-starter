@@ -2,6 +2,7 @@ package it.gov.pagopa.apiconfig.starter.entity;
 
 import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -13,10 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +33,8 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 public class Canali implements Serializable {
 
+  private static final long serialVersionUID = -283700671173851884L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -46,13 +49,17 @@ public class Canali implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "ENABLED", nullable = false)
+  @Builder.Default
   private Boolean enabled = false;
 
   @Column(name = "IP", length = 100)
   private String ip;
 
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
+  @Column(name = "NEW_PASSWORD", length = 15)
+  private String newPassword;
+
+  @ToString.Exclude
   @Column(name = "PASSWORD", length = 15)
   private String password;
 
@@ -69,20 +76,20 @@ public class Canali implements Serializable {
   private String descrizione;
 
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_INTERMEDIARIO_PSP", nullable = false)
-  private IntermediariPsp intermediarioPsp;
+  @NotNull
+  private IntermediariPsp fkIntermediarioPsp;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "PROXY_ENABLED", nullable = false)
+  @Builder.Default
   private Boolean proxyEnabled = false;
 
   @Column(name = "PROXY_HOST", length = 100)
   private String proxyHost;
 
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   @Column(name = "PROXY_PASSWORD", length = 15)
   private String proxyPassword;
 
@@ -101,11 +108,30 @@ public class Canali implements Serializable {
   @Column(name = "TARGET_PATH")
   private String targetPath;
 
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "CANALE_NODO", nullable = false)
+  @Builder.Default
+  private Boolean canaleNodo = false;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "CANALE_AVV", nullable = false)
+  @Builder.Default
+  private Boolean canaleAvv = false;
+
+  @ToString.Exclude
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "FK_CANALI_NODO")
+  private CanaliNodo fkCanaliNodo;
+
+  @Column(name = "TIMEOUT", nullable = false)
+  private Long timeout;
+
   @Column(name = "NUM_THREAD", nullable = false)
   private Long numThread;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "USE_NEW_FAULT_CODE", nullable = false)
+  @Builder.Default
   private Boolean useNewFaultCode = false;
 
   @Column(name = "TIMEOUT_A", nullable = false)

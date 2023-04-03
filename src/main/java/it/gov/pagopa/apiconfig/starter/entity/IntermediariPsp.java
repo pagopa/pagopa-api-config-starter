@@ -28,6 +28,8 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class IntermediariPsp implements Serializable {
 
+  private static final long serialVersionUID = 7011053855758000652L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -46,6 +48,14 @@ public class IntermediariPsp implements Serializable {
 
   @Column(name = "CODICE_INTERMEDIARIO")
   private String codiceIntermediario;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "INTERMEDIARIO_AVV", nullable = false)
+  private Boolean intermediarioAvv;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "INTERMEDIARIO_NODO", nullable = false)
+  private Boolean intermediarioNodo;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FAULT_BEAN_ESTESO", nullable = false)

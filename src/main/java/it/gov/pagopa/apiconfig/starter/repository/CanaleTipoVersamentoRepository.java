@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@SuppressWarnings("java:S100")
-// Disabled naming convention rule for method name to use Spring Data interface
+@SuppressWarnings(
+    "java:S100") // Disabled naming convention rule for method name to use Spring Data interface
 @Repository
 public interface CanaleTipoVersamentoRepository extends JpaRepository<CanaleTipoVersamento, Long> {
 
@@ -16,5 +16,6 @@ public interface CanaleTipoVersamentoRepository extends JpaRepository<CanaleTipo
 
   List<CanaleTipoVersamento> findByFkCanale(Long fkCanale);
 
-  List<CanaleTipoVersamento> findByCanale_intermediarioPsp_idIntermediarioPsp(String brokerPspCode);
+  List<CanaleTipoVersamento> findByCanale_fkIntermediarioPsp_idIntermediarioPsp(
+      String brokerPspCode);
 }
