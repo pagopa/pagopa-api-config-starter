@@ -43,7 +43,6 @@ public class InformativePaDetail {
 
   @Column(name = "FLAG_DISPONIBILITA", nullable = false)
   @Convert(converter = NumericBooleanConverter.class)
-  @Builder.Default
   private Boolean flagDisponibilita = false;
 
   @Column(name = "GIORNO", length = 35)

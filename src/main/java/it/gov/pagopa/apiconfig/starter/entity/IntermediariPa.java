@@ -1,6 +1,5 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -9,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,7 +27,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class IntermediariPa {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -41,7 +41,6 @@ public class IntermediariPa {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "ENABLED", nullable = false)
-  @Builder.Default
   private Boolean enabled = false;
 
   @Column(name = "CODICE_INTERMEDIARIO")
@@ -49,6 +48,5 @@ public class IntermediariPa {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FAULT_BEAN_ESTESO", nullable = false)
-  @Builder.Default
   private Boolean faultBeanEsteso = false;
 }

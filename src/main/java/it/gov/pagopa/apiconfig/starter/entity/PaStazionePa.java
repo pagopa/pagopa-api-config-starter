@@ -65,21 +65,17 @@ public class PaStazionePa {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "QUARTO_MODELLO", nullable = false)
-  @Builder.Default
   private Boolean quartoModello = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "STAZIONE_AVV", nullable = false)
-  @Builder.Default
   private Boolean stazioneAvv = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "STAZIONE_NODO", nullable = false)
-  @Builder.Default
   private Boolean stazioneNodo = true;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "BROADCAST", nullable = false)
-  @Builder.Default
   private Boolean broadcast = false;
 }

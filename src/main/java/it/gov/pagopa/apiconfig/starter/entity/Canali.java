@@ -49,7 +49,6 @@ public class Canali implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "ENABLED", nullable = false)
-  @Builder.Default
   private Boolean enabled = false;
 
   @Column(name = "IP", length = 100)
@@ -83,7 +82,6 @@ public class Canali implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "PROXY_ENABLED", nullable = false)
-  @Builder.Default
   private Boolean proxyEnabled = false;
 
   @Column(name = "PROXY_HOST", length = 100)
@@ -110,12 +108,10 @@ public class Canali implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "CANALE_NODO", nullable = false)
-  @Builder.Default
   private Boolean canaleNodo = false;
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "CANALE_AVV", nullable = false)
-  @Builder.Default
   private Boolean canaleAvv = false;
 
   @ToString.Exclude
@@ -131,7 +127,6 @@ public class Canali implements Serializable {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "USE_NEW_FAULT_CODE", nullable = false)
-  @Builder.Default
   private Boolean useNewFaultCode = false;
 
   @Column(name = "TIMEOUT_A", nullable = false)
