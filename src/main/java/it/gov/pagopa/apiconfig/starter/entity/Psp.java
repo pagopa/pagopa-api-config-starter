@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-
+import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -15,8 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

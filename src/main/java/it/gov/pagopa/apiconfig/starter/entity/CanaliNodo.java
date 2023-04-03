@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-
+import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -13,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,7 +30,7 @@ import lombok.ToString;
 @Table(name = "CANALI_NODO")
 @Builder
 public class CanaliNodo implements Serializable {
-  
+
   private static final long serialVersionUID = 5955835074918169426L;
 
   @Id

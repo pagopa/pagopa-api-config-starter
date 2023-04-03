@@ -1,5 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
+import it.gov.pagopa.apiconfig.starter.util.NumericBooleanConverter;
 import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -15,8 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import it.gov.pagopa.apiconfig.starter.util.NumericBooleanConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

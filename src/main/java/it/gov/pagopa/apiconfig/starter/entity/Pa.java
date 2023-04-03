@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-
+import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-
-import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -61,5 +61,4 @@ public class CanaleTipoVersamento implements Serializable {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_TIPO_VERSAMENTO", nullable = false)
   private TipiVersamento tipoVersamento;
-
 }

@@ -1,14 +1,12 @@
 package it.gov.pagopa.apiconfig.starter.repository;
 
-
+import it.gov.pagopa.apiconfig.starter.entity.Psp;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
-
-import it.gov.pagopa.apiconfig.starter.entity.Psp;
 
 @SuppressWarnings(
     "java:S100") // Disabled naming convention rule for method name to use Spring Data interface
