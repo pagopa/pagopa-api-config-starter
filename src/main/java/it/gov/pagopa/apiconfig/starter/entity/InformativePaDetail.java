@@ -1,7 +1,7 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import it.gov.pagopa.apiconfig.starter.util.NumericBooleanConverter;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,7 +44,7 @@ public class InformativePaDetail {
   private Long id;
 
   @Column(name = "FLAG_DISPONIBILITA", nullable = false)
-  @Convert(converter = NumericBooleanConverter.class)
+  @Convert(converter = YesNoConverter.class)
   private Boolean flagDisponibilita = false;
 
   @Column(name = "GIORNO", length = 35)
