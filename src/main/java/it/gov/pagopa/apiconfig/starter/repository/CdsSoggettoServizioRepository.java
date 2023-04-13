@@ -14,4 +14,9 @@ public interface CdsSoggettoServizioRepository extends JpaRepository<CdsSoggetto
           "SELECT e FROM CdsSoggettoServizio e LEFT JOIN FETCH e.soggetto LEFT JOIN FETCH"
               + " e.servizio")
   List<CdsSoggettoServizio> findAllFetching();
+
+  @Query(
+      "SELECT e FROM CdsSoggettoServizio e LEFT JOIN FETCH e.soggetto LEFT JOIN FETCH"
+          + " e.servizio LEFT JOIN FETCH e.stazionePa")
+  List<CdsSoggettoServizio> findAllFetchingStations();
 }
