@@ -35,7 +35,7 @@ import lombok.ToString;
     uniqueConstraints = {@UniqueConstraint(columnNames = {"FK_CANALE", "FK_TIPO_VERSAMENTO"})})
 @Builder
 public class CanaleTipoVersamento implements Serializable {
- 
+
   private static final long serialVersionUID = -8358589181553084940L;
 
   @Id

@@ -81,7 +81,7 @@ public class PaStazionePa {
   @Convert(converter = YesNoConverter.class)
   @Column(name = "BROADCAST", nullable = false)
   private Boolean broadcast = false;
-  
+
   @Convert(converter = YesNoConverter.class)
   @Column(name = "PAGAMENTO_SPONTANEO", nullable = false)
   private Boolean pagamentoSpontaneo = false;

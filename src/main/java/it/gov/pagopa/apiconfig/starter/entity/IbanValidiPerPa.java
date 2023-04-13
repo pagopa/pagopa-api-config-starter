@@ -62,7 +62,7 @@ public class IbanValidiPerPa {
 
   @Column(name = "MASTER_OBJ")
   private Long masterObj;
-  
+
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude

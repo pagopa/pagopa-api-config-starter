@@ -1,9 +1,7 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
-
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -86,10 +84,10 @@ public class Pa {
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FLAG_REPO_COMMISSIONE_CARICO_PA")
   private Boolean flagRepoCommissioneCaricoPa;
-  
+
   @Column(name = "DESCRIZIONE")
   private String description;
-  
+
   @ToString.Exclude
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkPa")
   @EqualsAndHashCode.Exclude

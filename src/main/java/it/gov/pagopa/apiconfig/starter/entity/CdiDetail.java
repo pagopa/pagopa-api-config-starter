@@ -56,7 +56,11 @@ public class CdiDetail {
   private CdiMaster fkCdiMaster;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "FK_PSP_CANALE_TIPO_VERSAMENTO", nullable = false, insertable = false, updatable = false)
+  @JoinColumn(
+      name = "FK_PSP_CANALE_TIPO_VERSAMENTO",
+      nullable = false,
+      insertable = false,
+      updatable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private PspCanaleTipoVersamento fkPspCanaleTipoVersamento;
@@ -85,7 +89,7 @@ public class CdiDetail {
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private List<CdiPreference> cdiPreference;
-  
+
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PSP_CANALE_TIPO_VERSAMENTO", nullable = false)
   @ToString.Exclude

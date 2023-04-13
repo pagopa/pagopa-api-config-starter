@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
     "java:S100") // Disabled naming convention rule for method name to use Spring Data interface
 @Repository
 public interface PaStazionePaRepository extends PagingAndSortingRepository<PaStazionePa, Long> {
-  
+
   @Query(
       "select distinct(paspa) from PaStazionePa paspa left join fetch paspa.pa left join fetch"
           + " paspa.fkStazione")

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
     "java:S100") // Disabled naming convention rule for method name to use Spring Data interface
 @Repository
 public interface CodifichePaRepository extends JpaRepository<CodifichePa, Long> {
-  
+
   @Query("select cpa from CodifichePa cpa left join fetch cpa.fkCodifica")
   List<CodifichePa> findAllFetchingCodifiche();
 

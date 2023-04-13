@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
     "java:S100") // Disabled naming convention rule for method name to use Spring Data interface
 @Repository
 public interface CdiMasterValidRepository extends PagingAndSortingRepository<CdiMasterValid, Long> {
-  
+
   @Query(value = "SELECT distinct(e) FROM CdiMasterValid e LEFT JOIN FETCH e.fkPsp")
   List<CdiMasterValid> findAllFetching();
 

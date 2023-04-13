@@ -1,7 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.repository;
 
 import it.gov.pagopa.apiconfig.starter.entity.Stazioni;
-
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StazioniRepository extends JpaRepository<Stazioni, Long> {
-  
+
   @Query(value = "SELECT e FROM Stazioni e LEFT JOIN FETCH e.intermediarioPa")
   List<Stazioni> findAllFetchingIntermediario();
 

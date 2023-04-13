@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IbanValidiPerPaRepository extends JpaRepository<IbanValidiPerPa, String> {
-  
+
   @Query(value = "SELECT e FROM IbanValidiPerPa e LEFT JOIN FETCH e.pa")
   List<IbanValidiPerPa> findAllFetchingPas();
 
