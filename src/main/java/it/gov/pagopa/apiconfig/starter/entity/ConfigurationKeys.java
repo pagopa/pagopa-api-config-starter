@@ -31,6 +31,7 @@ public class ConfigurationKeys implements Serializable {
   @Column(name = "CONFIG_CATEGORY", nullable = false, length = 255)
   private String configCategory;
 
+  @Id
   @Column(name = "CONFIG_KEY", nullable = false, length = 255)
   private String configKey;
 

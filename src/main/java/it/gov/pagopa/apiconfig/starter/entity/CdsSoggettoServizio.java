@@ -53,7 +53,7 @@ public class CdsSoggettoServizio {
   @JoinColumn(name = "STAZIONE", nullable = true)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private Stazioni stazione;
+  private PaStazionePa stazionePa;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_CDS_SOGGETTO", nullable = false)

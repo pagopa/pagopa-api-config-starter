@@ -26,7 +26,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class IntermediariPa {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -41,7 +40,6 @@ public class IntermediariPa {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "ENABLED", nullable = false)
-  @Builder.Default
   private Boolean enabled = false;
 
   @Column(name = "CODICE_INTERMEDIARIO")
@@ -49,6 +47,5 @@ public class IntermediariPa {
 
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FAULT_BEAN_ESTESO", nullable = false)
-  @Builder.Default
   private Boolean faultBeanEsteso = false;
 }

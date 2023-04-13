@@ -1,18 +1,22 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -80,4 +84,17 @@ public class Pa {
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FLAG_REPO_COMMISSIONE_CARICO_PA")
   private Boolean flagRepoCommissioneCaricoPa;
+
+  @Column(name = "DESCRIZIONE")
+  private String description;
+
+  @ToString.Exclude
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkPa")
+  @EqualsAndHashCode.Exclude
+  private List<IbanValidiPerPa> ibans;
+
+  @ToString.Exclude
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkPa")
+  @EqualsAndHashCode.Exclude
+  private List<InformativePaMaster> informativePaMasters;
 }

@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,7 +27,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class CdiPreference {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -41,7 +39,6 @@ public class CdiPreference {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_INFORMATIVA_DETAIL", nullable = false)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private CdiDetail cdiDetail;
 
   @Column(name = "SELLER", nullable = false)

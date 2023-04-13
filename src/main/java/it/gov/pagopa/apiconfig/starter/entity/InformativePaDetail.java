@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import it.gov.pagopa.apiconfig.starter.util.NumericBooleanConverter;
+import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -42,8 +42,7 @@ public class InformativePaDetail {
   private Long id;
 
   @Column(name = "FLAG_DISPONIBILITA", nullable = false)
-  @Convert(converter = NumericBooleanConverter.class)
-  @Builder.Default
+  @Convert(converter = YesNoConverter.class)
   private Boolean flagDisponibilita = false;
 
   @Column(name = "GIORNO", length = 35)

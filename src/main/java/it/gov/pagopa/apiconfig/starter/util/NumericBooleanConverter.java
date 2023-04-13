@@ -13,6 +13,6 @@ public class NumericBooleanConverter implements AttributeConverter<Boolean, Inte
 
   @Override
   public Boolean convertToEntityAttribute(final Integer value) {
-    return value.equals(1);
+    return value != null && value.equals(1);
   }
 }

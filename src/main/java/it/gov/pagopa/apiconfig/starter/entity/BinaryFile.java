@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,7 +25,6 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class BinaryFile {
-
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   @SequenceGenerator(
@@ -38,12 +36,10 @@ public class BinaryFile {
 
   @Column(name = "FILE_CONTENT", nullable = false)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private byte[] fileContent;
 
   @Column(name = "FILE_HASH", nullable = false)
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   private byte[] fileHash;
 
   @Column(name = "FILE_SIZE", nullable = false)

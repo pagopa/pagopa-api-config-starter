@@ -1,6 +1,8 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -33,7 +36,7 @@ import lombok.ToString;
 @Builder
 public class CanaleTipoVersamento implements Serializable {
 
-  private static final long serialVersionUID = -6296432351697050369L;
+  private static final long serialVersionUID = -8358589181553084940L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
@@ -51,14 +54,20 @@ public class CanaleTipoVersamento implements Serializable {
   private Long fkTipoVersamento;
 
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_CANALE", nullable = false)
   private Canali canale;
 
   @ToString.Exclude
-  @EqualsAndHashCode.Exclude
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_TIPO_VERSAMENTO", nullable = false)
   private TipiVersamento tipoVersamento;
+
+  @OneToMany(
+      fetch = FetchType.LAZY,
+      mappedBy = "fkCanaleTipoVersamento",
+      cascade = CascadeType.REMOVE)
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private List<PspCanaleTipoVersamento> pspCanaleTipoVersamentoList;
 }

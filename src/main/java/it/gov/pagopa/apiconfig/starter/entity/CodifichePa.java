@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,10 +43,12 @@ public class CodifichePa {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_CODIFICA", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private Codifiche fkCodifica;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude
+  @EqualsAndHashCode.Exclude
   private Pa fkPa;
 }

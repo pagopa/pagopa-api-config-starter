@@ -79,7 +79,6 @@ public class Stazioni {
 
   @Column(name = "RT_ENABLED")
   @Convert(converter = YesNoConverter.class)
-  @Builder.Default
   private Boolean rtEnabled = true;
 
   @Column(name = "SERVIZIO_POF")
