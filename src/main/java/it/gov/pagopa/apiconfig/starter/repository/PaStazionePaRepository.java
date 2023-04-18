@@ -7,6 +7,7 @@ import javax.persistence.criteria.Predicate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings(
     "java:S100") // Disabled naming convention rule for method name to use Spring Data interface
 @Repository
-public interface PaStazionePaRepository extends PagingAndSortingRepository<PaStazionePa, Long> {
+public interface PaStazionePaRepository
+    extends PagingAndSortingRepository<PaStazionePa, Long>, JpaSpecificationExecutor<PaStazionePa> {
 
   @Query(
       "select distinct(paspa) from PaStazionePa paspa left join fetch paspa.pa left join fetch"
