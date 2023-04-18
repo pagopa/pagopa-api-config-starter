@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CodifichePaRepository extends JpaRepository<CodifichePa, Long> {
 
-  @Query("select cpa from CodifichePa cpa left join fetch cpa.fkCodifica")
+  @Query("select cpa from CodifichePa cpa left join fetch cpa.fkCodifica left join fetch cpa.fkPa")
   List<CodifichePa> findAllFetchingCodifiche();
 
   List<CodifichePa> findAllByFkPa_ObjId(Long fkPa);
