@@ -119,4 +119,8 @@ public class CanaliNodo implements Serializable {
 
   @Column(name = "VERSIONE_PRIMITIVE")
   private Integer versionePrimitive;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "FLAG_PSP_CP", nullable = false)
+  private Boolean flagPspCp = false;
 }
