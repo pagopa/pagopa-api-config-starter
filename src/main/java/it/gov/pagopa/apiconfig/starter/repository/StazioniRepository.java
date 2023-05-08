@@ -39,4 +39,10 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long> {
       @Param("fkIntermediario") Long fkIntermediario,
       @Param("idStazione") String idStazione,
       Pageable pageable);
+
+  @Query(value = "select distinct s from Stazioni s where (:fkIntermediario = :fkIntermediario)")
+  Page<Stazioni> findAllByFilter(
+      @Param("fkIntermediario") Long fkIntermediario,
+      Pageable pageable
+  );
 }
