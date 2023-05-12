@@ -40,7 +40,7 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long> {
       @Param("idStazione") String idStazione,
       Pageable pageable);
 
-  @Query(value = "select distinct s from Stazioni s where (:fkIntermediario = :fkIntermediario) order by s.idStazione")
+  @Query(value = "select distinct s from Stazioni s where (s.fkIntermediarioPa = :fkIntermediario) order by s.idStazione")
   Page<Stazioni> findAllByFiltersOrderById(
       @Param("fkIntermediario") Long fkIntermediario,
       Pageable pageable
