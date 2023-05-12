@@ -40,11 +40,12 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long> {
       @Param("idStazione") String idStazione,
       Pageable pageable);
 
-  @Query(value = "select distinct s from Stazioni s where (s.fkIntermediarioPa = :fkIntermediario) order by s.idStazione")
+  @Query(
+      value =
+          "select distinct s from Stazioni s where (s.fkIntermediarioPa = :fkIntermediario) order"
+              + " by s.idStazione")
   Page<Stazioni> findAllByFiltersOrderById(
-      @Param("fkIntermediario") Long fkIntermediario,
-      Pageable pageable
-  );
+      @Param("fkIntermediario") Long fkIntermediario, Pageable pageable);
 
   @Query(
       value =
@@ -54,6 +55,5 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long> {
   Page<Stazioni> findAllByFiltersOrderById(
       @Param("fkIntermediario") Long fkIntermediario,
       @Param("idStazione") String idStazione,
-      Pageable pageable
-  );
+      Pageable pageable);
 }
