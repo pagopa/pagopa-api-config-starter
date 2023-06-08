@@ -32,13 +32,13 @@ public class IbanMaster {
   @Column(name = "OBJ_ID")
   private Long objId;
 
-  @Column(name = "FK_PA", nullable = false)
+  @Column(name = "FK_PA", nullable = false, insertable = false, updatable = false)
   private Long fkPa;
 
-  @Column(name = "FK_IBAN", nullable = false)
+  @Column(name = "FK_IBAN", nullable = false, insertable = false, updatable = false)
   private Long fkIban;
 
-  @Column(name = "FK_ICA_BINARY_FILE", nullable = false)
+  @Column(name = "FK_ICA_BINARY_FILE", nullable = false, insertable = false, updatable = false)
   private Long fkIcaBinaryFile;
 
   @Column(name = "STATE", nullable = false)
