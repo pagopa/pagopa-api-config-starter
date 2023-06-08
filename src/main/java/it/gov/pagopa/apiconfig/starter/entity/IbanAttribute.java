@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Immutable;
 
 import javax.persistence.*;
 
-@Table(name = "IBAN_ATTRIBUTES")
+@Table(name = "IBAN_ATTRIBUTE")
 @Entity
 @Immutable
 @Getter
@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
-public class IbanAttributes {
+public class IbanAttribute {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
@@ -25,7 +25,7 @@ public class IbanAttributes {
   @Column(name = "OBJ_ID")
   private Long objId;
 
-  @Column(name = "ATTRIBUTE_NAME", nullable = false)
+  @Column(name = "ATTRIBUTE_NAME", nullable = false, unique = true)
   private String attributeName;
 
   @Column(name = "ATTRIBUTE_DESCRIPTION", nullable = false)

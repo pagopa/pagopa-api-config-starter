@@ -4,7 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Immutable;
 import javax.persistence.*;
 
-@Table(name = "IBAN_ATTRIBUTES")
+@Table(name = "IBAN_ATTRIBUTE_MASTER")
 @Entity
 @Immutable
 @Getter
@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
-public class IbanAttributesMaster {
+public class IbanAttributeMaster {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
@@ -40,5 +40,5 @@ public class IbanAttributesMaster {
   @JoinColumn(name = "FK_ATTRIBUTE_MASTER", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private IbanAttributes ibanAttributes;
+  private IbanAttribute ibanAttribute;
 }
