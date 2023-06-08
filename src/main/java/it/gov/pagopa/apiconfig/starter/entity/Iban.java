@@ -3,7 +3,6 @@ package it.gov.pagopa.apiconfig.starter.entity;
 import lombok.*;
 import org.springframework.data.annotation.Immutable;
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.List;
 
 @Table(name = "IBAN")
@@ -26,14 +25,11 @@ public class Iban {
   @Column(name = "OBJ_ID")
   private Long objId;
 
-  @Column(name = "IBAN", nullable = false)
+  @Column(name = "IBAN", nullable = false, unique = true)
   private String iban;
 
   @Column(name = "FISCAL_CODE", nullable = false)
   private String fiscalCode;
-
-  @Column(name = "PUBLICATION_DATE", nullable = false)
-  private Timestamp publicationDate;
 
   @Column(name = "DESCRIPTION", nullable = false)
   private String description;

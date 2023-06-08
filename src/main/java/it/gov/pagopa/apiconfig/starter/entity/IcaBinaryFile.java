@@ -34,11 +34,11 @@ public class IcaBinaryFile {
   @Column(name = "OBJ_ID")
   private Long objId;
 
-  @Column(name = "FILE_CONTENT", nullable = false)
+  @Column(name = "FILE_CONTENT")
   @ToString.Exclude
   private byte[] fileContent;
 
-  @Column(name = "FILE_HASH", nullable = false)
+  @Column(name = "FILE_HASH")
   @ToString.Exclude
   private byte[] fileHash;
 

@@ -32,16 +32,16 @@ public class IbanMaster {
   @Column(name = "OBJ_ID")
   private Long objId;
 
-  @Column(name = "FK_PA", nullable = false, insertable = false, updatable = false)
+  @Column(name = "FK_PA", nullable = false)
   private Long fkPa;
 
-  @Column(name = "FK_IBAN", nullable = false, insertable = false, updatable = false)
+  @Column(name = "FK_IBAN", nullable = false)
   private Long fkIban;
 
-  @Column(name = "FK_ICA_BINARY_FILE", nullable = false, insertable = false, updatable = false)
+  @Column(name = "FK_ICA_BINARY_FILE", nullable = false)
   private Long fkIcaBinaryFile;
 
-  @Column(name = "STATUS", nullable = false)
+  @Column(name = "STATE", nullable = false)
   @Enumerated(EnumType.STRING)
   private IbanStatus ibanStatus;
 
@@ -72,5 +72,5 @@ public class IbanMaster {
   @ToString.Exclude
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIbanMaster")
   @EqualsAndHashCode.Exclude
-  private List<IbanAttributesMaster> ibanAttributesMasters;
+  private List<IbanAttributeMaster> ibanAttributesMasters;
 }
