@@ -11,4 +11,6 @@ public interface IbanMasterRepository extends JpaRepository<IbanMaster, Long> {
   List<IbanMaster> findByFkIban(Long fkIban);
 
   List<IbanMaster> findByFkIbanAndFkPa(Long fkIban, Long fkPa);
+
+  List<IbanMaster> findByFkPa(Long fkPa);
 }
