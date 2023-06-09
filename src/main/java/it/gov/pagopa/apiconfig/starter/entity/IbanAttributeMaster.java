@@ -27,8 +27,8 @@ public class IbanAttributeMaster {
   @Column(name = "FK_IBAN_MASTER", nullable = false, insertable = false, updatable = false)
   private Long fkIbanMaster;
 
-  @Column(name = "FK_ATTRIBUTE_MASTER", nullable = false, insertable = false, updatable = false)
-  private Long fkAttributeMaster;
+  @Column(name = "FK_IBAN_ATTRIBUTE", nullable = false, insertable = false, updatable = false)
+  private Long fkAttribute;
 
   @ManyToOne(fetch = FetchType.EAGER, optional = false)
   @JoinColumn(name = "FK_IBAN_MASTER", nullable = false)
@@ -37,7 +37,7 @@ public class IbanAttributeMaster {
   private IbanMaster ibanMaster;
 
   @ManyToOne(fetch = FetchType.EAGER, optional = false)
-  @JoinColumn(name = "FK_ATTRIBUTE_MASTER", nullable = false)
+  @JoinColumn(name = "FK_IBAN_ATTRIBUTE", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private IbanAttribute ibanAttribute;
