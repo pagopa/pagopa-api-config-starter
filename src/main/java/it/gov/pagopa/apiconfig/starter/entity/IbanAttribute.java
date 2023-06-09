@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Immutable;
 
 import javax.persistence.*;
 
-@Table(name = "IBAN_ATTRIBUTE")
+@Table(name = "IBAN_ATTRIBUTES")
 @Entity
 @Immutable
 @Getter
