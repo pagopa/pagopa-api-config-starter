@@ -4,7 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Immutable;
 import javax.persistence.*;
 
-@Table(name = "IBAN_ATTRIBUTE_MASTER")
+@Table(name = "IBAN_ATTRIBUTES_MASTER")
 @Entity
 @Immutable
 @Getter
