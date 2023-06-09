@@ -9,4 +9,6 @@ import java.util.List;
 public interface IbanMasterRepository extends JpaRepository<IbanMaster, Long> {
 
   List<IbanMaster> findByIban(Long fkIban);
+
+  List<IbanMaster> findByFkIbanAndFkPa(Long fkIban, Long fkPa);
 }
