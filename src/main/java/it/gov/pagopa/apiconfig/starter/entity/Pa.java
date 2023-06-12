@@ -97,4 +97,9 @@ public class Pa {
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkPa")
   @EqualsAndHashCode.Exclude
   private List<InformativePaMaster> informativePaMasters;
+
+  @ToString.Exclude
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkPa")
+  @EqualsAndHashCode.Exclude
+  private List<IbanMaster> ibanMasters;
 }
