@@ -1,8 +1,8 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
+import javax.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.Immutable;
-import javax.persistence.*;
 
 @Table(name = "IBAN_ATTRIBUTES_MASTER")
 @Entity
