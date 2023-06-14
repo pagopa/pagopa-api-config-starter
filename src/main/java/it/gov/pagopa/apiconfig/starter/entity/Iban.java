@@ -1,5 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
+import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.*;
 import lombok.*;
@@ -30,6 +31,9 @@ public class Iban {
 
   @Column(name = "FISCAL_CODE", nullable = false)
   private String fiscalCode;
+  
+  @Column(name = "DUE_DATE", nullable = false)
+  private Timestamp dueDate;
 
   @Column(name = "DESCRIPTION")
   private String description;
