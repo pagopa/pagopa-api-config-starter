@@ -31,7 +31,7 @@ public class Iban {
 
   @Column(name = "FISCAL_CODE", nullable = false)
   private String fiscalCode;
-  
+
   @Column(name = "DUE_DATE", nullable = false)
   private Timestamp dueDate;
 
