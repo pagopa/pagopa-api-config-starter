@@ -8,8 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.*;
+
 import org.springframework.data.annotation.Immutable;
+
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Table(name = "ICA_BINARY_FILE")
 @Entity
@@ -30,7 +38,7 @@ public class IcaBinaryFile {
       allocationSize = 1)
   @Column(name = "OBJ_ID")
   private Long objId;
-
+  
   @Column(name = "ID_DOMINIO", nullable = false)
   private String idDominio;
 
