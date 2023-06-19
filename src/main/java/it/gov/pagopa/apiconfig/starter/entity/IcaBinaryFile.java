@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -33,19 +34,20 @@ public class IcaBinaryFile {
   @Column(name = "OBJ_ID")
   private Long objId;
 
+  @Column(name = "ID_DOMINIO")
+  private String idDominio;
+
   @Column(name = "FILE_CONTENT")
+  @Lob
   @ToString.Exclude
   private byte[] fileContent;
 
   @Column(name = "FILE_HASH")
+  @Lob
   @ToString.Exclude
   private byte[] fileHash;
 
   @Column(name = "FILE_SIZE", nullable = false)
   private Long fileSize;
 
-  @ToString.Exclude
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIcaBinaryFile")
-  @EqualsAndHashCode.Exclude
-  private List<IbanMaster> ibanMasters;
 }

@@ -62,12 +62,6 @@ public class IbanMaster {
   @EqualsAndHashCode.Exclude
   private Iban iban;
 
-  @ManyToOne(fetch = FetchType.EAGER, optional = false)
-  @JoinColumn(name = "FK_ICA_BINARY_FILE", nullable = false)
-  @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private IcaBinaryFile icaBinaryFile;
-
   @ToString.Exclude
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIbanMaster")
   @EqualsAndHashCode.Exclude
