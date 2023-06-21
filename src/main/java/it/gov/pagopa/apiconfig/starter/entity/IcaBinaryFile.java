@@ -31,7 +31,7 @@ public class IcaBinaryFile {
   @Column(name = "OBJ_ID")
   private Long objId;
 
-  @Column(name = "ID_DOMINIO")
+  @Column(name = "ID_DOMINIO", nullable = false)
   private String idDominio;
 
   @Column(name = "FILE_CONTENT")
