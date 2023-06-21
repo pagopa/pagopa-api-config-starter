@@ -37,9 +37,6 @@ public class IbanMaster {
   @Column(name = "FK_IBAN", nullable = false, insertable = false, updatable = false)
   private Long fkIban;
 
-  @Column(name = "FK_ICA_BINARY_FILE", nullable = false, insertable = false, updatable = false)
-  private Long fkIcaBinaryFile;
-
   @Column(name = "STATE", nullable = false)
   @Enumerated(EnumType.STRING)
   private IbanStatus ibanStatus;
@@ -61,12 +58,6 @@ public class IbanMaster {
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private Iban iban;
-
-  @ManyToOne(fetch = FetchType.EAGER, optional = false)
-  @JoinColumn(name = "FK_ICA_BINARY_FILE", nullable = false)
-  @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private IcaBinaryFile icaBinaryFile;
 
   @ToString.Exclude
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIbanMaster")
