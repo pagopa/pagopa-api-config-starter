@@ -81,10 +81,6 @@ public class Pa {
   @Column(name = "RENDICONTAZIONE_ZIP")
   private Boolean rendicontazioneZip;
 
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "FLAG_REPO_COMMISSIONE_CARICO_PA")
-  private Boolean flagRepoCommissioneCaricoPa;
-
   @Column(name = "DESCRIZIONE")
   private String description;
 

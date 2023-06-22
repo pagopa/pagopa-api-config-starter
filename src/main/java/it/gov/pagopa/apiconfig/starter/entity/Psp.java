@@ -68,16 +68,6 @@ public class Psp implements Serializable {
   @JoinColumn(name = "FK_INT_QUADRATURE")
   private IntermediariPsp fkIntQuadrature;
 
-  @Column(name = "STORNO_PAGAMENTO", nullable = false)
-  private Boolean stornoPagamento;
-
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "FLAG_REPO_COMMISSIONE_CARICO_PA")
-  private Boolean flagRepoCommissioneCaricoPa;
-
-  @Column(name = "EMAIL_REPO_COMMISSIONE_CARICO_PA")
-  private String emailRepoCommissioneCaricoPa;
-
   @Column(name = "CODICE_MYBANK", length = 35)
   private String codiceMybank;
 
@@ -87,14 +77,6 @@ public class Psp implements Serializable {
   @Convert(converter = YesNoConverter.class)
   @Column(name = "AGID_PSP", nullable = false)
   private Boolean agidPsp;
-
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "PSP_NODO", nullable = false)
-  private Boolean pspNodo;
-
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "PSP_AVV", nullable = false)
-  private Boolean pspAvv;
 
   @Column(name = "CODICE_FISCALE", length = 16)
   private String codiceFiscale;

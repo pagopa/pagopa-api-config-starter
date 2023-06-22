@@ -71,14 +71,6 @@ public class PaStazionePa {
   private Boolean quartoModello = false;
 
   @Convert(converter = YesNoConverter.class)
-  @Column(name = "STAZIONE_AVV", nullable = false)
-  private Boolean stazioneAvv = false;
-
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "STAZIONE_NODO", nullable = false)
-  private Boolean stazioneNodo = true;
-
-  @Convert(converter = YesNoConverter.class)
   @Column(name = "BROADCAST", nullable = false)
   private Boolean broadcast = false;
 
