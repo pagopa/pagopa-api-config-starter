@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IcaBinaryFileRepository extends JpaRepository<IcaBinaryFile, Long> {
 
-  Long deleteByIdDominio(String idDominio);
+  Optional<IcaBinaryFile> findByIdDominio(String idDominio);
+
 }
