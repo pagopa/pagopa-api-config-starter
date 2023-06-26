@@ -110,14 +110,6 @@ public class Canali implements Serializable {
   @Column(name = "TARGET_PATH")
   private String targetPath;
 
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "CANALE_NODO", nullable = false)
-  private Boolean canaleNodo = false;
-
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "CANALE_AVV", nullable = false)
-  private Boolean canaleAvv = false;
-
   @ToString.Exclude
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "FK_CANALI_NODO")

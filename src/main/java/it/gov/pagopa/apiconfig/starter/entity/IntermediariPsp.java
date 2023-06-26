@@ -50,14 +50,6 @@ public class IntermediariPsp implements Serializable {
   private String codiceIntermediario;
 
   @Convert(converter = YesNoConverter.class)
-  @Column(name = "INTERMEDIARIO_AVV", nullable = false)
-  private Boolean intermediarioAvv;
-
-  @Convert(converter = YesNoConverter.class)
-  @Column(name = "INTERMEDIARIO_NODO", nullable = false)
-  private Boolean intermediarioNodo;
-
-  @Convert(converter = YesNoConverter.class)
   @Column(name = "FAULT_BEAN_ESTESO", nullable = false)
   private Boolean faultBeanEsteso;
 }
