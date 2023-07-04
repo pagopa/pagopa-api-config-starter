@@ -42,6 +42,34 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long> {
 
   @Query(
       value =
+          "select distinct s from Stazioni s, PaStazionePa r, IntermediariPa i where"
+              + " (:fkIntermediario is null or s.fkIntermediarioPa = :fkIntermediario) and (r.fkPa"
+              + " = :fkPa and r.fkStazione = s) and (s.intermediarioPa = i) and (:idStazione is"
+              + " null or upper(s.idStazione) like concat('%', upper(:idStazione), '%')) and"
+              + " (:codiceIntermediario is null or upper(i.codiceIntermediario) like concat('%',"
+              + " upper(:codiceIntermediario), '%')) ")
+  Page<Stazioni> findAllByFilters(
+      @Param("fkIntermediario") Long fkIntermediario,
+      @Param("fkPa") Long fkPa,
+      @Param("idStazione") String idStazione,
+      @Param("codiceIntermediario") String codiceIntermediario,
+      Pageable pageable);
+
+  @Query(
+      value =
+          "select distinct s from Stazioni s, IntermediariPa i where (s.intermediarioPa = i) and"
+              + " (:fkIntermediario is null or s.fkIntermediarioPa = :fkIntermediario) and"
+              + " (:idStazione is null or upper(s.idStazione) like concat('%', upper(:idStazione),"
+              + " '%')) and (:codiceIntermediario is null or upper(i.codiceIntermediario) like "
+              + " concat('%', upper(:codiceIntermediario), '%')) ")
+  Page<Stazioni> findAllByFilters(
+      @Param("fkIntermediario") Long fkIntermediario,
+      @Param("idStazione") String idStazione,
+      @Param("codiceIntermediario") String codiceIntermediario,
+      Pageable pageable);
+
+  @Query(
+      value =
           "select distinct s from Stazioni s where (s.fkIntermediarioPa = :fkIntermediario) order"
               + " by s.idStazione")
   Page<Stazioni> findAllByFiltersOrderById(
