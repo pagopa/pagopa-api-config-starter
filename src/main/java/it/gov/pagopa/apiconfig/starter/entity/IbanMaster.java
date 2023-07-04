@@ -47,6 +47,9 @@ public class IbanMaster {
   @Column(name = "VALIDITY_DATE", nullable = false)
   private Timestamp validityDate;
 
+  @Column(name = "DESCRIPTION")
+  private String description;
+
   @ManyToOne(fetch = FetchType.EAGER, optional = false)
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude
