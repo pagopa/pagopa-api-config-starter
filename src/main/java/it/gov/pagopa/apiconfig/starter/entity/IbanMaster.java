@@ -46,7 +46,7 @@ public class IbanMaster {
 
   @Column(name = "VALIDITY_DATE", nullable = false)
   private Timestamp validityDate;
-  
+
   @Column(name = "DESCRIPTION")
   private String description;
 
