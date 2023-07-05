@@ -61,6 +61,11 @@ public class InformativePaMaster {
   @JoinColumn(name = "FK_BINARY_FILE")
   @ToString.Exclude
   private BinaryFile fkBinaryFile;
+  
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "FK_ICA_BINARY_FILE")
+  @ToString.Exclude
+  private BinaryFile fkIcaBinaryFile;
 
   @Column(name = "VERSIONE", length = 35)
   private String versione;
