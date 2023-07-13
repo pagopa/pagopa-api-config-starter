@@ -1,26 +1,9 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
+import lombok.*;
+
+import javax.persistence.*;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Table(name = "CDI_DETAIL")
 @Entity
@@ -54,16 +37,6 @@ public class CdiDetail {
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private CdiMaster fkCdiMaster;
-
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(
-      name = "FK_PSP_CANALE_TIPO_VERSAMENTO",
-      nullable = false,
-      insertable = false,
-      updatable = false)
-  @ToString.Exclude
-  @EqualsAndHashCode.Exclude
-  private PspCanaleTipoVersamento fkPspCanaleTipoVersamento;
 
   @Column(name = "CANALE_APP")
   private Long canaleApp;
