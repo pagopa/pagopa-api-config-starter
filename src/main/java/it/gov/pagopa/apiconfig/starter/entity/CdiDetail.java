@@ -67,5 +67,5 @@ public class CdiDetail {
   @JoinColumn(name = "FK_PSP_CANALE_TIPO_VERSAMENTO", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private PspCanaleTipoVersamentoCanale pspCanaleTipoVersamento;
+  private PspCanaleTipoVersamento pspCanaleTipoVersamento;
 }
