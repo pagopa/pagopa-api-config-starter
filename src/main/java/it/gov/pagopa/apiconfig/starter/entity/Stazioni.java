@@ -49,10 +49,6 @@ public class Stazioni {
   private String ip;
 
   @ToString.Exclude
-  @Column(name = "NEW_PASSWORD")
-  private String newPassword;
-
-  @ToString.Exclude
   @Column(name = "PASSWORD")
   private String password;
 
