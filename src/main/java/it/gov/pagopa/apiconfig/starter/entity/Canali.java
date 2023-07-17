@@ -56,11 +56,6 @@ public class Canali implements Serializable {
   private String ip;
 
   @ToString.Exclude
-  @Column(name = "NEW_PASSWORD", length = 15)
-  @EqualsAndHashCode.Exclude
-  private String newPassword;
-
-  @ToString.Exclude
   @Column(name = "PASSWORD", length = 15)
   private String password;
 
