@@ -188,6 +188,6 @@ public class CanaliView implements Serializable {
   private String targetPathNmp;
 
   @Convert(converter = YesNoConverter.class)
-  @Column(name = "FLAG_PSP_CP")
-  private Boolean flagPspCp;
+  @Column(name = "FLAG_TRAVASO")
+  private Boolean flagTravaso;
 }
