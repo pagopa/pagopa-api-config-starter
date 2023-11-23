@@ -19,7 +19,8 @@ public class IbanMaster {
 
   public enum IbanStatus {
     ENABLED,
-    DISABLED
+    DISABLED,
+    NA
   }
 
   @Id
@@ -39,7 +40,8 @@ public class IbanMaster {
 
   @Column(name = "STATE", nullable = false)
   @Enumerated(EnumType.STRING)
-  private IbanStatus ibanStatus;
+  @Builder.Default
+  private IbanStatus ibanStatus = IbanStatus.NA;
 
   @Column(name = "INSERTED_DATE", nullable = false)
   private Timestamp insertedDate;
