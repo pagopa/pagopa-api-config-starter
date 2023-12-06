@@ -2,6 +2,8 @@ package it.gov.pagopa.apiconfig.starter.entity;
 
 import java.sql.Timestamp;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -57,7 +59,7 @@ public class Iban {
   private String description = "iban";
 
   @ToString.Exclude
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIban")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIban", cascade = CascadeType.ALL)
   @EqualsAndHashCode.Exclude
   private List<IbanMaster> ibanMasters;
 }
