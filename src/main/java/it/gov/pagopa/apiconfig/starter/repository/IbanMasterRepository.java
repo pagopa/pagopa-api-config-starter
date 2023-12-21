@@ -22,9 +22,10 @@ public interface IbanMasterRepository extends JpaRepository<IbanMaster, Long> {
   void deleteByIds(List<Long> ids);
 
 
-    @Query("select master from IbanMaster master, IbanAttributeMaster attribute " +
+  @Query("select master from IbanMaster master, IbanAttributeMaster attribute, IbanAttribute label " +
             "where master.objId = attribute.fkIbanMaster " +
+          "and attribute.fkAttribute = label.objId " +
             "and master.fkPa=?1 " +
-            "and ( ?2=null or attribute.ibanAttribute.attributeName=?2)")
+          "and attribute.ibanAttribute.attributeName=?2")
     List<IbanMaster> findByFkPaAndLabel(Long fkPa, String label);
 }
