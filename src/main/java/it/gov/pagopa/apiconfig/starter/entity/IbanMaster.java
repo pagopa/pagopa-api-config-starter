@@ -52,20 +52,20 @@ public class IbanMaster {
   @Column(name = "DESCRIPTION")
   private String description;
 
-  @ManyToOne(fetch = FetchType.EAGER, optional = false)
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private Pa pa;
 
-  @ManyToOne(fetch = FetchType.EAGER, optional = false)
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_IBAN", nullable = false)
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   private Iban iban;
 
   @ToString.Exclude
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIbanMaster")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIbanMaster", cascade = CascadeType.ALL)
   @EqualsAndHashCode.Exclude
   private List<IbanAttributeMaster> ibanAttributesMasters;
 }
