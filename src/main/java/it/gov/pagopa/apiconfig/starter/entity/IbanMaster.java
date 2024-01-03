@@ -66,7 +66,7 @@ public class IbanMaster {
   private Iban iban;
 
   @ToString.Exclude
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIbanMaster", cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIbanMaster", cascade = CascadeType.ALL, orphanRemoval = true)
   @EqualsAndHashCode.Exclude
   private List<IbanAttributeMaster> ibanAttributesMasters;
 }
