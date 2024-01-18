@@ -84,6 +84,9 @@ public class Pa {
   @Column(name = "DESCRIZIONE")
   private String description;
 
+  @Column(name = "CBILL")
+  private String cbill;
+
   @ToString.Exclude
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkPa")
   @EqualsAndHashCode.Exclude
