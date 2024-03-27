@@ -1,6 +1,14 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -10,15 +18,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import java.util.List;
 
 @Entity
 @Table(name = "STAZIONI")
@@ -166,4 +169,9 @@ public class Stazioni {
 
   @Column(name = "VERSIONE_PRIMITIVE")
   private Integer versionePrimitive;
+  @OneToMany(
+          fetch = FetchType.LAZY,
+          mappedBy = "fkStazione"
+  )
+  private List<PaStazionePa> paStazionePaList;
 }
