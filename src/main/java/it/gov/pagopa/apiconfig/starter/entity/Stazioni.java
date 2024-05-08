@@ -1,26 +1,9 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -166,6 +149,10 @@ public class Stazioni {
 
   @Column(name = "TARGET_PATH_POF")
   private String targetPathPof;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "FLAG_STANDIN", nullable = false)
+  private Boolean flagStandin = false;
 
   @Column(name = "VERSIONE_PRIMITIVE")
   private Integer versionePrimitive;

@@ -123,4 +123,8 @@ public class CanaliNodo implements Serializable {
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FLAG_TRAVASO", nullable = false)
   private Boolean flagTravaso = false;
+
+  @Convert(converter = YesNoConverter.class)
+  @Column(name = "FLAG_STANDIN", nullable = false)
+  private Boolean flagStandin = false;
 }
