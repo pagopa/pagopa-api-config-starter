@@ -31,5 +31,12 @@ public interface IbanMasterRepository extends JpaRepository<IbanMaster, Long> {
       "and attribute.fkAttribute = label.objId " +
       "and master.fkPa=?1 " +
       "and attribute.ibanAttribute.attributeName=?2")
+  List<IbanMaster> findByFkPaAndLabel(Long fkPa, String label);
+
+  @Query("select master from IbanMaster master, IbanAttributeMaster attribute, IbanAttribute label " +
+      "where master.objId = attribute.fkIbanMaster " +
+      "and attribute.fkAttribute = label.objId " +
+      "and master.fkPa=?1 " +
+      "and attribute.ibanAttribute.attributeName=?2")
   Page<IbanMaster> findByFkPaAndLabel(Long fkPa, String label, Pageable pageable);
 }
