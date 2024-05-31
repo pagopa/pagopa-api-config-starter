@@ -20,5 +20,5 @@ public interface CacheRepository extends PagingAndSortingRepository<Cache, Long>
 
   Page<Cache> findAll(Pageable pageable);
 
-  Page<Cache> findByVersionNotLike(String versionLike, Pageable pageable);
+  Page<Cache> findByVersionLike(String versionLike, Pageable pageable);
 }
