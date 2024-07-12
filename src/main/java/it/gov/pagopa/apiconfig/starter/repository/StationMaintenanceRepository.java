@@ -8,13 +8,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.OffsetDateTime;
+
 @SuppressWarnings("java:S100")
 // Disabled naming convention rule for method name to use Spring Data interface
 @Repository
 public interface StationMaintenanceRepository extends JpaRepository<StationMaintenance, Long> {
 
     @Query(value =
-            "SELECT * " +
+            "SELECT m " +
                     "FROM StationMaintenance m JOIN Stazioni s ON m.fkStation = s.objId " +
                     "WHERE (:stationCode IS NULL OR UPPER(s.idStazione) LIKE CONCAT('%', UPPER(:stationCode), '%')) " +
                     "AND (:ciTaxCode IS NULL OR m.ciTaxCode = :ciTaxCode) " +
@@ -25,10 +27,10 @@ public interface StationMaintenanceRepository extends JpaRepository<StationMaint
     Page<StationMaintenance> findAllByFilters(
             @Param("stationCode") String stationCode,
             @Param("ciTaxCode") String ciTaxCode,
-            @Param("startDateTimeBefore") String startDateTimeBefore,
-            @Param("startDateTimeAfter") String startDateTimeAfter,
-            @Param("endDateTimeBefore") String endDateTimeBefore,
-            @Param("endDateTimeAfter") String endDateTimeAfter,
+            @Param("startDateTimeBefore") OffsetDateTime startDateTimeBefore,
+            @Param("startDateTimeAfter") OffsetDateTime startDateTimeAfter,
+            @Param("endDateTimeBefore") OffsetDateTime endDateTimeBefore,
+            @Param("endDateTimeAfter") OffsetDateTime endDateTimeAfter,
             Pageable pageable
     );
 }

@@ -12,7 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.ZonedDateTime;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "STATION_MAINTENANCE_EXPANDED")
@@ -25,14 +25,14 @@ import java.time.ZonedDateTime;
 public class StationMaintenanceExpandedView {
 
     @Id
-    @Column(name = "OBJ_ID", nullable = false)
-    private Long objId;
+    @Column(name = "ID", nullable = false)
+    private String id;
 
     @Column(name = "START_DATE_TIME", nullable = false)
-    private ZonedDateTime startDateTime;
+    private OffsetDateTime startDateTime;
 
     @Column(name = "END_DATE_TIME", nullable = false)
-    private ZonedDateTime endDateTime;
+    private OffsetDateTime endDateTime;
 
     @Column(name = "CI_TAX_CODE", nullable = false)
     private String ciTaxCode;

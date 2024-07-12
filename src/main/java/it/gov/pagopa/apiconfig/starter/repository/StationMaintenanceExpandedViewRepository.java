@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("java:S100")
 // Disabled naming convention rule for method name to use Spring Data interface
 @Repository
-public interface StationMaintenanceExpandedViewRepository extends JpaRepository<StationMaintenanceExpandedView, Long> {
+public interface StationMaintenanceExpandedViewRepository extends JpaRepository<StationMaintenanceExpandedView, String> {
 
 }

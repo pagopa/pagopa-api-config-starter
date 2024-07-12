@@ -17,7 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.time.ZonedDateTime;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "STATION_MAINTENANCE")
@@ -39,10 +39,10 @@ public class StationMaintenance {
     private Long objId;
 
     @Column(name = "START_DATE_TIME", nullable = false)
-    private ZonedDateTime startDateTime;
+    private OffsetDateTime startDateTime;
 
     @Column(name = "END_DATE_TIME", nullable = false)
-    private ZonedDateTime endDateTime;
+    private OffsetDateTime endDateTime;
 
     @Column(name = "STANDIN", nullable = false)
     private Boolean standIn;
