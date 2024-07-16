@@ -25,8 +25,8 @@ public interface StationMaintenanceRepository extends JpaRepository<StationMaint
                     "AND (:endDateTimeBefore IS NULL OR m.endDateTime < :endDateTimeBefore) " +
                     "AND (:endDateTimeAfter IS NULL OR m.endDateTime > :endDateTimeAfter)")
     Page<StationMaintenance> findAllByFilters(
-            @Param("stationCode") String stationCode,
             @Param("brokerCode") String brokerCode,
+            @Param("stationCode") String stationCode,
             @Param("startDateTimeBefore") OffsetDateTime startDateTimeBefore,
             @Param("startDateTimeAfter") OffsetDateTime startDateTimeAfter,
             @Param("endDateTimeBefore") OffsetDateTime endDateTimeBefore,
