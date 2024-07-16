@@ -9,6 +9,4 @@ import org.springframework.stereotype.Repository;
 // Disabled naming convention rule for method name to use Spring Data interface
 @Repository
 public interface StationMaintenanceSummaryViewRepository extends JpaRepository<StationMaintenanceSummaryView, StationMaintenanceSummaryId> {
-
-    StationMaintenanceSummaryView findByCiTaxCodeAndMaintenanceYear(String ciTaxCode, String maintenanceYear);
 }

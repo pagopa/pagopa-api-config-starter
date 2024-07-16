@@ -17,16 +17,16 @@ public interface StationMaintenanceRepository extends JpaRepository<StationMaint
 
     @Query(value =
             "SELECT m " +
-                    "FROM StationMaintenance m JOIN Stazioni s ON m.fkStation = s.objId " +
-                    "WHERE (:stationCode IS NULL OR UPPER(s.idStazione) LIKE CONCAT('%', UPPER(:stationCode), '%')) " +
-                    "AND (:ciTaxCode IS NULL OR m.ciTaxCode = :ciTaxCode) " +
+                    "FROM StationMaintenance m JOIN Stazioni s ON m.fkStation = s.objId JOIN IntermediariPa ipa ON s.fkIntermediarioPa = ipa.objId " +
+                    "WHERE ipa.idIntermediarioPa = :brokerCode " +
+                    "AND (:stationCode IS NULL OR UPPER(s.idStazione) LIKE CONCAT('%', UPPER(:stationCode), '%')) " +
                     "AND (:startDateTimeBefore IS NULL OR m.startDateTime < :startDateTimeBefore) " +
                     "AND (:startDateTimeAfter IS NULL OR m.startDateTime > :startDateTimeAfter) " +
                     "AND (:endDateTimeBefore IS NULL OR m.endDateTime < :endDateTimeBefore) " +
                     "AND (:endDateTimeAfter IS NULL OR m.endDateTime > :endDateTimeAfter)")
     Page<StationMaintenance> findAllByFilters(
             @Param("stationCode") String stationCode,
-            @Param("ciTaxCode") String ciTaxCode,
+            @Param("brokerCode") String brokerCode,
             @Param("startDateTimeBefore") OffsetDateTime startDateTimeBefore,
             @Param("startDateTimeAfter") OffsetDateTime startDateTimeAfter,
             @Param("endDateTimeBefore") OffsetDateTime endDateTimeBefore,

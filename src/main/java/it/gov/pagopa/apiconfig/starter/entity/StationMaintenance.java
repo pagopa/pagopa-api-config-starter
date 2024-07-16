@@ -20,11 +20,11 @@ import javax.persistence.Table;
 import java.time.OffsetDateTime;
 
 @Entity
-@Table(name = "STATION_MAINTENANCE")
+@Table(name = "MANUTENZIONE_STAZIONE")
 @Setter
 @Getter
 @ToString
-@Builder(toBuilder = true)
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class StationMaintenance {
@@ -38,23 +38,20 @@ public class StationMaintenance {
     @Column(name = "OBJ_ID", nullable = false)
     private Long objId;
 
-    @Column(name = "START_DATE_TIME", nullable = false)
+    @Column(name = "DATA_ORA_INIZIO", nullable = false)
     private OffsetDateTime startDateTime;
 
-    @Column(name = "END_DATE_TIME", nullable = false)
+    @Column(name = "DATA_ORA_FINE", nullable = false)
     private OffsetDateTime endDateTime;
 
     @Column(name = "STANDIN", nullable = false)
     private Boolean standIn;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "FK_STATION", nullable = false)
+    @JoinColumn(name = "FK_STAZIONE", nullable = false)
     @ToString.Exclude
     private Stazioni station;
 
-    @Column(name = "FK_STATION", nullable = false, insertable = false, updatable = false)
+    @Column(name = "FK_STAZIONE", nullable = false, insertable = false, updatable = false)
     private Long fkStation;
-
-    @Column(name = "CI_TAX_CODE", nullable = false)
-    private String ciTaxCode;
 }

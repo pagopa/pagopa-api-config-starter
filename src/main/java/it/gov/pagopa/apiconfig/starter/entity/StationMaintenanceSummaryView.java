@@ -15,27 +15,27 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "STATION_MAINTENANCE_SUMMARY")
+@Table(name = "MANUTENZIONE_STAZIONE_RIEPILOGO")
 @IdClass(StationMaintenanceSummaryId.class)
 @Setter
 @Getter
 @ToString
-@Builder(toBuilder = true)
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class StationMaintenanceSummaryView {
 
     @Id
-    @Column(name = "CI_TAX_CODE", nullable = false)
-    private String ciTaxCode;
+    @Column(name = "INTERMEDIARIO_PA_CODICE_FISCALE", nullable = false)
+    private String brokerCode;
 
     @Id
-    @Column(name = "MAINTENANCE_YEAR", nullable = false)
+    @Column(name = "ANNO_MANUTENZIONE", nullable = false)
     private String maintenanceYear;
 
-    @Column(name = "USED_HOURS", nullable = false)
+    @Column(name = "ORE_UTILIZZATE", nullable = false)
     private Double usedHours;
 
-    @Column(name = "SCHEDULED_HOURS", nullable = false)
+    @Column(name = "ORE_PROGRAMMATE", nullable = false)
     private Double scheduledHours;
 }

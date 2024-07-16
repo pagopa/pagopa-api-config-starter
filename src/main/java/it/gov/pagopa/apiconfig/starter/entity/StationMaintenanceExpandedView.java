@@ -15,11 +15,11 @@ import javax.persistence.Table;
 import java.time.OffsetDateTime;
 
 @Entity
-@Table(name = "STATION_MAINTENANCE_EXPANDED")
+@Table(name = "MANUTENZIONE_STAZIONE_ESPANSA")
 @Setter
 @Getter
 @ToString
-@Builder(toBuilder = true)
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class StationMaintenanceExpandedView {
@@ -28,12 +28,12 @@ public class StationMaintenanceExpandedView {
     @Column(name = "ID", nullable = false)
     private String id;
 
-    @Column(name = "START_DATE_TIME", nullable = false)
+    @Column(name = "DATA_ORA_INIZIO", nullable = false)
     private OffsetDateTime startDateTime;
 
-    @Column(name = "END_DATE_TIME", nullable = false)
+    @Column(name = "DATA_ORA_FINE", nullable = false)
     private OffsetDateTime endDateTime;
 
-    @Column(name = "CI_TAX_CODE", nullable = false)
-    private String ciTaxCode;
+    @Column(name = "INTERMEDIARIO_PA_CODICE_FISCALE", nullable = false)
+    private String brokerCode;
 }
