@@ -22,19 +22,19 @@ public interface StationMaintenanceRepository extends JpaRepository<StationMaint
                     "AND s.fkIntermediarioPa = ipa.objId " +
                     "AND ipa.idIntermediarioPa = :brokerCode " +
                     "AND (:stationCode IS NULL OR UPPER(s.idStazione) LIKE CONCAT('%', UPPER(:stationCode), '%')) " +
-                    "AND (:startDateTimeBefore IS NULL OR m.startDateTime < :startDateTimeBefore) " +
-                    "AND (:startDateTimeAfter IS NULL OR m.startDateTime > :startDateTimeAfter) " +
-                    "AND (:endDateTimeBefore IS NULL OR m.endDateTime < :endDateTimeBefore) " +
-                    "AND (:endDateTimeAfter IS NULL OR m.endDateTime > :endDateTimeAfter)",
+                    "AND (cast(cast(:startDateTimeBefore as text) as timestamp) IS NULL OR m.startDateTime < cast(cast(:startDateTimeBefore as text) as timestamp)) " +
+                    "AND (cast(cast(:startDateTimeAfter as text) as timestamp) IS NULL OR m.startDateTime > cast(cast(:startDateTimeAfter as text) as timestamp)) " +
+                    "AND (cast(cast(:endDateTimeBefore as text) as timestamp) IS NULL OR m.endDateTime < cast(cast(:endDateTimeBefore as text) as timestamp)) " +
+                    "AND (cast(cast(:endDateTimeAfter as text) as timestamp) IS NULL OR m.endDateTime > cast(cast(:endDateTimeAfter as text) as timestamp))",
     countQuery =
             "SELECT m " +
                     "FROM StationMaintenance m JOIN Stazioni s ON m.fkStation = s.objId JOIN IntermediariPa ipa ON s.fkIntermediarioPa = ipa.objId " +
                     "WHERE ipa.idIntermediarioPa = :brokerCode " +
                     "AND (:stationCode IS NULL OR UPPER(s.idStazione) LIKE CONCAT('%', UPPER(:stationCode), '%')) " +
-                    "AND (:startDateTimeBefore IS NULL OR m.startDateTime < :startDateTimeBefore) " +
-                    "AND (:startDateTimeAfter IS NULL OR m.startDateTime > :startDateTimeAfter) " +
-                    "AND (:endDateTimeBefore IS NULL OR m.endDateTime < :endDateTimeBefore) " +
-                    "AND (:endDateTimeAfter IS NULL OR m.endDateTime > :endDateTimeAfter)")
+                    "AND (cast(cast(:startDateTimeBefore as text) as timestamp) IS NULL OR m.startDateTime < cast(cast(:startDateTimeBefore as text) as timestamp)) " +
+                    "AND (cast(cast(:startDateTimeAfter as text) as timestamp) IS NULL OR m.startDateTime > cast(cast(:startDateTimeAfter as text) as timestamp)) " +
+                    "AND (cast(cast(:endDateTimeBefore as text) as timestamp) IS NULL OR m.endDateTime < cast(cast(:endDateTimeBefore as text) as timestamp)) " +
+                    "AND (cast(cast(:endDateTimeAfter as text) as timestamp) IS NULL OR m.endDateTime > cast(cast(:endDateTimeAfter as text) as timestamp))")
     Page<StationMaintenance> findAllByFilters(
             @Param("brokerCode") String brokerCode,
             @Param("stationCode") String stationCode,
