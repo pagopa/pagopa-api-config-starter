@@ -77,4 +77,11 @@ public class PaStazionePa {
   @Convert(converter = YesNoConverter.class)
   @Column(name = "PAGAMENTO_SPONTANEO", nullable = false)
   private Boolean pagamentoSpontaneo = false;
+
+  @Column(name = "ACA", nullable = false)
+  private Boolean aca = true;
+
+  @Column(name = "STANDIN", nullable = false)
+  private Boolean standin = true;
+
 }
