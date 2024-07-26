@@ -1,5 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
+import it.gov.pagopa.apiconfig.starter.util.DummyBooleanConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,6 +46,7 @@ public class StationMaintenance {
     @Column(name = "DATA_ORA_FINE", nullable = false)
     private OffsetDateTime endDateTime;
 
+    @Convert(converter = DummyBooleanConverter.class)
     @Column(name = "STANDIN", nullable = false)
     private Boolean standIn;
 

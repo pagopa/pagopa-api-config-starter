@@ -1,5 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
+import it.gov.pagopa.apiconfig.starter.util.DummyBooleanConverter;
 import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -78,9 +79,11 @@ public class PaStazionePa {
   @Column(name = "PAGAMENTO_SPONTANEO", nullable = false)
   private Boolean pagamentoSpontaneo = false;
 
+  @Convert(converter = DummyBooleanConverter.class)
   @Column(name = "ACA", nullable = false)
   private Boolean aca = true;
 
+  @Convert(converter = DummyBooleanConverter.class)
   @Column(name = "STANDIN", nullable = false)
   private Boolean standin = true;
 
