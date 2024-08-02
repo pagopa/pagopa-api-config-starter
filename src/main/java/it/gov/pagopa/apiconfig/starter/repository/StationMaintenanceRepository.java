@@ -27,7 +27,7 @@ public interface StationMaintenanceRepository extends JpaRepository<StationMaint
                     "AND (cast(cast(:endDateTimeBefore as text) as timestamp) IS NULL OR m.endDateTime < cast(cast(:endDateTimeBefore as text) as timestamp)) " +
                     "AND (cast(cast(:endDateTimeAfter as text) as timestamp) IS NULL OR m.endDateTime > cast(cast(:endDateTimeAfter as text) as timestamp))",
     countQuery =
-            "SELECT m " +
+            "SELECT COUNT(m) " +
                     "FROM StationMaintenance m JOIN Stazioni s ON m.fkStation = s.objId JOIN IntermediariPa ipa ON s.fkIntermediarioPa = ipa.objId " +
                     "WHERE ipa.idIntermediarioPa = :brokerCode " +
                     "AND (:stationCode IS NULL OR UPPER(s.idStazione) LIKE CONCAT('%', UPPER(:stationCode), '%')) " +
