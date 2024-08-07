@@ -80,12 +80,10 @@ public class PaStazionePa {
   private Boolean pagamentoSpontaneo = false;
 
   @Convert(disableConversion = true)
-  @Default
   @Column(name = "ACA", nullable = false)
   private Boolean aca = true;
 
   @Convert(disableConversion = true)
-  @Default
   @Column(name = "STANDIN", nullable = false)
   private Boolean standin = true;
 
