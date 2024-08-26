@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -47,19 +49,18 @@ public class Iban {
   @Column(name = "IBAN", nullable = false, unique = true)
   private String iban;
 
-  @Column(name = "FISCAL_CODE", nullable = false)
-  private String fiscalCode;
-
   @Column(name = "DUE_DATE", nullable = false)
   private Timestamp dueDate;
-
-  @Column(name = "DESCRIPTION")
-  @Comment("Not currently involved in business logic. For future use.")
-  @Builder.Default
-  private String description = "iban";
 
   @ToString.Exclude
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkIban", cascade = CascadeType.ALL)
   @EqualsAndHashCode.Exclude
   private List<IbanMaster> ibanMasters;
+
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "FK_PA", nullable = false)
+  @ToString.Exclude
+  @EqualsAndHashCode.Exclude
+  private Pa pa;
+
 }
