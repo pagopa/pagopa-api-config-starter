@@ -26,21 +26,37 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long>, JpaSp
           "select distinct s from Stazioni s, PaStazionePa r where (:fkIntermediario is null or"
               + " s.fkIntermediarioPa = :fkIntermediario) and (r.fkPa = :fkPa and r.fkStazione = s)"
               + " and (:idStazione is null or upper(s.idStazione) like concat('%',"
-              + " upper(:idStazione), '%')) ")
+              + " upper(:idStazione), '%')) "
+              + " AND (cast(cast(:createDateBefore as text) as timestamp) IS NULL OR s.dataCreazione < cast(cast(:createDateBefore as text) as timestamp)) "
+              + " AND (cast(cast(:createDateAfter as text) as timestamp) IS NULL OR s.dataCreazione > cast(cast(:createDateAfter as text) as timestamp)) "
+              + " AND ((:connectionType IS NULL OR :connectionType = 'NONE') "
+              + " OR (:connectionType = 'SYNC' AND servizio LIKE '%gpd%')"
+              + " OR (:connectionType = 'ASYNC' AND (servizio IS NULL or servizio NOT LIKE '%gpd%')))")
   Page<Stazioni> findAllByFilters(
       @Param("fkIntermediario") Long fkIntermediario,
       @Param("fkPa") Long fkPa,
       @Param("idStazione") String idStazione,
+      @Param("createDateBefore") OffsetDateTime createDateBefore,
+      @Param("createDateAfter") OffsetDateTime createDateAfter,
+      @Param("connectionType") String connectionType,
       Pageable pageable);
 
   @Query(
       value =
           "select distinct s from Stazioni s where (:fkIntermediario is null or s.fkIntermediarioPa"
               + " = :fkIntermediario) and (:idStazione is null or upper(s.idStazione) like"
-              + " concat('%', upper(:idStazione), '%')) ")
+              + " concat('%', upper(:idStazione), '%')) "
+              + " AND (cast(cast(:createDateBefore as text) as timestamp) IS NULL OR s.dataCreazione < cast(cast(:createDateBefore as text) as timestamp)) "
+              + " AND (cast(cast(:createDateAfter as text) as timestamp) IS NULL OR s.dataCreazione > cast(cast(:createDateAfter as text) as timestamp)) "
+              + " AND ((:connectionType IS NULL OR :connectionType = 'NONE') "
+              + " OR (:connectionType = 'SYNC' AND servizio LIKE '%gpd%')"
+              + " OR (:connectionType = 'ASYNC' AND (servizio IS NULL or servizio NOT LIKE '%gpd%')))")
   Page<Stazioni> findAllByFilters(
       @Param("fkIntermediario") Long fkIntermediario,
       @Param("idStazione") String idStazione,
+      @Param("createDateBefore") OffsetDateTime createDateBefore,
+      @Param("createDateAfter") OffsetDateTime createDateAfter,
+      @Param("connectionType") String connectionType,
       Pageable pageable);
 
   @Query(
