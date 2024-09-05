@@ -53,7 +53,7 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long>, JpaSp
               + " upper(:codiceIntermediario), '%')) "
               + " AND (cast(cast(:createDateBefore as text) as timestamp) IS NULL OR s.createDate < cast(cast(:createDateBefore as text) as timestamp)) "
               + " AND (cast(cast(:createDateAfter as text) as timestamp) IS NULL OR s.createDate > cast(cast(:createDateAfter as text) as timestamp)) "
-              + " AND ((:connectionType IS NULL OR :connectionType = 'NONE) "
+              + " AND ((:connectionType IS NULL OR :connectionType = 'NONE') "
               + " OR (:connectionType = 'SYNC' AND servizio LIKE '%gpd%')"
               + " OR (:connectionType = 'ASYNC' AND (servizio IS NULL or servizio NOT LIKE '%gpd%')))")
   Page<Stazioni> findAllByFilters(
@@ -75,7 +75,7 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long>, JpaSp
               + " concat('%', upper(:codiceIntermediario), '%')) "
               + " AND (cast(cast(:createDateBefore as text) as timestamp) IS NULL OR s.createDate < cast(cast(:createDateBefore as text) as timestamp)) "
               + " AND (cast(cast(:createDateAfter as text) as timestamp) IS NULL OR s.createDate > cast(cast(:createDateAfter as text) as timestamp)) "
-              + " AND ((:connectionType IS NULL OR :connectionType = 'NONE) "
+              + " AND ((:connectionType IS NULL OR :connectionType = 'NONE') "
               + " OR (:connectionType = 'SYNC' AND servizio LIKE '%gpd%')"
               + " OR (:connectionType = 'ASYNC' AND (servizio IS NULL or servizio NOT LIKE '%gpd%')))"
   )
