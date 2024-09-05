@@ -55,7 +55,7 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long>, JpaSp
               + " AND (cast(cast(:createDateAfter as text) as timestamp) IS NULL OR s.createDate > cast(cast(:createDateAfter as text) as timestamp)) "
               + " AND ((:connectionType IS NULL OR :connectionType = 'NONE) "
               + " OR (:connectionType = 'SYNC' AND servizio LIKE '%gpd%')"
-              + " OR (:connectionType = 'ASYNC AND (servizio IS NULL or servizio NOT LIKE '%gpd%')))")
+              + " OR (:connectionType = 'ASYNC' AND (servizio IS NULL or servizio NOT LIKE '%gpd%')))")
   Page<Stazioni> findAllByFilters(
       @Param("fkIntermediario") Long fkIntermediario,
       @Param("fkPa") Long fkPa,
@@ -77,7 +77,7 @@ public interface StazioniRepository extends JpaRepository<Stazioni, Long>, JpaSp
               + " AND (cast(cast(:createDateAfter as text) as timestamp) IS NULL OR s.createDate > cast(cast(:createDateAfter as text) as timestamp)) "
               + " AND ((:connectionType IS NULL OR :connectionType = 'NONE) "
               + " OR (:connectionType = 'SYNC' AND servizio LIKE '%gpd%')"
-              + " OR (:connectionType = 'ASYNC AND (servizio IS NULL or servizio NOT LIKE '%gpd%')))"
+              + " OR (:connectionType = 'ASYNC' AND (servizio IS NULL or servizio NOT LIKE '%gpd%')))"
   )
   Page<Stazioni> findAllByFilters(
       @Param("fkIntermediario") Long fkIntermediario,
