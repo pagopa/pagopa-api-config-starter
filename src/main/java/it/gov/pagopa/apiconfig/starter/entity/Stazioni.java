@@ -163,9 +163,9 @@ public class Stazioni {
   private List<PaStazionePa> paStazionePaList;
 
   @Convert(disableConversion = true)
-  @Column(name = "VERIFY_PAYMENT_OPTION_ENABLED", nullable = false)
-  private Boolean verifyPaymentOptionEnabled = false;
+  @Column(name = "IS_PAYMENT_OPTIONS_ENABLED", nullable = false)
+  private Boolean isPaymentOptionsEnabled = false;
 
-  @Column(name = "VERIFY_PAYMENT_OPTION_ENDPOINT")
-  private String verifyPaymentOptionEndpoint;
+  @Column(name = "REST_ENDPOINT")
+  private String restEndpoint;
 }
