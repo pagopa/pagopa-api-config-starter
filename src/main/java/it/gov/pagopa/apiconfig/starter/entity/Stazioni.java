@@ -161,4 +161,11 @@ public class Stazioni {
           mappedBy = "fkStazione"
   )
   private List<PaStazionePa> paStazionePaList;
+
+  @Convert(disableConversion = true)
+  @Column(name = "IS_PAYMENT_OPTIONS_ENABLED", nullable = false)
+  private Boolean isPaymentOptionsEnabled = false;
+
+  @Column(name = "REST_ENDPOINT")
+  private String restEndpoint;
 }
