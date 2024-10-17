@@ -44,4 +44,27 @@ public interface StationMaintenanceRepository extends JpaRepository<StationMaint
             @Param("endDateTimeAfter") OffsetDateTime endDateTimeAfter,
             Pageable pageable
     );
+
+    @Query(value =
+            "SELECT m " +
+                    "FROM StationMaintenance m JOIN FETCH m.station s JOIN FETCH s.intermediarioPa ipa " +
+                    "WHERE m.fkStation = s.objId " +
+                    "AND s.fkIntermediarioPa = ipa.objId " +
+                    "AND (cast(cast(:startDateTimeBefore as text) as timestamp) IS NULL OR m.startDateTime < cast(cast(:startDateTimeBefore as text) as timestamp)) " +
+                    "AND (cast(cast(:startDateTimeAfter as text) as timestamp) IS NULL OR m.startDateTime > cast(cast(:startDateTimeAfter as text) as timestamp)) " +
+                    "AND (cast(cast(:endDateTimeBefore as text) as timestamp) IS NULL OR m.endDateTime < cast(cast(:endDateTimeBefore as text) as timestamp)) " +
+                    "AND (cast(cast(:endDateTimeAfter as text) as timestamp) IS NULL OR m.endDateTime > cast(cast(:endDateTimeAfter as text) as timestamp))",
+            countQuery =
+                    "SELECT COUNT(m) " +
+                            "FROM StationMaintenance m JOIN Stazioni s ON m.fkStation = s.objId JOIN IntermediariPa ipa ON s.fkIntermediarioPa = ipa.objId " +
+                            "AND (cast(cast(:startDateTimeBefore as text) as timestamp) IS NULL OR m.startDateTime < cast(cast(:startDateTimeBefore as text) as timestamp)) " +
+                            "AND (cast(cast(:startDateTimeAfter as text) as timestamp) IS NULL OR m.startDateTime > cast(cast(:startDateTimeAfter as text) as timestamp)) " +
+                            "AND (cast(cast(:endDateTimeBefore as text) as timestamp) IS NULL OR m.endDateTime < cast(cast(:endDateTimeBefore as text) as timestamp)) " +
+                            "AND (cast(cast(:endDateTimeAfter as text) as timestamp) IS NULL OR m.endDateTime > cast(cast(:endDateTimeAfter as text) as timestamp))")
+    Page<StationMaintenance> findAllByFilters(
+            @Param("startDateTimeBefore") OffsetDateTime startDateTimeBefore,
+            @Param("startDateTimeAfter") OffsetDateTime startDateTimeAfter,
+            @Param("endDateTimeBefore") OffsetDateTime endDateTimeBefore,
+            @Param("endDateTimeAfter") OffsetDateTime endDateTimeAfter
+    );
 }
