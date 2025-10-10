@@ -48,14 +48,14 @@ jobs:
     steps:
       - name: Make Release
         id: release
-        uses: pagopa/github-actions-template/maven-release@525266fb788f4da438e5919fcf660fe8637271ed
+        uses: pagopa/github-actions-template/maven-release@525266fb788f4da438e5919fcf660fe8637271ed #v2.2.0
         with:
           semver: ${{ needs.setup.outputs.semver }}
           github_token: ${{ secrets.BOT_GITHUB_TOKEN }}
 
       - name: Make Package
         id: package
-        uses: pagopa/github-actions-template/maven-package@525266fb788f4da438e5919fcf660fe8637271ed
+        uses: pagopa/github-actions-template/maven-package@525266fb788f4da438e5919fcf660fe8637271ed #v2.2.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref_name }}
