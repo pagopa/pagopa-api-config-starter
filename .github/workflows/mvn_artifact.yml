@@ -48,14 +48,14 @@ jobs:
     steps:
       - name: Make Release
         id: release
-        uses: pagopa/github-actions-template/maven-release@483a0ceb9ef07dee34f7ce0de5b689cc3043eac4
+        uses: pagopa/github-actions-template/maven-release@525266fb788f4da438e5919fcf660fe8637271ed #v2.2.0
         with:
           semver: ${{ needs.setup.outputs.semver }}
           github_token: ${{ secrets.BOT_GITHUB_TOKEN }}
 
       - name: Make Package
         id: package
-        uses: pagopa/github-actions-template/maven-package@483a0ceb9ef07dee34f7ce0de5b689cc3043eac4
+        uses: pagopa/github-actions-template/maven-package@525266fb788f4da438e5919fcf660fe8637271ed #v2.2.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref_name }}
@@ -74,5 +74,5 @@ jobs:
           SLACK_ICON: https://www.pagopa.gov.it/assets/images/pagopa-logo.png?size=48
           SLACK_MESSAGE: 'New package available: ${{ needs.package.outputs.version }}'
           SLACK_TITLE: 'API Config Lib'
-          SLACK_USERNAME: 'API Config Notifier'
+          SLACK_USERNAME: 'Packages'
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
