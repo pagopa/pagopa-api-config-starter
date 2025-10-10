@@ -74,5 +74,5 @@ jobs:
           SLACK_ICON: https://www.pagopa.gov.it/assets/images/pagopa-logo.png?size=48
           SLACK_MESSAGE: 'New package available: ${{ needs.package.outputs.version }}'
           SLACK_TITLE: 'API Config Lib'
-          SLACK_USERNAME: 'API Config Notifier'
+          SLACK_USERNAME: 'Packages'
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
