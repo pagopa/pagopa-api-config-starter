@@ -53,6 +53,9 @@ public class IbanMaster {
   @Column(name = "DESCRIPTION")
   private String description;
 
+  @Column(name = "DUE_DATE", nullable = false)
+  private Timestamp dueDate;
+
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "FK_PA", nullable = false)
   @ToString.Exclude
