@@ -4,6 +4,7 @@ import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
@@ -153,6 +154,9 @@ public class Stazioni {
   @Convert(converter = YesNoConverter.class)
   @Column(name = "FLAG_STANDIN", nullable = false)
   private Boolean flagStandin = false;
+
+  @Column(name = "DATA_CREAZIONE")
+  private Timestamp dataCreazione;
 
   @Column(name = "VERSIONE_PRIMITIVE")
   private Integer versionePrimitive;
