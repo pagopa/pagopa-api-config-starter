@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: Set semver
         id: semver
-        uses: pagopa/github-actions-template/semver-setup@483a0ceb9ef07dee34f7ce0de5b689cc3043eac4
+        uses: pagopa/github-actions-template/semver-setup@1aa27ebf80b99501a9019d63ef27f3057d2a4b1d #v2.8.0
 
   package:
     name: Publish Maven Package
@@ -48,17 +48,21 @@ jobs:
     steps:
       - name: Make Release
         id: release
-        uses: pagopa/github-actions-template/maven-release@525266fb788f4da438e5919fcf660fe8637271ed #v2.2.0
+        uses: pagopa/github-actions-template/maven-release@1aa27ebf80b99501a9019d63ef27f3057d2a4b1d #v2.8.0
         with:
           semver: ${{ needs.setup.outputs.semver }}
           github_token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          jdk_version: 21
+          maven_version: 3.9.9
 
       - name: Make Package
         id: package
-        uses: pagopa/github-actions-template/maven-package@525266fb788f4da438e5919fcf660fe8637271ed #v2.2.0
+        uses: pagopa/github-actions-template/maven-package@1aa27ebf80b99501a9019d63ef27f3057d2a4b1d #v2.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref_name }}
+          jdk_version: 21
+          maven_version: 3.9.9
 
   notification:
     name: Send slack notification
