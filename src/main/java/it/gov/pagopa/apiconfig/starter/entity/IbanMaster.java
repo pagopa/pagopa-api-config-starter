@@ -3,7 +3,7 @@ package it.gov.pagopa.apiconfig.starter.entity;
 import lombok.*;
 import org.springframework.data.annotation.Immutable;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 

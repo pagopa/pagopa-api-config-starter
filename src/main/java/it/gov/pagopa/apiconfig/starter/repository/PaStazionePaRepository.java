@@ -3,7 +3,7 @@ package it.gov.pagopa.apiconfig.starter.repository;
 import it.gov.pagopa.apiconfig.starter.entity.PaStazionePa;
 import java.util.List;
 import java.util.Optional;
-import javax.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
