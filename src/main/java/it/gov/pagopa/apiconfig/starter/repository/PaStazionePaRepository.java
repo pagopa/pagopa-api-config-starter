@@ -46,9 +46,6 @@ public interface PaStazionePaRepository
 
   Optional<PaStazionePa> findOne(Specification<PaStazionePa> paStazionePa);
 
-  @Override
-  List<PaStazionePa> findAll();
-
   default Optional<PaStazionePa>
       findByFkPaAndFkStazione_ObjIdAndAuxDigitAndBroadcastAndSegregazioneAndProgressivo(
           Long creditorInstitutionCode,
