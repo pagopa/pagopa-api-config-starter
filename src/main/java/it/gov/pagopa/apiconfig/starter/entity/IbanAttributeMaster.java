@@ -1,6 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.Immutable;
 

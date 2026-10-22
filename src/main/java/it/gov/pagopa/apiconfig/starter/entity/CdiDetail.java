@@ -1,7 +1,7 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import java.util.List;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Table(name = "CDI_DETAIL")

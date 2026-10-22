@@ -2,7 +2,7 @@ package it.gov.pagopa.apiconfig.starter.entity;
 
 import it.gov.pagopa.apiconfig.starter.util.YesNoConverter;
 import java.time.ZonedDateTime;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
