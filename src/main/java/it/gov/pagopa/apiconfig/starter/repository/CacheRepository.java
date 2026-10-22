@@ -7,11 +7,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CacheRepository extends PagingAndSortingRepository<Cache, Long> {
+public interface CacheRepository
+    extends PagingAndSortingRepository<Cache, Long>, CrudRepository<Cache, Long> {
 
   Optional<Cache> findFirstByVersion(String version, Sort by);
 
