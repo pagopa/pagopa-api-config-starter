@@ -1,7 +1,6 @@
 package it.gov.pagopa.apiconfig.starter.entity;
 
 import java.sql.Timestamp;
-import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -76,8 +74,4 @@ public class CdiMasterValid {
 
   @Column(name = "VERSIONE", length = 35)
   private String versione;
-
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "fkCdiMaster", cascade = CascadeType.REMOVE)
-  @ToString.Exclude
-  private List<CdiDetail> cdiDetail;
 }
